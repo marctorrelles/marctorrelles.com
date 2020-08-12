@@ -9,7 +9,7 @@ const TogglerBoxContainer = styled.div<{ theme: Theme }>`
   position: absolute;
   top: 1em;
   right: 1em;
-  transition: background-color ease 0.33s;
+  transition: background-color ease 0.25s;
   cursor: pointer;
   user-select: none;
 `
@@ -21,7 +21,7 @@ const TogglerOption = styled.div<{ active: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity ease 0.33s;
+  transition: opacity ease 0.25s;
   opacity: ${({ active }) => active ? 1 : 0};
 `
 
