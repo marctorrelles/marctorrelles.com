@@ -1,39 +1,32 @@
 import * as React from 'react'
-import styled from 'styled-components'
 
 import PageContainer from '../components/layout/PageContainer'
+import Container from '../components/layout/Container'
+import Title from '../components/atoms/Title'
 import Text from '../components/atoms/Text'
 import Link from '../components/atoms/Link'
-import Title from '../components/atoms/Title'
-
-const StyledTable = styled.table`
-  width: 100%;
-  padding: 1em;
-`
-
-const StyledTd = styled.td`
-  padding-bottom: 0.5em;
-`
 
 const Contact = () => {
   return (
     <PageContainer>
       <Title>Let's have a beer! 🍻</Title>
       <Text>
-        I love to meet new people, share thoughts and learn. I can also have a coffee, but hey,
-        I won't probably get up before 8am 🙂 so a beer is probably gonna fit me better.
+        I love to meet new people, share thoughts and learn. Let's get in tough and have a beer 😄
+        (I can also have a coffee but... well, a beer is probably gonna fit me better).
       </Text>
       <Text>You can reach me through:</Text>
-      <StyledTable>
-        <tr>
-          <StyledTd>Github</StyledTd>
-          <StyledTd><Link href='https://github.com/marctorrelles' target='_blank'>marctorrelles</Link></StyledTd>
-        </tr>
-        <tr>
-          <StyledTd>Email</StyledTd>
-          <StyledTd><Link href='mailto:marctorrelles@gmail.com'>marctorrelles@gmail.com</Link></StyledTd>
-        </tr>
-      </StyledTable>
+      <Container flexDirection='column' paddingLeft={2} gap={1}>
+        <Text>
+          <b>Github</b> at <Link href='https://github.com/marctorrelles' target='_blank'>marctorrelles</Link>
+        </Text>
+        <Text>
+          Dropping me an email at <Link href='mailto:marctorrelles@gmail.com'>marctorrelles@gmail.com</Link>
+        </Text>
+        <Text>
+          Connecting with me on twitter at <Link href='https://twitter.com/marctorrelles'>@marctorrelles</Link> (even
+          I don't tweet as much as I would like)
+        </Text>
+      </Container>
     </PageContainer>
   )
 }

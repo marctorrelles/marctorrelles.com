@@ -8,18 +8,8 @@ import Separator from '../components/layout/Separator'
 import Link from '../components/atoms/Link'
 import Container from '../components/layout/Container'
 
-const StyledTable = styled.table`
-  width: 100%;
-  padding: 1em;
-`
-
-const StyledTd = styled.td`
-  padding-bottom: 0.5em;
-`
-
 const About = () => (
   <PageContainer>
-    {/* About */}
     <Title>About me 👨‍💻</Title>
     <Text>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed augue tempor,
@@ -40,22 +30,6 @@ const About = () => (
       velit commodo maximus gravida, sapien turpis ornare purus, vitae scelerisque enim
       neque a libero. Proin tortor ligula, vestibulum a ipsum eu, maximus ullamcorper metus.
     </Text>
-    <Separator />
-    {/* Contact */}
-    <Title>Let's have a beer! 🍻</Title>
-      <Text>
-        I love to meet new people, share thoughts and learn. Let's get in tough and have a beer 😄
-        (I can also have a coffee but... well, a beer is probably gonna fit me better).
-      </Text>
-      <Text>You can reach me through:</Text>
-      <Container flexDirection='column' paddingLeft={2}>
-        <Text>
-          Github at <Link href='https://github.com/marctorrelles' target='_blank'>marctorrelles</Link>
-        </Text>
-        <Text>
-          Email at <Link href='mailto:marctorrelles@gmail.com'>marctorrelles@gmail.com</Link>
-        </Text>
-      </Container>
   </PageContainer>
 )
 
