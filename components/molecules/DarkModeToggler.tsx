@@ -1,40 +1,37 @@
 import * as React from 'react'
 import styled, { ThemeContext } from 'styled-components'
 
-import { Theme } from '../../styles/theme'
 import { useDarkMode } from '../../logic/darkModeContext'
 import Container from '../atoms/Container'
+import DarkModeIcon from '../../images/dark-mode.svg'
 
-const TogglerBoxContainer = styled.div<{ theme: Theme }>`
-  position: absolute;
-  top: 1em;
-  right: 1em;
-  transition: background-color ease 0.25s;
+const TogglerBoxContainer = styled.div`
   cursor: pointer;
   user-select: none;
 `
 
 const TogglerOption = styled.div<{ active: boolean }>`
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity ease 0.25s;
-  opacity: ${({ active }) => active ? 1 : 0};
+  > svg {
+    /* TODO: fix svg... 😪 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all ease 0.25s;
+    transform: scale(0.8) rotate(${({ active }) => active ? 0 : 180}deg);
+    > circle {
+      stroke: ${({ theme }) => theme.primary};
+    }
+    > path {
+      fill: ${({ theme }) => theme.primary};
+    }
+  }
 `
 
-type Props = {
-  active: Boolean,
-  onToggle: (event: any) => void,
-  left: React.ReactNode,
-  right: React.ReactNode
-}
-
 const DarkModeToggler = () => {
-  const themeContext = React.useContext(ThemeContext)
-  const {darkMode, setDarkMode} = useDarkMode()
+  const { darkMode, setDarkMode } = useDarkMode()
   const onToggle = () => setDarkMode(!darkMode)
 
   return (
@@ -42,14 +39,9 @@ const DarkModeToggler = () => {
       <Container
         width={2.2}
         height={2.2}
-        borderRadius={5}
-        background={themeContext.primary}
       >
         <TogglerOption active={darkMode}>
-          <span>☀️</span>
-        </TogglerOption>
-        <TogglerOption active={!darkMode}>
-          <span>🌙</span>
+          <DarkModeIcon />
         </TogglerOption>
       </Container>
     </TogglerBoxContainer>

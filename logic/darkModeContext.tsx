@@ -3,7 +3,7 @@ import * as React from 'react'
 const DEFAULT_DARK_MODE = true
 
 type ContextProps = {
-  darkMode: boolean,
+  darkMode: boolean
   setDarkMode: React.Dispatch<React.SetStateAction<boolean>>
 }
 

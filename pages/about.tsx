@@ -4,7 +4,7 @@ import Container from '../components/atoms/Container'
 import Title from '../components/atoms/Title'
 import Text from '../components/atoms/Text'
 
-const Home = () => {
+const About = () => {
   return (
     <Container
       gap={1}
@@ -15,9 +15,9 @@ const Home = () => {
       alignItems='center'
     >
       <Title>Hello world!</Title>
-      <Text>Le index</Text>
+      <Text>Le about</Text>
     </Container>
   )
 }
 
-export default Home
+export default About

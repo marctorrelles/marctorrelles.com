@@ -1,7 +1,7 @@
 // TODO
 export type  Theme = {
-  background: string,
-  primary: string,
+  background: string
+  primary: string
   secondary: string
 }
 

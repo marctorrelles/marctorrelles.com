@@ -3,7 +3,7 @@ import React from 'react';
 
 import { DarkMode } from '../logic/darkModeContext';
 import { ThemeProvider } from '../styles/ThemeProvider';
-import DarkModeToggler from '../components/molecules/DarkModeToggler';
+import Nav from '../components/organisms/Nav';
 
 export default class MyApp extends App {
 	render() {
@@ -11,8 +11,8 @@ export default class MyApp extends App {
 		return (
       <DarkMode>
         <ThemeProvider>
+          <Nav />
           <Component {...pageProps} />
-          <DarkModeToggler />
         </ThemeProvider>
       </DarkMode>
 		);
