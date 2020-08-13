@@ -13,9 +13,10 @@
     "styled-components": "^5.1.0"
   },
   "scripts": {
-    "dev": "npx next",
-    "build": "npx next build",
-    "start": "npx next start"
+    "dev": "next",
+    "start": "next start",
+    "build": "next build",
+    "export": "next export"
   },
   "devDependencies": {
     "@types/node": "^14.0.1",
