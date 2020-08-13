@@ -6,7 +6,7 @@ export type  Theme = {
 }
 
 export const darkTheme: Theme = {
-  background: '#040404',
+  background: '#222222',
   primary: '#eee',
   secondary: '#D5E7C1'
 }

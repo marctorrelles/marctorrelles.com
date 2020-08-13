@@ -2,8 +2,8 @@ import * as React from 'react'
 import styled from 'styled-components'
 
 import { useDarkMode } from '../logic/darkModeContext'
-import Container from '../atoms/Container'
-import DarkModeIcon from '../../images/dark-mode.svg'
+import Container from '../layout/Container'
+import DarkModeIcon from '../../assets/images/dark-mode.svg'
 
 const TogglerBoxContainer = styled.div`
   cursor: pointer;

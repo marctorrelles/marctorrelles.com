@@ -1,19 +1,19 @@
 import * as React from 'react'
 import { useRouter } from 'next/router'
 
-import Container from '../atoms/Container'
+import Container from '../layout/Container'
 import Link from '../atoms/Link'
 import DarkModeToggler from '../molecules/DarkModeToggler'
 
-enum Tab {
+export enum Links {
   Home = '/',
-  About = '/about',
   Blog = '/blog',
+  About = '/about',
   Contact = '/contact'
 }
 
 const Nav = () => {
-  const pathname = useRouter().pathname || Tab.Home
+  const pathname = useRouter().pathname || Links.Home
 
   return (
     <Container
@@ -27,15 +27,19 @@ const Nav = () => {
       alignItems='center'
     >
       <Container gap={2}>
-        {Object.entries(Tab).map(([key, value]) => (
-          <Link
-            key={value}
-            href={value}
-            active={pathname === value}
-          >
-            {key}
-          </Link>
-        ))}
+        {Object.entries(Links).map(([key, value]) => {
+          const isActive = pathname === value
+          return (
+            <Link
+              key={value}
+              href={value}
+              active={pathname === value}
+              size={1.2}
+            >
+              {key}
+            </Link>
+          )
+        })}
       </Container>
       <DarkModeToggler />
     </Container>

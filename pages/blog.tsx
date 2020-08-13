@@ -1,22 +1,15 @@
 import * as React from 'react'
 
-import Container from '../components/atoms/Container'
+import PageContainer from '../components/layout/PageContainer'
 import Title from '../components/atoms/Title'
 import Text from '../components/atoms/Text'
 
 const Blog = () => {
   return (
-    <Container
-      gap={1}
-      padding={2}
-      paddingTop={5}
-      flexDirection='column'
-      justifyContent='center'
-      alignItems='center'
-    >
+    <PageContainer>
       <Title>Hello world!</Title>
       <Text>Le blog</Text>
-    </Container>
+    </PageContainer>
   )
 }
 

@@ -3,24 +3,25 @@ import styled from 'styled-components'
 
 type StyledContainerProps = {
   background?: string
-  height?: 'inherit' | '100%' | Number
-  width?: 'inherit' | '100%' | Number
-  borderRadius?: Number
+  height?: 'inherit' | '100%' | number
+  width?: 'inherit' | '100%' | number
+  borderRadius?: number
   flexDirection?: 'row' | 'column'
   alignItems?: 'flex-start' | 'flex-end' | 'center'
   justifyContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around'
-  padding?: Number
-  paddingTop?: Number
-  paddingBottom?: Number
-  paddingLeft?: Number
-  paddingRight?: Number
+  padding?: number
+  paddingTop?: number
+  paddingBottom?: number
+  paddingLeft?: number
+  paddingRight?: number
 }
 
 const StyledConainer = styled.div<StyledContainerProps>`
   display: flex;
+  box-sizing: border-box;
   ${({ background }) => background ? `background: ${ background };` : ''}
-  height: ${({ height }) => typeof height === 'number' ? `${height}em` : 'height'};
-  width: ${({ width }) => typeof width === 'number' ? `${width}em` : 'width'};
+  ${({ height }) => height ? `height: ${(typeof height === 'number' ? `${height}em` : height)};` : ''}
+  ${({ width }) => width ? `width: ${(typeof width === 'number' ? `${width}em` : width)};` : ''}
   ${({ borderRadius }) => borderRadius ? `border-radius: ${borderRadius}px` : ''};
   flex-direction: ${({ flexDirection }) => flexDirection};
   justify-content: ${({ justifyContent }) => justifyContent};
@@ -33,7 +34,7 @@ const StyledConainer = styled.div<StyledContainerProps>`
 `
 
 type Props = StyledContainerProps & {
-  gap?: Number
+  gap?: number
   children?: React.ReactNode
 }
 
@@ -55,11 +56,21 @@ const Container = (props: Props) => {
     children
   } = props
 
-  if (gap && gap > 0) {
-    const { gap, ...otherProps } = props
+  if (typeof gap !== 'undefined' && gap > 0) {
+    const {
+      gap,
+      padding,
+      paddingLeft,
+      paddingTop,
+      paddingRight,
+      paddingBottom,
+      width,
+      ...childrensProps
+    } = props
+    const parentProps = { padding, paddingLeft, paddingTop, paddingRight, paddingBottom, width }
 
     return (
-      <StyledConainer {...otherProps}>
+      <StyledConainer {...childrensProps} {...parentProps}>
         {React.Children.toArray(children).map((child, index) => {
           if (index !== React.Children.toArray(children).length - 1) {
             return (
@@ -67,6 +78,7 @@ const Container = (props: Props) => {
                 key={index}
                 paddingRight={flexDirection === 'row' && gap}
                 paddingBottom={flexDirection === 'column' && gap}
+                {...childrensProps}
               >
                 {child}
               </StyledConainer>
@@ -74,7 +86,7 @@ const Container = (props: Props) => {
           }
 
           return (
-            <StyledConainer key={index}>
+            <StyledConainer key={index} {...childrensProps}>
               {child}
             </StyledConainer>
           )
