@@ -12,12 +12,12 @@ const StyledLink = styled.a<StyledLinkProps>`
   color: ${({ theme, active }) => active ? theme.secondary : theme.primary};
   font-weight: 500;
   font-size: ${({ size }) => size && size.toString()}em;
-  > svg > path {
+  > svg > path:last-child {
     fill: ${({ theme, active }) => active ? theme.secondary : theme.primary};
   }
   &:hover {
     text-decoration: underline;
-    > svg > path {
+    > svg > path:last-child {
       fill: ${({ theme }) => theme.secondary};
     }
   }

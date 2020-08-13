@@ -37,7 +37,9 @@ const Footer = () => (
     alignItems='center'
   >
     {Object.entries(Social).map(([key, value]) => (
-      <Link href={value} active={false}>{getIcon(key)}</Link>
+      <Link key={key} href={value} active={false} target='_blank'>
+        {getIcon(key)}
+      </Link>
     ))}
   </Container>
 )
