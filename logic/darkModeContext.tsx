@@ -11,7 +11,7 @@ type Props = {
   children: React.ReactNode
 }
 
-export const DarkMode = ({ children }: Props) => {
+export const DarkModeProvider = ({ children }: Props) => {
   const [darkMode, setDarkMode] = React.useState<boolean>(true)
 
   return (

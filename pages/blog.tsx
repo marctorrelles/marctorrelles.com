@@ -7,7 +7,8 @@ import Text from '../components/atoms/Text'
 const Blog = () => {
   return (
     <PageContainer>
-      <Text>Le blog</Text>
+      <Title>Coming soon... 🔨</Title>
+      <Text>I mean, yeah, very soon 🙄</Text>
     </PageContainer>
   )
 }

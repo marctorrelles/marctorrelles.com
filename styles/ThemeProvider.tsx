@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { ThemeProvider as StyledThemeProvider } from 'styled-components'
 
-import { useDarkMode } from '../components/logic/darkModeContext'
+import { useDarkMode } from '../logic/darkModeContext'
 import { darkTheme, lightTheme } from './theme'
 import GlobalStyle from './GlobalStyle'
 

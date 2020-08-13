@@ -9,10 +9,10 @@ import Link from '../components/atoms/Link'
 const Contact = () => {
   return (
     <PageContainer>
-      <Title>Let's have a beer! 🍻</Title>
+      <Title>Let's share some thoughts! 😄</Title>
       <Text>
-        I love to meet new people, share thoughts and learn. Ping me and let's have a beer 😄
-        (I can also have a coffee but... well, a beer is probably gonna fit me better).
+        I love to meet new people, having nice conversations and learn. Ping me and let's collaborate 🛠,
+        have a coffee ☕️ or maybe a beer! 🍻
       </Text>
       <Text>Reach me:</Text>
       <Container flexDirection='column' paddingLeft={2} gap={1}>

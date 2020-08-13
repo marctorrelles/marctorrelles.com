@@ -40,7 +40,8 @@ export default class MyDocument extends Document {
           <NextScript />
           <style jsx global>{`
             #__next {
-              height: 100%;
+              min-height: 100%;
+              display: grid; /* Pff */
             }
           `}</style>
         </body>

@@ -67,7 +67,14 @@ const Container = (props: Props) => {
       width,
       ...childrensProps
     } = props
-    const parentProps = { padding, paddingLeft, paddingTop, paddingRight, paddingBottom, width }
+    const parentProps = {
+      padding,
+      paddingLeft,
+      paddingTop,
+      paddingRight,
+      paddingBottom,
+      width
+    }
 
     return (
       <StyledConainer {...childrensProps} {...parentProps}>

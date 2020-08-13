@@ -1,18 +1,24 @@
-// TODO
-export type  Theme = {
+export enum ThemeParams {
+  MobileBreakpoint = 700
+}
+
+export type Theme = {
   background: string
+  dark: string
   primary: string
   secondary: string
 }
 
 export const darkTheme: Theme = {
   background: '#222222',
-  primary: '#eee',
-  secondary: '#D5E7C1'
+  dark: 'rgba(255, 255, 255, 0.1)',
+  primary: '#eeeeee',
+  secondary: '#FAF888'
 }
 
 export const lightTheme: Theme = {
-  background: '#F7F8F6',
+  background: '#f7f8f6',
+  dark: 'rgba(0, 0, 0, 0.1)',
   primary: '#040404',
   secondary: '#68b0ab'
 }

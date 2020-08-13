@@ -2,6 +2,7 @@ import * as React from 'react'
 
 import Container from '../layout/Container'
 import Link from '../atoms/Link'
+import Note from '../atoms/Note'
 
 import GithubIcon from '../../assets/images/github.svg'
 import TwitterIcon from '../../assets/images/twitter.svg'
@@ -31,16 +32,21 @@ const Footer = () => (
     paddingBottom={2}
     paddingLeft={3}
     paddingRight={3}
-    gap={2}
+    gap={1.2}
     width='100%'
-    justifyContent='center'
+    flexDirection='column'
     alignItems='center'
   >
-    {Object.entries(Social).map(([key, value]) => (
-      <Link key={key} href={value} active={false} target='_blank'>
-        {getIcon(key)}
-      </Link>
-    ))}
+    <Container gap={2} justifyContent='center'alignItems='center'>
+      {Object.entries(Social).map(([key, value]) => (
+        <Link key={key} href={value} active={false} target='_blank'>
+          {getIcon(key)}
+        </Link>
+      ))}
+    </Container>
+    <Note>
+      Made with ❤️ using <Link href='https://nextjs.org/' target='_blank'>Next.js</Link>
+    </Note>
   </Container>
 )
 

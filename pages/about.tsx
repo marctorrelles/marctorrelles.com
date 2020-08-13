@@ -8,27 +8,35 @@ import Separator from '../components/layout/Separator'
 import Link from '../components/atoms/Link'
 import Container from '../components/layout/Container'
 
+const QuipuLink = () => <Link href='https://getquipu.com' target='_blank'>Quipu</Link>
+const FuelbannerLink = () => <Link href='https://fuelbanner.com' target='_blank'>Fuelbanner</Link>
+const ParlemLink = () => <Link href='https://parlem.com' target='_blank'>Parlem</Link>
+const TicketsLink = () => <Link href='https://4tickets.cat' target='_blank'>4Tickets</Link>
+
 const About = () => (
   <PageContainer>
-    <Title>About me 👨‍💻</Title>
+    <Title>About me 🖐</Title>
     <Text>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed augue tempor,
-      suscipit eros id, mattis neque. Phasellus ac commodo arcu, et venenatis tellus.
-      Aenean mattis imperdiet enim, vel gravida sapien pharetra id. Ut neque ex, elementum
-      eget fringilla sed, semper vitae odio. Nulla sagittis iaculis urna quis blandit.
-      Proin auctor sagittis viverra.
+      Thanks for getting here!
     </Text>
     <Text>
-      Duis elementum nunc ex, nec venenatis felis rhoncus
-      vitae. Sed id volutpat purus, a venenatis massa. Vestibulum ante ipsum primis in
-      faucibus orci luctus et ultrices posuere cubilia curae; Etiam aliquam bibendum
-      auctor. Integer dapibus urna non sem commodo, sed feugiat leo ullamcorper. Ut at
-      metus quis mauris lobortis pulvinar.
+      I'm Marc, a software engineer based in Barcelona. I've been working in software for
+      the last 8 years, when I developed my passion and my job: coding 👨‍💻
     </Text>
     <Text>
-      Maecenas tincidunt purus vel suscipit ullamcorper. Nulla sed ex dui. Sed pretium,
-      velit commodo maximus gravida, sapien turpis ornare purus, vitae scelerisque enim
-      neque a libero. Proin tortor ligula, vestibulum a ipsum eu, maximus ullamcorper metus.
+      If I'm not pressing keys, you will find me reading, playing videogames, running or
+      having a beer (ehmmm... okay, most of the times it's having a beer 🍻).
+      I love to be challenged and face new problems, and also learne while solving those.
+      I also like to get things perfectly done, so most of the times I spend some extra
+      time in the little details 🌱
+    </Text>
+    <Text>
+      Some of my last jobs include <QuipuLink />, an accounting and administration software
+      for businesses 💰, but also <FuelbannerLink /> ⛽️, <ParlemLink /> 📞 and <TicketsLink /> 🎟
+    </Text>
+    <Text>
+      I'm excited about new projects and collaborations! So don't hessitate to contact me
+      if you think we could make a good team 🤜🤛
     </Text>
   </PageContainer>
 )

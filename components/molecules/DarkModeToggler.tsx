@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-import { useDarkMode } from '../logic/darkModeContext'
+import { useDarkMode } from '../../logic/darkModeContext'
 import Container from '../layout/Container'
 import DarkModeIcon from '../../assets/images/dark-mode.svg'
 
@@ -20,7 +20,7 @@ const TogglerOption = styled.div<{ active: boolean }>`
     top: 0;
     left: 0;
     transition: transform ease 0.25s;
-    transform: scale(0.9) rotate(${({ active }) => active ? 0 : 180}deg);
+    transform: scale(0.9) rotateY(${({ active }) => active ? 0 : 180}deg);
     > circle {
       transition: stroke ease 0.25s;
       stroke: ${({ theme }) => theme.primary};
