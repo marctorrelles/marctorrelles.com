@@ -13,7 +13,7 @@ enum Tab {
 }
 
 const Nav = () => {
-  const { pathname } = useRouter()
+  const pathname = useRouter().pathname || Tab.Home
 
   return (
     <Container
@@ -30,7 +30,7 @@ const Nav = () => {
           <Link
             key={value}
             href={value}
-            active={ pathname === value}
+            active={pathname === value}
           >
             {key}
           </Link>

@@ -8,11 +8,11 @@ export type  Theme = {
 export const darkTheme: Theme = {
   background: '#040404',
   primary: '#eee',
-  secondary: 'red'
+  secondary: '#D5E7C1'
 }
 
 export const lightTheme: Theme = {
-  background: '#eee',
+  background: '#F7F8F6',
   primary: '#040404',
-  secondary: 'blue'
+  secondary: '#68b0ab'
 }

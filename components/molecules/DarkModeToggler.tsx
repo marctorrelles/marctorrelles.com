@@ -1,5 +1,5 @@
 import * as React from 'react'
-import styled, { ThemeContext } from 'styled-components'
+import styled from 'styled-components'
 
 import { useDarkMode } from '../../logic/darkModeContext'
 import Container from '../atoms/Container'
@@ -19,23 +19,24 @@ const TogglerOption = styled.div<{ active: boolean }>`
     position: absolute;
     top: 0;
     left: 0;
-    transition: all ease 0.25s;
+    transition: transform ease 0.25s;
     transform: scale(0.8) rotate(${({ active }) => active ? 0 : 180}deg);
     > circle {
+      transition: stroke ease 0.25s;
       stroke: ${({ theme }) => theme.primary};
     }
     > path {
+      transition: fill ease 0.25s;
       fill: ${({ theme }) => theme.primary};
     }
   }
 `
 
 const DarkModeToggler = () => {
-  const { darkMode, setDarkMode } = useDarkMode()
-  const onToggle = () => setDarkMode(!darkMode)
+  const { darkMode, toggleDarkMode } = useDarkMode()
 
   return (
-    <TogglerBoxContainer onClick={onToggle}>
+    <TogglerBoxContainer onClick={toggleDarkMode}>
       <Container
         width={2.2}
         height={2.2}
