@@ -14,7 +14,6 @@ enum Tab {
 
 const Nav = () => {
   const { pathname } = useRouter()
-  console.log(pathname)
 
   return (
     <Container
@@ -28,7 +27,13 @@ const Nav = () => {
     >
       <Container gap={2}>
         {Object.entries(Tab).map(([key, value]) => (
-          <Link href={value} active={ pathname === value}>{key}</Link>
+          <Link
+            key={value}
+            href={value}
+            active={ pathname === value}
+          >
+            {key}
+          </Link>
         ))}
       </Container>
       <DarkModeToggler />

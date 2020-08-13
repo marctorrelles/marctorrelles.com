@@ -64,6 +64,7 @@ const Container = (props: Props) => {
           if (index !== React.Children.toArray(children).length - 1) {
             return (
               <StyledConainer
+                key={index}
                 paddingRight={flexDirection === 'row' && gap}
                 paddingBottom={flexDirection === 'column' && gap}
               >
@@ -73,7 +74,7 @@ const Container = (props: Props) => {
           }
 
           return (
-            <StyledConainer>
+            <StyledConainer key={index}>
               {child}
             </StyledConainer>
           )
