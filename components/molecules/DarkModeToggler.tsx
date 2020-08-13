@@ -15,12 +15,12 @@ const TogglerOption = styled.div<{ active: boolean }>`
   width: 100%;
   height: 100%;
   > svg {
-    /* TODO: fix svg... 😪 */
+    /* TODO: fix svg size... 😪 */
     position: absolute;
     top: 0;
     left: 0;
     transition: transform ease 0.25s;
-    transform: scale(0.8) rotate(${({ active }) => active ? 0 : 180}deg);
+    transform: scale(0.9) rotate(${({ active }) => active ? 0 : 180}deg);
     > circle {
       transition: stroke ease 0.25s;
       stroke: ${({ theme }) => theme.primary};
@@ -33,10 +33,25 @@ const TogglerOption = styled.div<{ active: boolean }>`
 `
 
 const DarkModeToggler = () => {
-  const { darkMode, toggleDarkMode } = useDarkMode()
+  const { darkMode, setDarkMode } = useDarkMode()
+
+  React.useEffect(() => {
+    // This makes the first render go from dark to light 😕
+    if (process.browser && window.localStorage.getItem('darkMode') === 'false') {
+      setDarkMode(false)
+    }
+  }, [])
+
+  const onClick = () => {
+    if (process.browser) {
+      const value = darkMode ? 'false' : 'true'
+      window.localStorage.setItem('darkMode', value)
+    }
+    setDarkMode(!darkMode)
+  }
 
   return (
-    <TogglerBoxContainer onClick={toggleDarkMode}>
+    <TogglerBoxContainer onClick={onClick}>
       <Container
         width={2.2}
         height={2.2}

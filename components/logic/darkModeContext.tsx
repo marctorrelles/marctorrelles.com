@@ -2,7 +2,7 @@ import * as React from 'react'
 
 type ContextProps = {
   darkMode: boolean
-  toggleDarkMode: () => void
+  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const DarkModeContext = React.createContext<Partial<ContextProps>>({})
@@ -14,13 +14,8 @@ type Props = {
 export const DarkMode = ({ children }: Props) => {
   const [darkMode, setDarkMode] = React.useState<boolean>(true)
 
-  const toggleDarkMode = () => {
-    const value = !darkMode
-    setDarkMode(value)
-  }
-
   return (
-    <DarkModeContext.Provider value={{ darkMode, toggleDarkMode }}>
+    <DarkModeContext.Provider value={{ darkMode, setDarkMode }}>
       {children}
     </DarkModeContext.Provider>
   )

@@ -21,6 +21,7 @@ const Nav = () => {
       paddingBottom={2}
       paddingLeft={3}
       paddingRight={3}
+      gap={2}
       width='100%'
       justifyContent='space-between'
       alignItems='center'
