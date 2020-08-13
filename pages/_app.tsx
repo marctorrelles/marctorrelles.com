@@ -1,7 +1,7 @@
 import * as React from 'react';
 import App from 'next/app';
 
-import { DarkMode } from '../logic/darkModeContext';
+import { DarkMode } from '../components/logic/darkModeContext';
 import { ThemeProvider } from '../styles/ThemeProvider';
 import Nav from '../components/organisms/Nav';
 

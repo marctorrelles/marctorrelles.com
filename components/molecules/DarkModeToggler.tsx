@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-import { useDarkMode } from '../../logic/darkModeContext'
+import { useDarkMode } from '../logic/darkModeContext'
 import Container from '../atoms/Container'
 import DarkModeIcon from '../../images/dark-mode.svg'
 
