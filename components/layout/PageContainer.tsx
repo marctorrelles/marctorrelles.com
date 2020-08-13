@@ -16,7 +16,7 @@ const PageContainer = ({ children }: Props) => (
     <StyledContainer
       padding={3}
       paddingTop={2.5}
-      paddingBotom={2.5}
+      paddingBottom={2.5}
       gap={1}
       flexDirection='column'
       justifyContent='center'
