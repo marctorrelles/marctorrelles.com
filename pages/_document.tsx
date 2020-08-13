@@ -34,16 +34,18 @@ export default class MyDocument extends Document {
         <Head>
           <link rel='preload' href='assets/fonts/recursive-bold.woff2' as='font' crossOrigin='' />
           <link rel='preload' href='assets/fonts/recursive-medium.woff2' as='font' crossOrigin='' />
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-          <style jsx global>{`
+          <title>marctorrelles</title>
+          <style>{`
             #__next {
               min-height: 100%;
               display: grid; /* Pff */
             }
-          `}</style>
+          `}
+          </style>
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
         </body>
       </Html>
     );
