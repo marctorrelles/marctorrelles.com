@@ -26,7 +26,7 @@ const About = () => (
     <Text>
       If I'm not pressing keys, you will find me reading, playing videogames, running or
       having a beer (ehmmm... okay, most of the times it's having a beer 🍻).
-      I love to be challenged and face new problems, and also learne while solving those.
+      I love to be challenged and face new problems, and also learn while solving those.
       I also like to get things perfectly done, so most of the times I spend some extra
       time in the little details 🌱
     </Text>
@@ -35,7 +35,7 @@ const About = () => (
       for businesses 💰, but also <FuelbannerLink /> ⛽️, <ParlemLink /> 📞 and <TicketsLink /> 🎟
     </Text>
     <Text>
-      I'm excited about new projects and collaborations! So don't hessitate to contact me
+      I'm excited about new projects and collaborations! So don't hesitate to contact me
       if you think we could make a good team 🤜🤛
     </Text>
   </PageContainer>

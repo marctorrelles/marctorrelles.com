@@ -13,7 +13,7 @@ const Home = () => (
     <Container flexDirection='column' gap={0.6}>
       <Text>
         I'm a software engineer based in Barcelona,
-        currently working at <Link href='https://factorialhr.com' target='_blank'>Factorial HR</Link>
+        currently working at <Link href='https://factorialhr.com' target='_blank'>Factorial HR</Link> 💙
       </Text>
       <Text>
         I've recently started to write stuff at my <Link href={Links.Blog}>blog</Link>,
