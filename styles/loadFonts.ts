@@ -11,10 +11,10 @@ const loadFonts = () => {
   const ubuntuMono = new FontFaceObserver('Ubuntu Mono')
 
   ubuntu.load().then(() => {
-    document.documentElement.classList.add('roboto')
+    document.documentElement.classList.add('ubuntu')
   })
   ubuntuMono.load().then(() => {
-    document.documentElement.classList.add('roboto')
+    document.documentElement.classList.add('ubuntu-mono')
   })
 }
 
