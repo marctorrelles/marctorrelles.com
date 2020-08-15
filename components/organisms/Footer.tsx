@@ -57,7 +57,7 @@ const Footer = () => (
       ))}
     </LinksContainer>
     <Note>
-      Made with ❤️ using <NextLink /> and <NetlifyLink />
+      Made with ♥️ using <NextLink /> and <NetlifyLink />
     </Note>
   </Container>
 )

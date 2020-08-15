@@ -19,8 +19,8 @@ const Contact = () => {
     <PageContainer>
       <Title>Let's share some thoughts! 😄</Title>
       <Text>
-        I love to meet new people, having nice conversations and learn. Ping me and let's collaborate 🛠,
-        have a coffee ☕️ or maybe a beer! 🍻
+        I love to meet new people, having nice conversations and learn. Ping me and let's collaborate,
+        have a coffee or maybe a beer!
       </Text>
       <Text>Reach me:</Text>
       <ContactItems>

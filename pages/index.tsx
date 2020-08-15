@@ -9,11 +9,11 @@ const Home = () => (
     <Title>Hey there, I'm Marc! 👋</Title>
     <Text>
       I'm a software engineer based in Barcelona,
-      currently working at <Link href='https://factorialhr.com' target='_blank'>Factorial HR</Link> 💙
+      currently working at <Link href='https://factorialhr.com' target='_blank'>Factorial HR</Link>
     </Text>
     <Text>
       I've recently started to write stuff at my <Link href={Links.Blog}>blog</Link>,
-      not only technical but whatever that comes my way. Check it out 🚆
+      not only technical but whatever that comes my way. Check it out!
     </Text>
     <Text>
       You can read more about me <Link href={Links.About}>here</Link>

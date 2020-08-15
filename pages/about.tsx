@@ -21,14 +21,14 @@ const About = () => (
     </Text>
     <Text>
       If I'm not pressing keys, you will find me reading, playing videogames, running or
-      having a beer (ehmmm... okay, most of the times it's having a beer 🍻).
+      having a beer (ehmmm... okay, most of the times it's having a beer).
       I love to be challenged and face new problems, and also learn while solving those.
       I also like to get things perfectly done, so most of the times I spend some extra
       time in the little details 🌱
     </Text>
     <Text>
       Some of my last jobs include <QuipuLink />, an accounting and administration software
-      for businesses 💰, but also <FuelbannerLink /> ⛽️, <ParlemLink /> 📞 and <TicketsLink /> 🎟
+      for businesses, and also <FuelbannerLink />, <ParlemLink /> and <TicketsLink />
     </Text>
     <Text>
       I'm excited about new projects and collaborations! So don't hesitate to contact me
