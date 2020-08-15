@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     margin: 0;
     transition: background ease 0.25s, color ease 0.25s;
     font-family: 'Ubuntu', sans-serif;
+    font-display: swap;
     background: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.primary};
   }

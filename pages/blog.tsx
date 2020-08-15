@@ -4,8 +4,8 @@ import Text from '../components/atoms/Text'
 
 const Blog = () => (
   <PageContainer>
-    <Title>Coming soon... 🔨</Title>
-    <Text>I mean, yeah, very soon 🙄</Text>
+    <Title>Coming soon 🔨</Title>
+    <Text>I mean... yeah, very soon 🙄</Text>
   </PageContainer>
 )
 
