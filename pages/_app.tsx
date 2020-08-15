@@ -1,13 +1,24 @@
-import * as React from 'react';
-import App from 'next/app';
+import * as React from 'react'
+import App from 'next/app'
+import styled from 'styled-components'
 
-import Container from '../components/layout/Container';
 import Nav from '../components/organisms/Nav';
 import Footer from '../components/organisms/Footer';
 
 import { DarkModeProvider } from '../logic/darkModeContext';
-import { MobileProvider } from '../logic/mobileContext';
 import { ThemeProvider } from '../styles/ThemeProvider';
+
+const Container = styled.div`
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+`
+
+const ContentContainer = styled.div`
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+`
 
 export default class MyApp extends App {
 	render() {
@@ -16,13 +27,11 @@ export default class MyApp extends App {
 		return (
       <DarkModeProvider>
         <ThemeProvider>
-          <Container height='100%' flexDirection='column' justifyContent='space-between'>
-            <Container width='100%' flexDirection='column'>
-              <MobileProvider>
-                <Nav />
-                <Component {...pageProps} />
-              </MobileProvider>
-            </Container>
+          <Container>
+            <ContentContainer>
+              <Nav />
+              <Component {...pageProps} />
+            </ContentContainer>
             <Footer />
           </Container>
         </ThemeProvider>

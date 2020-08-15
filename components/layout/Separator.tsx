@@ -1,5 +1,10 @@
 import styled from 'styled-components'
-import Container from './Container'
+
+const Container = styled.div`
+  padding-top: 3em;
+  padding-bottom: 2em;
+  justify-content: center;
+`
 
 const StyledSeparator = styled.div`
   height: 2px;
@@ -9,7 +14,7 @@ const StyledSeparator = styled.div`
 `
 
 const Separator = () => (
-  <Container paddingTop={3} paddingBottom={2} justifyContent='center'>
+  <Container>
     <StyledSeparator />
   </Container>
 )

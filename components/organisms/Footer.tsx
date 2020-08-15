@@ -1,12 +1,30 @@
 import * as React from 'react'
+import styled from 'styled-components'
 
-import Container from '../layout/Container'
 import Link from '../atoms/Link'
 import Note from '../atoms/Note'
 
 import GithubIcon from '../../assets/images/github.svg'
 import TwitterIcon from '../../assets/images/twitter.svg'
 import EmailIcon from '../../assets/images/email.svg'
+
+const Container = styled.div`
+  flex-direction: column;
+  align-items: center;
+  padding: 2em;
+  width: 100%;
+  > *:not(:last-child) {
+    padding-bottom: 1em;
+  }
+`
+
+const LinksContainer = styled.div`
+  ustify-content: center;
+  align-items: center;
+  > *:not(:last-child) {
+    padding-right: 2em;
+  }
+`
 
 const getIcon = (icon: string) => {
   switch(icon) {
@@ -27,23 +45,14 @@ enum Social {
 }
 
 const Footer = () => (
-  <Container
-    paddingTop={2}
-    paddingBottom={2}
-    paddingLeft={3}
-    paddingRight={3}
-    gap={1.2}
-    width='100%'
-    flexDirection='column'
-    alignItems='center'
-  >
-    <Container gap={2} justifyContent='center'alignItems='center'>
+  <Container>
+    <LinksContainer>
       {Object.entries(Social).map(([key, value]) => (
         <Link key={key} href={value} active={false} target='_blank'>
           {getIcon(key)}
         </Link>
       ))}
-    </Container>
+    </LinksContainer>
     <Note>
       Made with ❤️ using <Link href='https://nextjs.org/' target='_blank'>Next.js</Link>
     </Note>

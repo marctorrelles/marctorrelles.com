@@ -2,8 +2,12 @@ import * as React from 'react'
 import styled from 'styled-components'
 
 import { useDarkMode } from '../../logic/darkModeContext'
-import Container from '../layout/Container'
 import DarkModeIcon from '../../assets/images/dark-mode.svg'
+
+const Container = styled.div`
+  width: 2em;
+  height: 2em;
+`
 
 const TogglerBoxContainer = styled.div`
   cursor: pointer;
@@ -52,10 +56,7 @@ const DarkModeToggler = () => {
 
   return (
     <TogglerBoxContainer onClick={onClick}>
-      <Container
-        width={2.2}
-        height={2.2}
-      >
+      <Container>
         <TogglerOption active={darkMode}>
           <DarkModeIcon />
         </TogglerOption>

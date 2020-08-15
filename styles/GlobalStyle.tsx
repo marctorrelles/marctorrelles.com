@@ -13,6 +13,10 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     background: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.primary};
   }
+  div {
+    box-sizing: border-box;
+    display: flex;
+  }
 `
 
 export default GlobalStyle

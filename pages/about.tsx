@@ -1,12 +1,11 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-import PageContainer from '../components/layout/PageContainer'
+import PageContainer from '../components/organisms/PageContainer'
 import Title from '../components/atoms/Title'
 import Text from '../components/atoms/Text'
 import Separator from '../components/layout/Separator'
 import Link from '../components/atoms/Link'
-import Container from '../components/layout/Container'
 
 const QuipuLink = () => <Link href='https://getquipu.com' target='_blank'>Quipu</Link>
 const FuelbannerLink = () => <Link href='https://fuelbanner.com' target='_blank'>Fuelbanner</Link>
@@ -36,7 +35,7 @@ const About = () => (
     </Text>
     <Text>
       I'm excited about new projects and collaborations! So don't hesitate to contact me
-      if you think we could make a good team 🤜🤛
+      if you think we can make a good team 🤜🤛
     </Text>
   </PageContainer>
 )

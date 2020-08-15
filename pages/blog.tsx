@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import PageContainer from '../components/layout/PageContainer'
+import PageContainer from '../components/organisms/PageContainer'
 import Title from '../components/atoms/Title'
 import Text from '../components/atoms/Text'
 
