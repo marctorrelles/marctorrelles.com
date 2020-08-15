@@ -15,17 +15,17 @@ export default class MyApp extends App {
 
 		return (
       <DarkModeProvider>
-        <MobileProvider>
-          <ThemeProvider>
-            <Container height='100%' flexDirection='column' justifyContent='space-between'>
-              <Container width='100%' flexDirection='column'>
+        <ThemeProvider>
+          <Container height='100%' flexDirection='column' justifyContent='space-between'>
+            <Container width='100%' flexDirection='column'>
+              <MobileProvider>
                 <Nav />
                 <Component {...pageProps} />
-              </Container>
-              <Footer />
+              </MobileProvider>
             </Container>
-          </ThemeProvider>
-        </MobileProvider>
+            <Footer />
+          </Container>
+        </ThemeProvider>
       </DarkModeProvider>
 		)
 	}
