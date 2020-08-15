@@ -22,6 +22,9 @@ const Container = styled.div`
     padding: 1.5em;
     padding-top: 1em;
     padding-bottom: 1em;
+    > *:not(:last-child) {
+      padding-bottom: 1em;
+    }
   }
 `
 

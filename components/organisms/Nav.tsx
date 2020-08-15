@@ -25,6 +25,7 @@ const Container = styled.div`
   }
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
     padding: 1.5em;
+    padding-bottom: 1em;
     align-items: flex-start;
   }
 `
@@ -38,7 +39,7 @@ const LinksContainer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     > *:not(:last-child) {
-      padding-bottom: 0.5em;
+      padding-bottom: 0.25em;
     }
   }
 `
