@@ -8,7 +8,7 @@ type Props = {
 }
 
 export const MobileProvider = ({ children }: Props) => {
-  const [width, setWidth] = React.useState(1000)
+  const [width, setWidth] = React.useState(null)
 
   React.useEffect(() => {
     const checkWindowWidth = () => {
@@ -24,6 +24,10 @@ export const MobileProvider = ({ children }: Props) => {
   }, [])
 
   const isMobile = width < ThemeParams.MobileBreakpoint
+
+  // ⚠️ This prevents the page to render if we don't have real width values,
+  // but means a performance sacrifice since we render content at 2nd render
+  if (width === null) return null
 
   return (
     <MobileContext.Provider value={isMobile}>
