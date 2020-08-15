@@ -32,8 +32,10 @@ export default class MyDocument extends Document {
     return (
       <Html lang='en'>
         <Head>
-          <link rel='preload' href='assets/fonts/recursive-bold.woff2' as='font' crossOrigin='' />
-          <link rel='preload' href='assets/fonts/recursive-medium.woff2' as='font' crossOrigin='' />
+          <link
+            href='https://fonts.googleapis.com/css2?family=Ubuntu+Mono&family=Ubuntu:wght@400;500;700&display=swap'
+            rel='stylesheet'
+          />
           <title>marctorrelles</title>
           <style>{`
             #__next {

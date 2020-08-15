@@ -12,7 +12,7 @@ const StyledLink = styled.a<StyledLinkProps>`
   color: ${({ theme, active }) => active ? theme.secondary : theme.primary};
   font-weight: 500;
   font-size: ${({ size }) => size && size.toString()}em;
-  transition: fill ease 0.25s;
+  transition: color ease 0.25s, fill ease 0.25s;
   > svg path:last-child {
     fill: ${({ theme, active }) => active ? theme.secondary : theme.primary};
   }
