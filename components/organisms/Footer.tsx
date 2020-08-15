@@ -10,6 +10,7 @@ import EmailIcon from '../../assets/images/email.svg'
 const Container = styled.div`
   flex-direction: column;
   align-items: center;
+  text-align: center;
   padding: 2em;
   width: 100%;
   > *:not(:last-child) {
@@ -43,6 +44,9 @@ enum Social {
   email = 'mailto:marctorrelles@gmail.com'
 }
 
+const NextLink = () => <Link href='https://nextjs.org/' target='_blank'>Next.js</Link>
+const NetlifyLink = () => <Link href='https://www.netlify.com/' target='_blank'>Netlify</Link>
+
 const Footer = () => (
   <Container>
     <LinksContainer>
@@ -53,7 +57,7 @@ const Footer = () => (
       ))}
     </LinksContainer>
     <Note>
-      Made with ❤️ using <Link href='https://nextjs.org/' target='_blank'>Next.js</Link>
+      Made with ❤️ using <NextLink /> and <NetlifyLink />
     </Note>
   </Container>
 )
