@@ -8,17 +8,18 @@ type LinkWrapProps = {
 
 const LinkWrap = styled.span<LinkWrapProps>`
   > a {
+    transition: color ease 0.25s;
     text-decoration: none;
     color: ${({ theme, active }) => active ? theme.secondary : theme.primary};
     font-weight: 500;
     font-size: ${({ size }) => size && size.toString()}em;
-    transition: color ease 0.25s, fill ease 0.25s;
-    > svg path:last-child {
+    > svg > path:last-child {
+      transition: fill ease 0.25s;
       fill: ${({ theme, active }) => active ? theme.secondary : theme.primary};
     }
     &:hover {
       text-decoration: underline;
-      > svg path:last-child {
+      > svg > path:last-child {
         fill: ${({ theme }) => theme.secondary};
       }
     }
