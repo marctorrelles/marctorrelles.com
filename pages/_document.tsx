@@ -40,6 +40,7 @@ export default class MyDocument extends Document {
             }
           `}
           </style>
+          <link rel='shortcut icon' href='/favicon.png' />
         </Head>
         <body>
           <Main />
