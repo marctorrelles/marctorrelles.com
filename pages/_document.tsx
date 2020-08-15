@@ -32,10 +32,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang='en'>
         <Head>
-          <link
-            href='https://fonts.googleapis.com/css2?family=Ubuntu+Mono&family=Ubuntu:wght@400;500;700&display=swap'
-            rel='stylesheet'
-          />
           <title>marctorrelles</title>
           <style>{`
             #__next {

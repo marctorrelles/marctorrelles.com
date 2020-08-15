@@ -7,6 +7,7 @@ import Footer from '../components/organisms/Footer';
 
 import { DarkModeProvider } from '../logic/darkModeContext';
 import { ThemeProvider } from '../styles/ThemeProvider';
+import loadFonts from '../styles/loadFonts';
 
 const Container = styled.div`
   height: 100%;
@@ -21,7 +22,11 @@ const ContentContainer = styled.div`
 `
 
 export default class MyApp extends App {
-	render() {
+  componentDidMount () {
+    loadFonts()
+  }
+
+  render() {
     const { Component, pageProps } = this.props
 
 		return (
