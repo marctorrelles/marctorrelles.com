@@ -34,7 +34,8 @@ export default class MyDocument extends Document {
         <Head>
           <link
             href='https://fonts.googleapis.com/css2?family=Ubuntu+Mono&family=Ubuntu:wght@400;500;700&display=swap'
-            rel='stylesheet'
+            rel='preload'
+            as='font'
           />
           <title>marctorrelles</title>
           <style>{`
