@@ -1,12 +1,13 @@
 import App from 'next/app'
+import Head from 'next/head'
 import styled from 'styled-components'
 
-import Nav from '../components/organisms/Nav';
-import Footer from '../components/organisms/Footer';
+import Nav from '../components/organisms/Nav'
+import Footer from '../components/organisms/Footer'
 
-import { DarkModeProvider } from '../logic/darkModeContext';
-import { ThemeProvider } from '../styles/ThemeProvider';
-import loadFonts from '../styles/loadFonts';
+import { DarkModeProvider } from '../logic/darkModeContext'
+import { ThemeProvider } from '../styles/ThemeProvider'
+import loadFonts from '../styles/loadFonts'
 
 const Container = styled.div`
   height: 100%;
@@ -29,17 +30,22 @@ export default class MyApp extends App {
     const { Component, pageProps } = this.props
 
 		return (
-      <DarkModeProvider>
-        <ThemeProvider>
-          <Container>
-            <ContentContainer>
-              <Nav />
-              <Component {...pageProps} />
-            </ContentContainer>
-            <Footer />
-          </Container>
-        </ThemeProvider>
-      </DarkModeProvider>
+      <>
+        <Head>
+          <title>marctorrelles</title>
+        </Head>
+        <DarkModeProvider>
+          <ThemeProvider>
+            <Container>
+              <ContentContainer>
+                <Nav />
+                <Component {...pageProps} />
+              </ContentContainer>
+              <Footer />
+            </Container>
+          </ThemeProvider>
+        </DarkModeProvider>
+      </>
 		)
 	}
 }

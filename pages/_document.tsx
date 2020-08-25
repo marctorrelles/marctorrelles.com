@@ -32,7 +32,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang='en'>
         <Head>
-          <title>marctorrelles</title>
           <style>{`
             #__next {
               min-height: 100%;
