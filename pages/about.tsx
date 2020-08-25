@@ -33,6 +33,13 @@ const About = () => (
     <Text>
       I'm excited about new projects and collaborations! So don't hesitate to contact me
       if you think we can make a good team 🤜🤛
+      You can reach me through <Link href='https://github.com/marctorrelles' target='_blank'>
+        Github
+      </Link>, <Link href='mailto:marctorrelles@gmail.com'>
+        mail
+      </Link> or <Link href='https://twitter.com/marctorrelles'>
+        Twitter
+      </Link>
     </Text>
   </PageContainer>
 )

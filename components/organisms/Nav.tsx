@@ -8,8 +8,7 @@ import DarkModeToggler from '../molecules/DarkModeToggler'
 export enum Links {
   Home = '/',
   Blog = '/blog',
-  About = '/about',
-  Contact = '/contact'
+  About = '/about'
 }
 
 const Container = styled.div`
