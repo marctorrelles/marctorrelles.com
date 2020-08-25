@@ -8,11 +8,13 @@ type LinkWrapProps = {
 
 const LinkWrap = styled.span<LinkWrapProps>`
   > a {
+    transition: color ease 0.25s;
     text-decoration: none;
     color: ${({ theme, active }) => active ? theme.secondary : theme.primary};
     font-weight: 500;
     font-size: ${({ size }) => size && size.toString()}em;
     > svg > path:last-child {
+      transition: fill ease 0.25s;
       fill: ${({ theme, active }) => active ? theme.secondary : theme.primary};
     }
     &:hover {
@@ -38,9 +40,7 @@ const Link = ({ target, active = true, size, href, children }: Props) => (
       </a>
     ) : (
       <NextLink href={href}>
-        <a target={target} href={href}>
-          {children}
-        </a>
+        {children}
       </NextLink>
     )}
   </LinkWrap>
