@@ -32,18 +32,22 @@ type Props = LinkWrapProps & {
   children: React.ReactNode
 }
 
-const Link = ({ target, active = true, size, href, children }: Props) => (
-  <LinkWrap active={active} size={size}>
-    {target ? (
-      <a target={target} href={href}>
-        {children}
-      </a>
-    ) : (
-      <NextLink href={href}>
-        {children}
-      </NextLink>
-    )}
-  </LinkWrap>
-)
+const Link = ({ target, active = true, size, href, children }: Props) => {
+  const a = (
+    <a target={target} href={href}>
+      {children}
+    </a>
+  )
+
+  return (
+    <LinkWrap active={active} size={size}>
+      {target ? a : (
+        <NextLink href={href}>
+          {a}
+        </NextLink>
+      )}
+    </LinkWrap>
+  )
+}
 
 export default Link
