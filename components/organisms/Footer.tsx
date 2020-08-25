@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import Link from '../atoms/Link'
 import Note from '../atoms/Note'
 
-import GithubIcon from '../../assets/images/github.svg'
-import TwitterIcon from '../../assets/images/twitter.svg'
-import EmailIcon from '../../assets/images/email.svg'
+import GithubIcon from '../../public/github.svg'
+import TwitterIcon from '../../public/twitter.svg'
+import EmailIcon from '../../public/email.svg'
 
 const Container = styled.div`
   flex-direction: column;
