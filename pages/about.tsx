@@ -1,9 +1,9 @@
 import PageContainer from '../components/organisms/PageContainer'
 import Title from '../components/atoms/Title'
 import Text from '../components/atoms/Text'
-import Separator from '../components/layout/Separator'
 import Link from '../components/atoms/Link'
 
+const FactorialLink = () => <Link href='https://factorialhr.com' target='_blank'>Factorial</Link>
 const QuipuLink = () => <Link href='https://getquipu.com' target='_blank'>Quipu</Link>
 const FuelbannerLink = () => <Link href='https://fuelbanner.com' target='_blank'>Fuelbanner</Link>
 const ParlemLink = () => <Link href='https://parlem.com' target='_blank'>Parlem</Link>
@@ -27,6 +27,8 @@ const About = () => (
       time in the little details 🌱
     </Text>
     <Text>
+      I'm currently working as a Fullstack Engineer at <FactorialLink />, helping companies
+      to digitalize their HR processes.
       Some of my last jobs include <QuipuLink />, an accounting and administration software
       for businesses, and also <FuelbannerLink />, <ParlemLink /> and <TicketsLink />
     </Text>
