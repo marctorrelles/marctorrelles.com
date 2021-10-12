@@ -8,10 +8,10 @@
   },
   "dependencies": {
     "fontfaceobserver": "^2.1.0",
-    "next": "latest",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "styled-components": "^5.1.0"
+    "next": "^11.1.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.1"
   },
   "scripts": {
     "dev": "next",
@@ -20,11 +20,11 @@
     "export": "next export"
   },
   "devDependencies": {
-    "@types/node": "^14.0.1",
-    "@types/react": "^16.9.35",
-    "@types/styled-components": "^5.1.2",
-    "babel-plugin-inline-react-svg": "^1.1.1",
-    "babel-plugin-styled-components": "^1.11.1",
-    "typescript": "^3.9.2"
+    "@types/node": "^16.10.3",
+    "@types/react": "^17.0.28",
+    "@types/styled-components": "^5.1.15",
+    "babel-plugin-inline-react-svg": "^2.0.1",
+    "babel-plugin-styled-components": "^1.13.2",
+    "typescript": "^4.4.3"
   }
 }
