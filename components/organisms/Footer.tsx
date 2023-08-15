@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
-import Link from "../atoms/Link";
-import Note from "../atoms/Note";
+import Link from "../atoms/Link"
+import Note from "../atoms/Note"
 
-import GithubIcon from "../../public/github.svg";
-import TwitterIcon from "../../public/twitter.svg";
-import EmailIcon from "../../public/email.svg";
+import GithubIcon from "../../public/github.svg"
+import TwitterIcon from "../../public/twitter.svg"
+import EmailIcon from "../../public/email.svg"
 
 const Container = styled.div`
   flex-direction: column;
@@ -16,7 +16,7 @@ const Container = styled.div`
   > *:not(:last-child) {
     padding-bottom: 1em;
   }
-`;
+`
 
 const LinksContainer = styled.div`
   ustify-content: center;
@@ -24,7 +24,7 @@ const LinksContainer = styled.div`
   > *:not(:last-child) {
     padding-right: 2em;
   }
-`;
+`
 
 enum Social {
   github = "https://github.com/marctorrelles",
@@ -32,29 +32,29 @@ enum Social {
   email = "mailto:marctorrelles@gmail.com",
 }
 
-type SocialKey = keyof typeof Social;
+type SocialKey = keyof typeof Social
 
 const getIcon = (icon: keyof typeof Social) => {
   switch (icon) {
     case "github":
-      return <GithubIcon />;
+      return <GithubIcon />
     case "twitter":
-      return <TwitterIcon />;
+      return <TwitterIcon />
     case "email":
-      return <EmailIcon />;
+      return <EmailIcon />
   }
-};
+}
 
 const NextLink = () => (
   <Link href="https://nextjs.org/" target="_blank">
     Next.js
   </Link>
-);
+)
 const NetlifyLink = () => (
   <Link href="https://www.netlify.com/" target="_blank">
     Netlify
   </Link>
-);
+)
 
 const Footer = () => (
   <Container>
@@ -71,6 +71,6 @@ const Footer = () => (
       Made with ♥️ using <NextLink /> and <NetlifyLink />
     </Note>
   </Container>
-);
+)
 
-export default Footer;
+export default Footer

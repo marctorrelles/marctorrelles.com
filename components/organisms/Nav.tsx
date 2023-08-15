@@ -1,9 +1,9 @@
-import { useRouter } from "next/router";
-import styled from "styled-components";
+import { useRouter } from "next/router"
+import styled from "styled-components"
 
-import { ThemeParams } from "../../styles/theme";
-import Link from "../atoms/Link";
-import DarkModeToggler from "../molecules/DarkModeToggler";
+import { ThemeParams } from "../../styles/theme"
+import Link from "../atoms/Link"
+import DarkModeToggler from "../molecules/DarkModeToggler"
 
 export enum Links {
   Home = "/",
@@ -26,7 +26,7 @@ const Container = styled.div`
     padding-bottom: 1em;
     align-items: flex-start;
   }
-`;
+`
 
 const LinksContainer = styled.div`
   flex-direction: row;
@@ -40,26 +40,26 @@ const LinksContainer = styled.div`
       padding-bottom: 0.25em;
     }
   }
-`;
+`
 
 const Nav = () => {
-  const pathname = useRouter().pathname || Links.Home;
+  const pathname = useRouter().pathname || Links.Home
 
   return (
     <Container>
       <LinksContainer>
         {Object.entries(Links).map(([key, value]) => {
-          const active = pathname === value;
+          const active = pathname === value
           return (
             <Link key={value} href={value} active={active} size={1.2}>
               {key}
             </Link>
-          );
+          )
         })}
       </LinksContainer>
       <DarkModeToggler />
     </Container>
-  );
-};
+  )
+}
 
-export default Nav;
+export default Nav

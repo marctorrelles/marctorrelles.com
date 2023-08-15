@@ -1,5 +1,5 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
+import Document, { Html, Head, Main, NextScript } from "next/document"
+import { ServerStyleSheet } from "styled-components"
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -30,22 +30,23 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang='en'>
+      <Html lang="en">
         <Head>
-          <style>{`
+          <style>
+            {`
             #__next {
               min-height: 100%;
               display: grid; /* Pff */
             }
           `}
           </style>
-          <link rel='shortcut icon' href='/favicon.png' />
+          <link rel="shortcut icon" href="/favicon.png" />
         </Head>
         <body>
           <Main />
           <NextScript />
         </body>
       </Html>
-    );
+    )
   }
 }
