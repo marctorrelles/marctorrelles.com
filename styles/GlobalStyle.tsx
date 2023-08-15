@@ -14,10 +14,42 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     font-display: swap;
     background: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.primary};
+    line-height: 1.6;
   }
   div {
     box-sizing: border-box;
     display: flex;
+  }
+  p {
+    margin-block-start: 0;
+    margin-block-end: 0.5em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+  }
+  h1, h2, h3, h4, h5 {
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+  }
+  h1 {
+    font-size: 2.2em;
+  }
+  h2 {
+    font-size: 1.8em;
+  }
+  h3 {
+    font-size: 1.4em;
+  }
+  h4 {
+    font-size: 1.2em;
+  }
+  h5 {
+    font-size: 1em;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
   }
 `
 
