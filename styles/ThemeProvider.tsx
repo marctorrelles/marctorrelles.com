@@ -1,9 +1,9 @@
-import * as React from 'react'
-import { ThemeProvider as StyledThemeProvider } from 'styled-components'
+import * as React from "react"
+import { ThemeProvider as StyledThemeProvider } from "styled-components"
 
-import { useDarkMode } from '../logic/darkModeContext'
-import { darkTheme, lightTheme } from './theme'
-import GlobalStyle from './GlobalStyle'
+import { useDarkMode } from "../logic/darkModeContext"
+import { darkTheme, lightTheme } from "./theme"
+import GlobalStyle from "./GlobalStyle"
 
 type ThemeProviderProps = {
   children: React.ReactNode
@@ -16,7 +16,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
 
   return (
     <StyledThemeProvider theme={theme}>
-      <GlobalStyle />
+      <GlobalStyle theme={theme} />
       {children}
     </StyledThemeProvider>
   )
