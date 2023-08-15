@@ -1,11 +1,11 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
-import Link from '../atoms/Link'
-import Note from '../atoms/Note'
+import Link from "../atoms/Link";
+import Note from "../atoms/Note";
 
-import GithubIcon from '../../public/github.svg'
-import TwitterIcon from '../../public/twitter.svg'
-import EmailIcon from '../../public/email.svg'
+import GithubIcon from "../../public/github.svg";
+import TwitterIcon from "../../public/twitter.svg";
+import EmailIcon from "../../public/email.svg";
 
 const Container = styled.div`
   flex-direction: column;
@@ -16,7 +16,7 @@ const Container = styled.div`
   > *:not(:last-child) {
     padding-bottom: 1em;
   }
-`
+`;
 
 const LinksContainer = styled.div`
   ustify-content: center;
@@ -24,42 +24,53 @@ const LinksContainer = styled.div`
   > *:not(:last-child) {
     padding-right: 2em;
   }
-`
-
-const getIcon = (icon: string) => {
-  switch(icon) {
-    case 'github':
-      return <GithubIcon />
-    case 'twitter':
-      return <TwitterIcon />
-    case 'email':
-    default:
-      return <EmailIcon />
-  }
-}
+`;
 
 enum Social {
-  github = 'https://github.com/marctorrelles',
-  twitter = 'https://twitter.com/marctorrelles',
-  email = 'mailto:marctorrelles@gmail.com'
+  github = "https://github.com/marctorrelles",
+  twitter = "https://twitter.com/marctorrelles",
+  email = "mailto:marctorrelles@gmail.com",
 }
 
-const NextLink = () => <Link href='https://nextjs.org/' target='_blank'>Next.js</Link>
-const NetlifyLink = () => <Link href='https://www.netlify.com/' target='_blank'>Netlify</Link>
+type SocialKey = keyof typeof Social;
+
+const getIcon = (icon: keyof typeof Social) => {
+  switch (icon) {
+    case "github":
+      return <GithubIcon />;
+    case "twitter":
+      return <TwitterIcon />;
+    case "email":
+      return <EmailIcon />;
+  }
+};
+
+const NextLink = () => (
+  <Link href="https://nextjs.org/" target="_blank">
+    Next.js
+  </Link>
+);
+const NetlifyLink = () => (
+  <Link href="https://www.netlify.com/" target="_blank">
+    Netlify
+  </Link>
+);
 
 const Footer = () => (
   <Container>
     <LinksContainer>
-      {Object.entries(Social).map(([key, value]) => (
-        <Link key={key} href={value} active={false} target='_blank'>
-          {getIcon(key)}
-        </Link>
-      ))}
+      {Object.entries(Social).map(
+        ([key, value]: [SocialKey, (typeof Social)[SocialKey]]) => (
+          <Link key={key} href={value} active={false} target="_blank">
+            {getIcon(key)}
+          </Link>
+        )
+      )}
     </LinksContainer>
     <Note>
       Made with ♥️ using <NextLink /> and <NetlifyLink />
     </Note>
   </Container>
-)
+);
 
-export default Footer
+export default Footer;
