@@ -10,7 +10,6 @@ const LinkWrap = styled.span<{
     text-decoration: none;
     color: ${({ theme, $active }) =>
       $active ? theme.secondary : theme.primary};
-    font-weight: 500;
     font-size: ${({ $size }) => $size && $size.toString()}em;
     > svg > path:last-child {
       transition: fill ease 0.25s;
@@ -32,11 +31,19 @@ type Props = {
   href: string
   target?: "_blank"
   children: React.ReactNode
+  component?: React.ElementType
 }
 
-const Link = ({ target, active = true, size, href, children }: Props) => {
+const Link = ({
+  target,
+  active = true,
+  size,
+  href,
+  component,
+  children,
+}: Props) => {
   return (
-    <LinkWrap $active={active} $size={size}>
+    <LinkWrap $active={active} $size={size} as={component}>
       {target ? (
         <a target={target} href={href}>
           {children}
