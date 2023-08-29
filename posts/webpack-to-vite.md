@@ -1,6 +1,6 @@
 ---
 title: From webpack to Vite
-short: On this article I explore Factorial’s use of webpack, challenges faced, the investigation for a replacement, the solution proffered and the team’s adoption of this solution.
+short: On this article I explore Factorial’s use of webpack, the challenges I faced, the investigation for a replacement, the solution proffered and the team’s adoption of this solution.
 author: Marc Torrelles
 date: "2023-01-16T00:00:00.000Z"
 hero_image: /webpack-to-vite/hero.jpg
