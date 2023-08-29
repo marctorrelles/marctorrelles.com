@@ -57,7 +57,6 @@ export default function BlogTemplate({ frontmatter, markdownBody }) {
       </ImageCropper>
       <PageContainer>
         <ArticleTitle>{frontmatter.title}</ArticleTitle>
-        <Separator />
         <ReactMarkdown
           components={{
             code({ node, inline, className, children, ...props }) {
