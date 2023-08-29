@@ -2,7 +2,7 @@ import glob from "glob"
 import matter from "gray-matter"
 import Image from "next/image"
 import ReactMarkdown from "react-markdown"
-import Title from "../../components/atoms/Title"
+import Text from "../../components/atoms/Text"
 import PageContainer from "../../components/organisms/PageContainer"
 import {
   Prism as SyntaxHighlighter,
@@ -31,11 +31,6 @@ const ImageCropper = styled.div`
   position: relative;
 `
 
-const Column = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
 const ArticleTitle = styled.h1`
   font-size: 3rem;
   text-align: center;
@@ -61,49 +56,47 @@ export default function BlogTemplate({ frontmatter, markdownBody }) {
         />
       </ImageCropper>
       <PageContainer>
-        <article>
-          <ArticleTitle>{frontmatter.title}</ArticleTitle>
-          <Separator />
-          <Column>
-            <ReactMarkdown
-              components={{
-                code({ node, inline, className, children, ...props }) {
-                  const match = /language-(\w+)/.exec(className || "")
-                  return !inline && match ? (
-                    <SyntaxHighlighterComponent
-                      {...props}
-                      children={String(children).replace(/\n$/, "")}
-                      style={atomOneDark}
-                      language={match[1]}
-                      PreTag="div"
-                    />
-                  ) : (
-                    <code {...props} className={className}>
-                      {children}
-                    </code>
-                  )
-                },
-              }}
-            >
-              {markdownBody}
-            </ReactMarkdown>
-          </Column>
-          <Separator />
-          <ArticleFooter>
-            {frontmatter.original_article && (
-              <p>
-                This article was orinally posted on{" "}
-                <Link href={frontmatter.original_article.link} target="_blank">
-                  {frontmatter.original_article.name}
-                </Link>
-              </p>
-            )}
-            <p>
-              {reformatDate(frontmatter.date)} - {frontmatter.author}
-            </p>
-          </ArticleFooter>
-          <Separator />
-        </article>
+        <ArticleTitle>{frontmatter.title}</ArticleTitle>
+        <Separator />
+        <ReactMarkdown
+          components={{
+            code({ node, inline, className, children, ...props }) {
+              const match = /language-(\w+)/.exec(className || "")
+              return !inline && match ? (
+                <SyntaxHighlighterComponent
+                  {...props}
+                  children={String(children).replace(/\n$/, "")}
+                  style={atomOneDark}
+                  language={match[1]}
+                  PreTag="div"
+                />
+              ) : (
+                <code {...props} className={className}>
+                  {children}
+                </code>
+              )
+            },
+            p({ children }) {
+              return <Text>{children}</Text>
+            },
+          }}
+        >
+          {markdownBody}
+        </ReactMarkdown>
+        <Separator />
+        <ArticleFooter>
+          {frontmatter.original_article && (
+            <Text>
+              This article was orinally posted on{" "}
+              <Link href={frontmatter.original_article.link} target="_blank">
+                {frontmatter.original_article.name}
+              </Link>
+            </Text>
+          )}
+          <Text>
+            {reformatDate(frontmatter.date)} - {frontmatter.author}
+          </Text>
+        </ArticleFooter>
       </PageContainer>
     </>
   )

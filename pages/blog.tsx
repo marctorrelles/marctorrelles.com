@@ -8,17 +8,6 @@ import Separator from "../components/layout/Separator"
 import PageContainer from "../components/organisms/PageContainer"
 import React from "react"
 
-const PostCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1rem;
-`
-
-const Description = styled.p`
-  margin-block-end: 0;
-`
-
 type Post = {
   slug: string
   body: string
@@ -38,26 +27,24 @@ export default function Blog({ posts }: Props) {
     </>
   )
 
-  return (
-    <PageContainer>
-      {posts.length === 0 && emptySlate}
-      {posts.length > 0 &&
-        posts.map((post, index) => {
-          return (
-            <React.Fragment key={post.slug}>
-              <PostCard>
-                <Link href={`/blog/${post.slug}`}>
-                  <Title>{post.title}</Title>
-                </Link>
-                <Description>{post.short}</Description>
-                <Link href={`/blog/${post.slug}`}>Read more {">"}</Link>
-              </PostCard>
-              {index !== posts.length - 1 && <Separator />}
-            </React.Fragment>
-          )
-        })}
-    </PageContainer>
-  )
+  if (posts.length === 0) return emptySlate
+
+  return posts.map((post, index) => {
+    return (
+      <React.Fragment key={post.slug}>
+        <PageContainer>
+          <Link href={`/blog/${post.slug}`} component={Title}>
+            {post.title}
+          </Link>
+          <Text>{post.short}</Text>
+          <Text>
+            <Link href={`/blog/${post.slug}`}>Read more {">"}</Link>
+          </Text>
+        </PageContainer>
+        {index !== posts.length - 1 && <Separator />}
+      </React.Fragment>
+    )
+  })
 }
 
 export async function getStaticProps() {
