@@ -59,7 +59,7 @@ const About = () => (
       <Link href="https://github.com/marctorrelles" target="_blank">
         Github
       </Link>
-      , <Link href="mailto:marctorrelles@gmail.com">mail</Link> or{" "}
+      , <Link href="mailto:marctorrelles@gmail.com">email</Link> or{" "}
       <Link href="https://twitter.com/marctorrelles">Twitter</Link>
     </Text>
   </PageContainer>
