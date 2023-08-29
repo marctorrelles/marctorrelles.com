@@ -1,7 +1,7 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 const Container = styled.div`
-  padding-top: 3em;
+  padding-top: 2em;
   padding-bottom: 2em;
   justify-content: center;
 `

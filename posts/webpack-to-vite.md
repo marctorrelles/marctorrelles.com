@@ -1,8 +1,12 @@
 ---
 title: From webpack to Vite
+short: On this article I explore Factorial’s use of webpack, challenges faced, the investigation for a replacement, the solution proffered and the team’s adoption of this solution.
 author: Marc Torrelles
 date: "2023-01-16T00:00:00.000Z"
-hero_image: /webpack-to-vite.jpg
+hero_image: /webpack-to-vite/hero.jpg
+original_article:
+  link: https://labs.factorialhr.com/posts/from-webpack-to-vite
+  name: Factorial Labs
 ---
 
 # About bundlers
@@ -18,6 +22,8 @@ With the growth of JavaScript came an ecosystem of tools, including bundlers. Bu
 ## Lack of Speed
 
 Our frontend application has over 700k lines of code, excluding external packages. This means that when webpack starts up, it has to bundle all that JavaScript into a single file and serve it to the browser. And let me tell you, that takes a long time for a project of this size.
+
+![Lack of speed](/webpack-to-vite/lack-of-speed.png)
 
 While these numbers have improved over time, thanks to webpack's caching system and performance improvements, it's still a slow process. The Hot Module Replacement (HMR), which is responsible for bundling the code you're changing, used to take more than 10 seconds per change. This made developers feel like they were waiting forever and slowed down our development process.
 
@@ -137,6 +143,8 @@ We are still looking for a suitable setup that allows us to combine the speed of
 # Results
 
 Here you can find a table with the results compared with webpack’s one. As you can see, the total time to load the application improved significantly, as well as the HMR times.
+
+![Results](/webpack-to-vite/results.png)
 
 # Conclusions
 
