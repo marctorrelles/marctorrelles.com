@@ -35,7 +35,7 @@ const About = () => (
     <Text>Thanks for getting here!</Text>
     <Text>
       I'm Marc, a software engineer based in Barcelona. I've been working in
-      software for the last 8 years, when I developed my passion and my job:
+      software for the last 10 years, when I developed my passion and my job:
       coding 👨‍💻
     </Text>
     <Text>
