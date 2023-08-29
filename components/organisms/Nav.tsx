@@ -49,7 +49,8 @@ const Nav = () => {
     <Container>
       <LinksContainer>
         {Object.entries(Links).map(([key, value]) => {
-          const active = pathname === value
+          const active =
+            value === "/" ? value === pathname : pathname.includes(value)
           return (
             <Link key={value} href={value} active={active} size={1.2}>
               {key}

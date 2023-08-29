@@ -9,6 +9,9 @@ import {
   SyntaxHighlighterProps,
 } from "react-syntax-highlighter"
 import { atomOneDark } from "react-syntax-highlighter/dist/cjs/styles/hljs"
+import { styled } from "styled-components"
+import Link from "../../components/atoms/Link"
+import Separator from "../../components/layout/Separator"
 
 const SyntaxHighlighterComponent =
   SyntaxHighlighter as React.ComponentType<SyntaxHighlighterProps>
@@ -18,52 +21,91 @@ function reformatDate(fullDate) {
   return date.toLocaleDateString()
 }
 
-export default function BlogTemplate({ frontmatter, markdownBody, siteTitle }) {
+const ImageCropper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+`
+
+const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+const ArticleTitle = styled.h1`
+  font-size: 3rem;
+  text-align: center;
+`
+
+const ArticleFooter = styled.div`
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+`
+
+export default function BlogTemplate({ frontmatter, markdownBody }) {
   return (
-    <PageContainer>
-      <Title>{siteTitle}</Title>
-      <article>
+    <>
+      <ImageCropper>
         <Image
           width="1920"
           height="1080"
           priority
           quality={100}
-          src="/webpack-to-vite.jpg"
+          src={frontmatter.hero_image}
           alt={`Cover: ${frontmatter.title}`}
         />
-        <div>
-          <h1>{frontmatter.title}</h1>
-        </div>
-        <p>
-          {reformatDate(frontmatter.date)} - {frontmatter.author}
-        </p>
-        <div style={{ flexDirection: "column" }}>
-          <ReactMarkdown
-            components={{
-              code({ node, inline, className, children, ...props }) {
-                const match = /language-(\w+)/.exec(className || "")
-                return !inline && match ? (
-                  <SyntaxHighlighterComponent
-                    {...props}
-                    children={String(children).replace(/\n$/, "")}
-                    style={atomOneDark}
-                    language={match[1]}
-                    PreTag="div"
-                  />
-                ) : (
-                  <code {...props} className={className}>
-                    {children}
-                  </code>
-                )
-              },
-            }}
-          >
-            {markdownBody}
-          </ReactMarkdown>
-        </div>
-        <h2>Written By: {frontmatter.author}</h2>
-      </article>
-    </PageContainer>
+      </ImageCropper>
+      <PageContainer>
+        <article>
+          <ArticleTitle>{frontmatter.title}</ArticleTitle>
+          <Separator />
+          <Column>
+            <ReactMarkdown
+              components={{
+                code({ node, inline, className, children, ...props }) {
+                  const match = /language-(\w+)/.exec(className || "")
+                  return !inline && match ? (
+                    <SyntaxHighlighterComponent
+                      {...props}
+                      children={String(children).replace(/\n$/, "")}
+                      style={atomOneDark}
+                      language={match[1]}
+                      PreTag="div"
+                    />
+                  ) : (
+                    <code {...props} className={className}>
+                      {children}
+                    </code>
+                  )
+                },
+              }}
+            >
+              {markdownBody}
+            </ReactMarkdown>
+          </Column>
+          <Separator />
+          <ArticleFooter>
+            {frontmatter.original_article && (
+              <p>
+                This article was orinally posted on{" "}
+                <Link href={frontmatter.original_article.link} target="_blank">
+                  {frontmatter.original_article.name}
+                </Link>
+              </p>
+            )}
+            <p>
+              {reformatDate(frontmatter.date)} - {frontmatter.author}
+            </p>
+          </ArticleFooter>
+          <Separator />
+        </article>
+      </PageContainer>
+    </>
   )
 }
 

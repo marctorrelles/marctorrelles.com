@@ -1,16 +1,17 @@
-import App from 'next/app'
-import Head from 'next/head'
-import styled from 'styled-components'
+import App from "next/app"
+import Head from "next/head"
+import styled from "styled-components"
 
-import Nav from '../components/organisms/Nav'
-import Footer from '../components/organisms/Footer'
+import Nav from "../components/organisms/Nav"
+import Footer from "../components/organisms/Footer"
 
-import { DarkModeProvider } from '../logic/darkModeContext'
-import { ThemeProvider } from '../styles/ThemeProvider'
-import loadFonts from '../styles/loadFonts'
+import { DarkModeProvider } from "../logic/darkModeContext"
+import { ThemeProvider } from "../styles/ThemeProvider"
+import loadFonts from "../styles/loadFonts"
 
 const Container = styled.div`
   height: 100%;
+  max-width: 100%;
   flex-direction: column;
   justify-content: space-between;
 `
@@ -22,14 +23,14 @@ const ContentContainer = styled.div`
 `
 
 export default class MyApp extends App {
-  componentDidMount () {
+  componentDidMount() {
     loadFonts()
   }
 
   render() {
     const { Component, pageProps } = this.props
 
-		return (
+    return (
       <>
         <Head>
           <title>marctorrelles</title>
@@ -46,6 +47,6 @@ export default class MyApp extends App {
           </ThemeProvider>
         </DarkModeProvider>
       </>
-		)
-	}
+    )
+  }
 }
