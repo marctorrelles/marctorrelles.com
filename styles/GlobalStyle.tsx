@@ -22,15 +22,15 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
   }
   p {
     margin-block-start: 0;
-    margin-block-end: 0.5em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+    margin-block-end: 0.6em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
   }
   h1, h2, h3, h4, h5 {
     margin-block-start: 0.5em;
-    margin-block-end: 0.5em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+    margin-block-end: 0.8em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
   }
   h1 {
     font-size: 2em;

@@ -1,13 +1,13 @@
-import * as React from 'react'
-import styled from 'styled-components'
+import * as React from "react"
+import styled from "styled-components"
 
-import { ThemeParams } from '../../styles/theme'
+import { ThemeParams } from "../../styles/theme"
 
 type Props = {
   children: React.ReactNode
 }
 
-const Container = styled.div`
+const Container = styled.div<{ noGap?: boolean }>`
   width: 100%;
   max-width: 800px;
   padding: 3em;
@@ -15,23 +15,15 @@ const Container = styled.div`
   padding-bottom: 2.5em;
   flex-direction: column;
   justify-content: center;
-  > *:not(:last-child) {
-    padding-bottom: 1em;
-  }
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
     padding: 1.5em;
     padding-top: 1em;
     padding-bottom: 1em;
-    > *:not(:last-child) {
-      padding-bottom: 1em;
-    }
   }
 `
 
 const PageContainer = ({ children }: Props) => (
-  <Container>
-    {children}
-  </Container>
+  <Container>{children}</Container>
 )
 
 export default PageContainer

@@ -12,6 +12,7 @@ import { atomOneDark } from "react-syntax-highlighter/dist/cjs/styles/hljs"
 import { styled } from "styled-components"
 import Link from "../../components/atoms/Link"
 import Separator from "../../components/layout/Separator"
+import { ThemeParams } from "../../styles/theme"
 
 const SyntaxHighlighterComponent =
   SyntaxHighlighter as React.ComponentType<SyntaxHighlighterProps>
@@ -29,6 +30,9 @@ const ImageCropper = styled.div`
   height: 300px;
   overflow: hidden;
   position: relative;
+  @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
+    height: 200px;
+  }
 `
 
 const ArticleTitle = styled.h1`
