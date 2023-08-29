@@ -4,8 +4,14 @@ import Image from "next/image"
 import ReactMarkdown from "react-markdown"
 import Title from "../../components/atoms/Title"
 import PageContainer from "../../components/organisms/PageContainer"
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
+import {
+  Prism as SyntaxHighlighter,
+  SyntaxHighlighterProps,
+} from "react-syntax-highlighter"
 import { atomOneDark } from "react-syntax-highlighter/dist/cjs/styles/hljs"
+
+const SyntaxHighlighterComponent =
+  SyntaxHighlighter as React.ComponentType<SyntaxHighlighterProps>
 
 function reformatDate(fullDate) {
   const date = new Date(fullDate)
@@ -37,7 +43,7 @@ export default function BlogTemplate({ frontmatter, markdownBody, siteTitle }) {
               code({ node, inline, className, children, ...props }) {
                 const match = /language-(\w+)/.exec(className || "")
                 return !inline && match ? (
-                  <SyntaxHighlighter
+                  <SyntaxHighlighterComponent
                     {...props}
                     children={String(children).replace(/\n$/, "")}
                     style={atomOneDark}
