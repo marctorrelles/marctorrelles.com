@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "fontfaceobserver": "^2.3.0",
+    "framer-motion": "^10.16.2",
     "gray-matter": "^4.0.3",
     "next": "^13.4.16",
     "raw-loader": "^4.0.2",
