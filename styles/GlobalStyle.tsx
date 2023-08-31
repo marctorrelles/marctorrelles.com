@@ -48,7 +48,7 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     font-size: 1em;
   }
   img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
   }
 `
