@@ -26,8 +26,8 @@ inspiration from backend applications while also creating new concepts. Companie
 started building massive client-side applications, and "frontend developers" became a popular job
 title as this new way of building web pages exploded.
 
-With the growth of JavaScript came an ecosystem of tools, including bundlers. Bundlers combine all
-the separate JavaScript files into a single file that browsers can consume. In the early days of
+With the growth of JavaScript came an ecosystem of tools, including **bundlers**. Bundlers combine 
+all the separate JavaScript files into a single file that browsers can consume. In the early days of
 JavaScript applications, this was the only way to serve these large, complex applications. At
 Factorial, we've been using webpack for more than 5 years to develop and build our frontend
 application.
@@ -63,10 +63,11 @@ developer experience.
 
 ## Disposable environments
 
-We use Gitpod as our cloud-based development environment solution, and the developer experience is
-just amazing. However, dealing with webpack in that scenario was a pain. As you can see from the
-table, the cold start time was disastrous. It took longer for the remote environment to be available
-than it took me to read all my Slack messages – and I get a lot of them.
+We use [Gitpod](https://www.gitpod.io) as our cloud-based development environment solution, and the
+developer experience is [just amazing](https://www.gitpod.io/customers/factorial). However, dealing 
+with webpack in that scenario was a pain. As you can see from the table, the cold start time was 
+disastrous. It took longer for the remote environment to be available than it took me to read all my 
+Slack messages – and I get a lot of them.
 
 We tried to improve the situation by using caching, but it didn’t go well. Webpack's cache isn't
 easily shareable between environments, so we had to cold start the frontend application on each
@@ -79,33 +80,35 @@ alternatives. New tools with revolutionary results appeared, so we investigated 
 
 ## Esbuild
 
-Esbuild is a JavaScript bundler that shows promising results compared to its older counterparts.
-It's written in Go and compiles to native code, and its performance is impressive. However, it
-doesn't have development support, so we wouldn't be able to use it while developing our code.
-Additionally, it doesn't support code splitting, so we wouldn't be able to use it in our
-application.
+[Esbuild](https://esbuild.github.io/) is a JavaScript bundler that shows promising results compared 
+to its older counterparts. It's written in Go and compiles to native code, and its performance is 
+impressive. However, it doesn't have development support, so we wouldn't be able to use it while 
+developing our code. Additionally, it doesn't support code splitting, so we wouldn't be able to use 
+it in our application.
 
 ## SWC
 
-SWC or "Speedy Web Compiler" is another bundler that uses Rust under the hood. It has a large
-community and is used by many companies. Like esbuild, it's very fast at compiling and transpiling,
-but it doesn't have development support, so we couldn't use it in our workflow.
+[SWC](https://swc.rs/) or "Speedy Web Compiler" is another bundler that uses Rust under the hood. It 
+has a large community and is used by many companies. Like esbuild, it's very fast at compiling and 
+transpiling, but it doesn't have development support, so we couldn't use it in our workflow.
 
 ## Vite
 
-Vite is not a bundler or a compiler, and it's not written in a modern language. It's a wrapper of
-various tools that work together to solve the development and bundling of front-end applications.
+[Vite](https://vitejs.dev/) is not a bundler or a compiler, and it's not written in a modern 
+language. It's a wrapper of various tools that work together to solve the development and bundling 
+of front-end applications.
 
 It uses esbuild for dependencies (the ones inside node_modules), bundling each of them into a single
-JavaScript file and sending it to the client, and doing the joins using dynamic import. It has
-impressive performance, with a fast cold start time. During the development process, it serves all
-other files over the wire as is, only performing strict transformations like transpiling TypeScript
-to JavaScript. It also uses esbuild for this purpose.
+JavaScript file and sending it to the client, and doing the joins using 
+[dynamic import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import). 
+It has impressive performance, with a fast cold start time. During the development process, it 
+serves all other files over the wire as is, only performing strict transformations like transpiling 
+TypeScript to JavaScript. It also uses esbuild for this purpose.
 
 For compilation, it uses Rollup. As mentioned earlier, esbuild doesn't support code splitting, but
 Rollup does. While we didn't see any improvement in this area, as webpack and Rollup gave us similar
-results in terms of bundling times, Vite still seemed like a good fit for our needs. So we went ahead
-and tried it.
+results in terms of bundling times, Vite still seemed like a good fit for our needs. So we went 
+ahead and tried it.
 
 # Adopting Vite
 
@@ -115,9 +118,11 @@ have been simpler with a smaller codebase.
 ## Sass
 
 Factorial's frontend is over 6 years old, and at the time, the most modern way of dealing with CSS
-was using Sass. We now mostly use vanilla-extract in new components, but we still have some tokens
-in our design system that Sass needs to be aware of. So we use its JavaScript API. This was one of
-the most difficult issues we faced.
+was using [Sass](https://sass-lang.com/). We now mostly use 
+[vanilla-extract](https://vanilla-extract.style/) in new components, but we still have some tokens 
+in our design system that Sass needs to be aware of. So we use its 
+[JavaScript API](https://sass-lang.com/documentation/js-api/). This was one of the most difficult 
+issues we faced.
 
 Although it's not documented, we were able to pass it to the CSS options inside vite.config.ts:
 
@@ -135,7 +140,7 @@ This allows us to read the design system variables and inject them directly into
 
 ## Code splitting our app
 
-We have 7719 files in our frontend src folder. This means that every time we open the frontend
+We have 7719 files in our frontend `src` folder. This means that every time we open the frontend
 application in development, Vite would serve 7719 assets over the wire, plus all the external
 dependencies.
 
@@ -144,15 +149,15 @@ switch to Vite. Even with some code splitting, the performance was still not acc
 
 So we came up with the idea of splitting the code into more chunks. The first approach that came to
 mind, and also the most logical one, was to split it by the parent route of each page. This means
-that all the components inside /employees are a single chunk. This saved us a lot of time during the
-initial bootstrap and also benefited our clients by sending smaller JavaScript assets.
+that all the components inside `/employees` are a single chunk. This saved us a lot of time during 
+the initial bootstrap and also benefited our clients by sending smaller JavaScript assets.
 
 With this change, we were able to significantly improve the performance of our application on both
 sides. The initial boot time was significantly reduced when developing, and the overall experience
 was much smoother for our users.
 
-Here's the code. We use Loadable Components to be able to dynamically import the file we want to use,
-as it's currently a limitation of React.lazy.
+Here's the code. We use [Loadable Components](https://loadable-components.com/) to be able to 
+dynamically import the file we want to use, as it's currently a limitation of `React.lazy`.
 
 ```ts
 import loadable, { type DefaultComponent } from "@loadable/component"
@@ -173,10 +178,10 @@ const buildLazyRoute = ({ path, loadFn }: LazyRouteAttrs): RouteObject => ({
 
 We divided the implementation into two parts: the development and the build.
 
-In the development phase, we configured everything and offered the tool to our engineering team. Some
-early adopters gave us feedback on some small parts to fix. Since the overall feeling was positive,
-we decided to use it as the default for the entire team. We repeated the same process and fixed some
-small issues that arose.
+In the development phase, we configured everything and offered the tool to our engineering team. 
+Some early adopters gave us feedback on some small parts to fix. Since the overall feeling was 
+positive, we decided to use it as the default for the entire team. We repeated the same process and 
+fixed some small issues that arose.
 
 Vite uses different tools for development and building. esbuild is used for development, while
 rollup is used for building. This carries some risks, as we cannot use the development application
@@ -205,13 +210,13 @@ from loading most of the store files we have, and also splitting the app into ev
 
 ## E2E tests
 
-We have an end-to-end suite of tests that use Cypress. Using them with Vite's serve mode is quite
+We have an end-to-end suite of tests that use Cypress. Using them with Vite's `serve` mode is quite
 painful, as the initial load time is too long and it happens for every test. This is not an
 acceptable situation.
 
-Luckily, Vite has a mechanism to build and serve files easily. With the power of Vite preview, we can
-build and serve our application with no extra configuration. This, of course, prevents us from making
-changes in the front end while running our E2E suite, but at the moment it is an acceptable
+Luckily, Vite has a mechanism to build and serve files easily. With the power of Vite preview, we 
+can build and serve our application with no extra configuration. This, of course, prevents us from 
+making changes in the front end while running our E2E suite, but at the moment it is an acceptable
 situation to deal with.
 
 We are still looking for a suitable setup that allows us to combine the speed of E2E execution with
@@ -232,6 +237,8 @@ Vite addresses the slow startup times, poor scaling, and out-of-memory crashes t
 with webpack.
 
 We are excited about the upcoming features for Vite, as well as the improvements in esbuild and its
-new react plugin. We are currently testing the new version of it and are impressed by the ease of
-development it provides. Also, there’s a new plugin for React that uses SWC. A big kudos to the
-maintainers and contributors of Vite for their great work, way to go!
+[new react plugin](https://vitejs.dev/blog/announcing-vite4#new-react-plugin-using-swc-during-development). 
+We are currently testing [the new version](https://vitejs.dev/blog/announcing-vite4.html) of it and 
+are impressed by the ease of development it provides. Also, there’s a 
+[new plugin for React](https://github.com/vitejs/vite-plugin-react-swc) that uses SWC. A big kudos 
+to the maintainers and contributors of Vite for their great work, way to go!
