@@ -82,6 +82,13 @@ export default function BlogTemplate({ frontmatter, markdownBody }) {
             p({ children }) {
               return <Text>{children}</Text>
             },
+            a({ children, href }) {
+              return (
+                <Link href={href} target="_blank">
+                  {children}
+                </Link>
+              )
+            },
           }}
         >
           {markdownBody}
