@@ -10,10 +10,12 @@ const LinkWrap = styled.span<{
     transition: color ease 0.25s;
     text-decoration: none;
     ${({ $size }) => $size && `font-size: ${$size.toString()}em`};
-    color: ${({ $active }) => $active ? lightTheme.secondary : lightTheme.primary};
+    color: ${({ $active }) =>
+      $active ? lightTheme.secondary : lightTheme.primary};
     > svg > path:last-child {
       transition: fill ease 0.25s;
-      fill: ${({ $active }) => $active ? lightTheme.secondary : lightTheme.primary};
+      fill: ${({ $active }) =>
+        $active ? lightTheme.secondary : lightTheme.primary};
     }
     &:hover {
       text-decoration: underline;
@@ -24,9 +26,11 @@ const LinkWrap = styled.span<{
   }
   @media (prefers-color-scheme: dark) {
     > a {
-      color: ${({ $active }) => $active ? darkTheme.secondary : darkTheme.primary};
+      color: ${({ $active }) =>
+        $active ? darkTheme.secondary : darkTheme.primary};
       > svg > path:last-child {
-        fill: ${({ $active }) => $active ? darkTheme.secondary : darkTheme.primary};
+        fill: ${({ $active }) =>
+          $active ? darkTheme.secondary : darkTheme.primary};
       }
       &:hover {
         > svg > path:last-child {
@@ -44,6 +48,7 @@ type Props = {
   target?: "_blank"
   children: React.ReactNode
   component?: React.ElementType
+  onClick?: () => void
 }
 
 const Link = ({
@@ -53,9 +58,10 @@ const Link = ({
   href,
   component,
   children,
+  onClick,
 }: Props) => {
   return (
-    <LinkWrap $active={active} $size={size} as={component}>
+    <LinkWrap $active={active} $size={size} as={component} onClick={onClick}>
       {target ? (
         <a target={target} href={href}>
           {children}
