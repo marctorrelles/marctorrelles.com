@@ -1,8 +1,8 @@
-import PageContainer from "../components/organisms/PageContainer"
-import Title from "../components/atoms/Title"
-import Text from "../components/atoms/Text"
+import PageContainer from "../components/PageContainer"
+import Title from "../components/Title"
+import Text from "../components/Text"
 import Link from "../components/Link"
-import { Links } from "../components/organisms/Nav"
+import { Links } from "../components/Nav"
 
 const Home = () => (
   <PageContainer>

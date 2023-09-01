@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { ThemeParams } from '../../styles/theme'
+import { ThemeParams } from '../styles/theme'
 
 const StyledTitle = styled.h1<{ big: boolean }>`
   font-family: monospace;

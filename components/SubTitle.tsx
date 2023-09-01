@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { ThemeParams } from '../../styles/theme'
+import { ThemeParams } from '../styles/theme'
 import Title from './Title';
 
 const StyledSubTitle = styled(Title)`

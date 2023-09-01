@@ -2,10 +2,10 @@ import glob from "glob"
 import matter from "gray-matter"
 import React from "react"
 import Link from "../components/Link"
-import Text from "../components/atoms/Text"
-import Title from "../components/atoms/Title"
+import Text from "../components/Text"
+import Title from "../components/Title"
 import Separator from "../components/Separator"
-import PageContainer from "../components/organisms/PageContainer"
+import PageContainer from "../components/PageContainer"
 
 type Post = {
   slug: string

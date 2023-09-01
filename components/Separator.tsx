@@ -12,11 +12,9 @@ const StyledSeparator = styled.div`
   height: 2px;
   width: 100%;
   max-width: 300px;
+  background-color: ${lightTheme.secondary};
   @media (prefers-color-scheme: dark) {
     background-color: ${darkTheme.secondary};
-  }
-  @media (prefers-color-scheme: light) {
-    background-color: ${lightTheme.secondary};
   }
 `
 
