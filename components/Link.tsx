@@ -1,5 +1,6 @@
 import NextLink from "next/link"
 import styled from "styled-components"
+import { darkTheme, lightTheme } from "../styles/theme"
 
 const LinkWrap = styled.span<{
   $active?: boolean
@@ -8,18 +9,29 @@ const LinkWrap = styled.span<{
   > a {
     transition: color ease 0.25s;
     text-decoration: none;
-    color: ${({ theme, $active }) =>
-      $active ? theme.secondary : theme.primary};
-    font-size: ${({ $size }) => $size && $size.toString()}em;
+    ${({ $size }) => $size && `font-size: ${$size.toString()}em`};
+    color: ${({ $active }) => $active ? lightTheme.secondary : lightTheme.primary};
     > svg > path:last-child {
       transition: fill ease 0.25s;
-      fill: ${({ theme, $active }) =>
-        $active ? theme.secondary : theme.primary};
+      fill: ${({ $active }) => $active ? lightTheme.secondary : lightTheme.primary};
     }
     &:hover {
       text-decoration: underline;
       > svg > path:last-child {
-        fill: ${({ theme }) => theme.secondary};
+        fill: ${lightTheme.secondary};
+      }
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    > a {
+      color: ${({ $active }) => $active ? darkTheme.secondary : darkTheme.primary};
+      > svg > path:last-child {
+        fill: ${({ $active }) => $active ? darkTheme.secondary : darkTheme.primary};
+      }
+      &:hover {
+        > svg > path:last-child {
+          fill: ${darkTheme.secondary};
+        }
       }
     }
   }

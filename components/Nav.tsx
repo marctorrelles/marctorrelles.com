@@ -1,9 +1,8 @@
 import { useRouter } from "next/router"
 import styled from "styled-components"
 
-import { ThemeParams } from "../../styles/theme"
-import Link from "../atoms/Link"
-import DarkModeToggler from "../molecules/DarkModeToggler"
+import { ThemeParams } from "../styles/theme"
+import Link from "./Link"
 
 export enum Links {
   Home = "/",
@@ -17,7 +16,7 @@ const Container = styled.div`
   padding-top: 2em;
   padding-bottom: 2em;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   > *:not(:last-child) {
     padding-bottom: 1em;
   }
@@ -29,13 +28,10 @@ const Container = styled.div`
 `
 
 const LinksContainer = styled.div`
-  flex-direction: row;
   > *:not(:last-child) {
     padding-right: 2em;
   }
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
-    flex-direction: column;
-    align-items: flex-start;
     > *:not(:last-child) {
       padding-bottom: 0.25em;
     }
@@ -58,7 +54,6 @@ const Nav = () => {
           )
         })}
       </LinksContainer>
-      <DarkModeToggler />
     </Container>
   )
 }

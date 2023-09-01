@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components"
-import { Theme } from "./theme"
+import { darkTheme, lightTheme } from "./theme"
 
-const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
+const GlobalStyle = createGlobalStyle`
   html {
     height: 100%;
   }
@@ -12,9 +12,15 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     font-family: 'Ubuntu', sans-serif;
     font-weight: 400;
     font-display: swap;
-    background: ${({ theme }) => theme.background};
-    color: ${({ theme }) => theme.primary};
     line-height: 1.6;
+    background: ${lightTheme.background};
+    color: ${lightTheme.primary};
+  }
+  @media (prefers-color-scheme: dark) {
+    body {
+      background: ${darkTheme.background};
+      color: ${darkTheme.primary};
+    }
   }
   div {
     box-sizing: border-box;
@@ -27,8 +33,8 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     margin-inline-end: 0;
   }
   h1, h2, h3, h4, h5 {
-    margin-block-start: 0.5em;
-    margin-block-end: 0.8em;
+    margin-block-start: 0.8em;
+    margin-block-end: 0.4em;
     margin-inline-start: 0;
     margin-inline-end: 0;
   }
