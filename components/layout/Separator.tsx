@@ -3,6 +3,7 @@ import styled from "styled-components"
 const Container = styled.div`
   padding-top: 3em;
   padding-bottom: 2em;
+  width: 100%;
   justify-content: center;
 `
 
