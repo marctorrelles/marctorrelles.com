@@ -13,6 +13,8 @@ import { styled } from "styled-components"
 import Link from "../../components/atoms/Link"
 import Separator from "../../components/layout/Separator"
 import { ThemeParams } from "../../styles/theme"
+import Title from "../../components/atoms/Title"
+import SubTitle from "../../components/atoms/SubTitle"
 
 const SyntaxHighlighterComponent =
   SyntaxHighlighter as React.ComponentType<SyntaxHighlighterProps>
@@ -35,11 +37,6 @@ const ImageCropper = styled.div`
   }
 `
 
-const ArticleTitle = styled.h1`
-  font-size: 3rem;
-  text-align: center;
-`
-
 const ArticleFooter = styled.div`
   text-align: center;
   display: flex;
@@ -60,7 +57,7 @@ export default function BlogTemplate({ frontmatter, markdownBody }) {
         />
       </ImageCropper>
       <PageContainer>
-        <ArticleTitle>{frontmatter.title}</ArticleTitle>
+        <Title big>{frontmatter.title}</Title>
         <ReactMarkdown
           components={{
             code({ node, inline, className, children, ...props }) {
@@ -88,6 +85,12 @@ export default function BlogTemplate({ frontmatter, markdownBody }) {
                   {children}
                 </Link>
               )
+            },
+            h1({ children }) {
+              return <Title>{children}</Title>
+            },
+            h2({ children }) {
+              return <SubTitle>{children}</SubTitle>
             },
           }}
         >
