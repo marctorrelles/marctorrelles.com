@@ -37,7 +37,7 @@ export default function Blog({ posts }: Props) {
           </Link>
           <Text>{post.short}</Text>
           <Text>
-            <Link href={`/blog/${post.slug}`}>Read more {">"}</Link>
+            <Link href={`/blog/${post.slug}`}>Read more &gt;</Link>
           </Text>
         </PageContainer>
         {index !== posts.length - 1 && <Separator />}
