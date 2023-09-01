@@ -47,14 +47,18 @@ export default function Blog({ posts }: Props) {
 }
 
 export async function getStaticProps() {
-  const blogs = glob.sync(`posts/**/*.md`)
-  const blogSlugs = blogs.map((file) =>
+  const mdFiles = glob.sync(`posts/**/*.md`)
+  const slugs = mdFiles.map((file) =>
     file.split("/")[1].replace(/ /g, "-").slice(0, -3).trim()
   )
-  const posts = await Promise.all(
-    blogSlugs.map(async (slug) => {
+  const posts = (await Promise.all(
+    slugs.map(async (slug) => {
       const content = await import(`posts/${slug}.md`)
       const data = matter(content.default)
+
+      if (data.data.hidden && process.env.NODE_ENV !== 'development') {
+        return null
+      }
 
       return {
         slug,
@@ -63,7 +67,7 @@ export async function getStaticProps() {
         short: data.data.short,
       }
     })
-  )
+  )).filter(Boolean)
 
   return {
     props: {

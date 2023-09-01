@@ -1,5 +1,39 @@
 import NextLink from "next/link"
 import styled from "styled-components"
+import { darkTheme, lightTheme } from "../../styles/theme"
+
+function getColorSchemeLinkStyle(theme: "dark" | "light", $active?: boolean) {
+  const getColor = () => {
+    if (theme === "dark") {
+      if ($active) {
+        return darkTheme.secondary
+      }
+      return darkTheme.primary
+    }
+    if (theme === "light") {
+      if ($active) {
+        return lightTheme.secondary
+      }
+      return lightTheme.primary
+    }
+  }
+
+  return `
+  @media (prefers-color-scheme: ${theme}) {
+    > a {
+      color: ${getColor()};
+      > svg > path:last-child {
+        fill: ${getColor()};
+      }
+      &:hover {
+        > svg > path:last-child {
+          fill: ${(theme === "dark" ? darkTheme : lightTheme).secondary};
+        }
+      }
+    }
+  }
+  `
+}
 
 const LinkWrap = styled.span<{
   $active?: boolean
@@ -8,21 +42,16 @@ const LinkWrap = styled.span<{
   > a {
     transition: color ease 0.25s;
     text-decoration: none;
-    color: ${({ theme, $active }) =>
-      $active ? theme.secondary : theme.primary};
     ${({ $size }) => $size && `font-size: ${$size.toString()}em`};
     > svg > path:last-child {
       transition: fill ease 0.25s;
-      fill: ${({ theme, $active }) =>
-        $active ? theme.secondary : theme.primary};
     }
     &:hover {
       text-decoration: underline;
-      > svg > path:last-child {
-        fill: ${({ theme }) => theme.secondary};
-      }
     }
   }
+  ${({ $active }) => getColorSchemeLinkStyle("dark", $active)}
+  ${({ $active }) => getColorSchemeLinkStyle("light", $active)}
 `
 
 type Props = {

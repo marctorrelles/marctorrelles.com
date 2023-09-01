@@ -20,5 +20,5 @@ export const lightTheme: Theme = {
   background: '#f7f8f6',
   dark: 'rgba(0, 0, 0, 0.1)',
   primary: '#040404',
-  secondary: '#68b0ab'
+  secondary: '#38948e'
 }
