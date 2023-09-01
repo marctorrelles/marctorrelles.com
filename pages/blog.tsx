@@ -5,7 +5,24 @@ import Link from "../components/Link"
 import Text from "../components/Text"
 import Title from "../components/Title"
 import Separator from "../components/Separator"
+import { ThemeParams } from "../styles/theme"
+import { styled } from "styled-components"
 import PageContainer from "../components/PageContainer"
+
+const Posts = styled.div`
+  width: 100%;
+  gap: 1.8em;
+  display: flex;
+  flex-direction: column;
+  @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
+    gap: 1em;
+  }
+`
+
+const Post = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
 type Post = {
   slug: string
@@ -28,22 +45,26 @@ export default function Blog({ posts }: Props) {
 
   if (posts.length === 0) return emptySlate
 
-  return posts.map((post, index) => {
-    return (
-      <React.Fragment key={post.slug}>
-        <PageContainer>
-          <Link href={`/blog/${post.slug}`} component={Title}>
-            {post.title}
-          </Link>
-          <Text>{post.short}</Text>
-          <Text>
-            <Link href={`/blog/${post.slug}`}>Read more &gt;</Link>
-          </Text>
-        </PageContainer>
-        {index !== posts.length - 1 && <Separator />}
-      </React.Fragment>
-    )
-  })
+  return (
+    <PageContainer>
+      <Posts>
+        {posts.map((post, index) => {
+          return (
+            <Post key={post.slug}>
+              <Link href={`/blog/${post.slug}`} component={Title}>
+                {post.title}
+              </Link>
+              <Text>{post.short}</Text>
+              <Text>
+                <Link href={`/blog/${post.slug}`}>Read more &gt;</Link>
+              </Text>
+              {index !== posts.length - 1 && <Separator />}
+            </Post>
+          )
+        })}
+      </Posts>
+    </PageContainer>
+  )
 }
 
 export async function getStaticProps() {
@@ -51,23 +72,25 @@ export async function getStaticProps() {
   const slugs = mdFiles.map((file) =>
     file.split("/")[1].replace(/ /g, "-").slice(0, -3).trim()
   )
-  const posts = (await Promise.all(
-    slugs.map(async (slug) => {
-      const content = await import(`posts/${slug}.md`)
-      const data = matter(content.default)
+  const posts = (
+    await Promise.all(
+      slugs.map(async (slug) => {
+        const content = await import(`posts/${slug}.md`)
+        const data = matter(content.default)
 
-      if (data.data.hidden && process.env.NODE_ENV !== 'development') {
-        return null
-      }
+        if (data.data.hidden && process.env.NODE_ENV !== "development") {
+          return null
+        }
 
-      return {
-        slug,
-        body: data.content,
-        title: data.data.title,
-        short: data.data.short,
-      }
-    })
-  )).filter(Boolean)
+        return {
+          slug,
+          body: data.content,
+          title: data.data.title,
+          short: data.data.short,
+        }
+      })
+    )
+  ).filter(Boolean)
 
   return {
     props: {
