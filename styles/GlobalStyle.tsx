@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components"
-import { Theme } from "./theme"
+import { darkTheme, lightTheme } from "./theme"
 
-const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
+const GlobalStyle = createGlobalStyle`
   html {
     height: 100%;
   }
@@ -12,9 +12,19 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     font-family: 'Ubuntu', sans-serif;
     font-weight: 400;
     font-display: swap;
-    background: ${({ theme }) => theme.background};
-    color: ${({ theme }) => theme.primary};
     line-height: 1.6;
+  }
+  @media (prefers-color-scheme: dark) {
+    body {
+      background: ${darkTheme.background};
+      color: ${darkTheme.primary};
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    body {
+      background: ${lightTheme.background};
+      color: ${lightTheme.primary};
+    }
   }
   div {
     box-sizing: border-box;

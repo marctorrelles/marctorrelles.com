@@ -6,6 +6,7 @@ short: >
 author: Marc Torrelles
 date: "2023-09-01T00:00:00.000Z"
 hero_image: /navigating-the-uncertainity/hero.jpg
+hidden: true
 ---
 
 For the past decade, I've been deep in the coding world, starting from my university days with basic

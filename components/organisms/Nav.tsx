@@ -3,7 +3,6 @@ import styled from "styled-components"
 
 import { ThemeParams } from "../../styles/theme"
 import Link from "../atoms/Link"
-import DarkModeToggler from "../molecules/DarkModeToggler"
 
 export enum Links {
   Home = "/",
@@ -58,7 +57,6 @@ const Nav = () => {
           )
         })}
       </LinksContainer>
-      <DarkModeToggler />
     </Container>
   )
 }
