@@ -27,8 +27,8 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     margin-inline-end: 0;
   }
   h1, h2, h3, h4, h5 {
-    margin-block-start: 0.5em;
-    margin-block-end: 0.8em;
+    margin-block-start: 0.8em;
+    margin-block-end: 0.4em;
     margin-inline-start: 0;
     margin-inline-end: 0;
   }

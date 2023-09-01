@@ -10,7 +10,7 @@ const LinkWrap = styled.span<{
     text-decoration: none;
     color: ${({ theme, $active }) =>
       $active ? theme.secondary : theme.primary};
-    font-size: ${({ $size }) => $size && $size.toString()}em;
+    ${({ $size }) => $size && `font-size: ${$size.toString()}em`};
     > svg > path:last-child {
       transition: fill ease 0.25s;
       fill: ${({ theme, $active }) =>
