@@ -2,39 +2,6 @@ import NextLink from "next/link"
 import styled from "styled-components"
 import { darkTheme, lightTheme } from "../styles/theme"
 
-function getColorSchemeLinkStyle(theme: "dark" | "light", $active?: boolean) {
-  const getColor = () => {
-    if (theme === "dark") {
-      if ($active) {
-        return darkTheme.secondary
-      }
-      return darkTheme.primary
-    }
-    if (theme === "light") {
-      if ($active) {
-        return lightTheme.secondary
-      }
-      return lightTheme.primary
-    }
-  }
-
-  return `
-  @media (prefers-color-scheme: ${theme}) {
-    > a {
-      color: ${getColor()};
-      > svg > path:last-child {
-        fill: ${getColor()};
-      }
-      &:hover {
-        > svg > path:last-child {
-          fill: ${(theme === "dark" ? darkTheme : lightTheme).secondary};
-        }
-      }
-    }
-  }
-  `
-}
-
 const LinkWrap = styled.span<{
   $active?: boolean
   $size?: Number
@@ -43,15 +10,31 @@ const LinkWrap = styled.span<{
     transition: color ease 0.25s;
     text-decoration: none;
     ${({ $size }) => $size && `font-size: ${$size.toString()}em`};
+    color: ${({ $active }) => $active ? lightTheme.secondary : lightTheme.primary};
     > svg > path:last-child {
       transition: fill ease 0.25s;
+      fill: ${({ $active }) => $active ? lightTheme.secondary : lightTheme.primary};
     }
     &:hover {
       text-decoration: underline;
+      > svg > path:last-child {
+        fill: ${lightTheme.secondary};
+      }
     }
   }
-  ${({ $active }) => getColorSchemeLinkStyle("dark", $active)}
-  ${({ $active }) => getColorSchemeLinkStyle("light", $active)}
+  @media (prefers-color-scheme: dark) {
+    > a {
+      color: ${({ $active }) => $active ? darkTheme.secondary : darkTheme.primary};
+      > svg > path:last-child {
+        fill: ${({ $active }) => $active ? darkTheme.secondary : darkTheme.primary};
+      }
+      &:hover {
+        > svg > path:last-child {
+          fill: ${darkTheme.secondary};
+        }
+      }
+    }
+  }
 `
 
 type Props = {

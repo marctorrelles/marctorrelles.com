@@ -13,17 +13,13 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     font-display: swap;
     line-height: 1.6;
+    background: ${lightTheme.background};
+    color: ${lightTheme.primary};
   }
   @media (prefers-color-scheme: dark) {
     body {
       background: ${darkTheme.background};
       color: ${darkTheme.primary};
-    }
-  }
-  @media (prefers-color-scheme: light) {
-    body {
-      background: ${lightTheme.background};
-      color: ${lightTheme.primary};
     }
   }
   div {

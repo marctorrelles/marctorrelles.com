@@ -2,8 +2,8 @@ import glob from "glob"
 import matter from "gray-matter"
 import Image from "next/image"
 import ReactMarkdown from "react-markdown"
-import Text from "../../components/atoms/Text"
-import PageContainer from "../../components/organisms/PageContainer"
+import Text from "../../components/Text"
+import PageContainer from "../../components/PageContainer"
 import {
   Prism as SyntaxHighlighter,
   SyntaxHighlighterProps,
@@ -13,8 +13,8 @@ import { styled } from "styled-components"
 import Link from "../../components/Link"
 import Separator from "../../components/Separator"
 import { ThemeParams } from "../../styles/theme"
-import Title from "../../components/atoms/Title"
-import SubTitle from "../../components/atoms/SubTitle"
+import Title from "../../components/Title"
+import SubTitle from "../../components/SubTitle"
 
 const SyntaxHighlighterComponent =
   SyntaxHighlighter as React.ComponentType<SyntaxHighlighterProps>
