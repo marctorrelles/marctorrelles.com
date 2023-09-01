@@ -37,6 +37,10 @@ const ImageCropper = styled.div`
   }
 `
 
+const TitleWrapper = styled.div`
+  padding-bottom: 1.4rem;
+`
+
 const ArticleFooter = styled.div`
   text-align: center;
   display: flex;
@@ -57,7 +61,7 @@ export default function BlogTemplate({ frontmatter, markdownBody }) {
         />
       </ImageCropper>
       <PageContainer>
-        <Title big>{frontmatter.title}</Title>
+        <TitleWrapper><Title big>{frontmatter.title}</Title></TitleWrapper>
         <ReactMarkdown
           components={{
             code({ node, inline, className, children, ...props }) {
