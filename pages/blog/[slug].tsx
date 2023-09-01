@@ -56,12 +56,15 @@ export default function BlogTemplate({ frontmatter, markdownBody }) {
           height="1080"
           priority
           quality={100}
+          loading="eager"
           src={frontmatter.hero_image}
           alt={`Cover: ${frontmatter.title}`}
         />
       </ImageCropper>
       <PageContainer>
-        <TitleWrapper><Title big>{frontmatter.title}</Title></TitleWrapper>
+        <TitleWrapper>
+          <Title big>{frontmatter.title}</Title>
+        </TitleWrapper>
         <ReactMarkdown
           components={{
             code({ node, inline, className, children, ...props }) {
