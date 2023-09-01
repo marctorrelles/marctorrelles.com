@@ -1,6 +1,6 @@
 import NextLink from "next/link"
 import styled from "styled-components"
-import { darkTheme, lightTheme } from "../../styles/theme"
+import { darkTheme, lightTheme } from "../styles/theme"
 
 function getColorSchemeLinkStyle(theme: "dark" | "light", $active?: boolean) {
   const getColor = () => {

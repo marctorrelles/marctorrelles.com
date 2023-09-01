@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import Link from "../atoms/Link"
+import Link from "./Link"
 import Note from "../atoms/Note"
 
 import GithubIcon from "../../public/github.svg"

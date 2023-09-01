@@ -3,7 +3,7 @@ import Head from "next/head"
 import styled from "styled-components"
 
 import Nav from "../components/organisms/Nav"
-import Footer from "../components/organisms/Footer"
+import Footer from "../components/Footer"
 
 import { ThemeProvider } from "../styles/ThemeProvider"
 import loadFonts from "../styles/loadFonts"
