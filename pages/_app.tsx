@@ -1,6 +1,7 @@
 import App from "next/app"
 import Head from "next/head"
 import styled from "styled-components"
+import { useRouter } from "next/router"
 
 import Nav from "../components/Nav"
 import Footer from "../components/Footer"
@@ -28,7 +29,7 @@ export default class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps } = this.props
+    const { Component, pageProps, router } = this.props
 
     return (
       <>
@@ -44,7 +45,7 @@ export default class MyApp extends App {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  key={Component}
+                  key={router.pathname}
                 >
                   <Component {...pageProps} />
                 </ContentContainer>
