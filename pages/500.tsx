@@ -1,7 +1,7 @@
 import PageContainer from "../components/organisms/PageContainer"
 import Title from "../components/atoms/Title"
 import Text from "../components/atoms/Text"
-import Link from "../components/atoms/Link"
+import Link from "../components/Link"
 import { Links } from "../components/organisms/Nav"
 import Image from "next/image"
 

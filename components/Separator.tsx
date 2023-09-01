@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { darkTheme, lightTheme } from "../../styles/theme"
+import { darkTheme, lightTheme } from "../styles/theme"
 
 const Container = styled.div`
   padding-top: 3em;

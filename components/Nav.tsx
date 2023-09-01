@@ -2,7 +2,7 @@ import { useRouter } from "next/router"
 import styled from "styled-components"
 
 import { ThemeParams } from "../../styles/theme"
-import Link from "../atoms/Link"
+import Link from "../Link"
 
 export enum Links {
   Home = "/",

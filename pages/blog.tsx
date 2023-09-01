@@ -1,10 +1,10 @@
 import glob from "glob"
 import matter from "gray-matter"
 import React from "react"
-import Link from "../components/atoms/Link"
+import Link from "../components/Link"
 import Text from "../components/atoms/Text"
 import Title from "../components/atoms/Title"
-import Separator from "../components/layout/Separator"
+import Separator from "../components/Separator"
 import PageContainer from "../components/organisms/PageContainer"
 
 type Post = {
