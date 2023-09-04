@@ -11,11 +11,11 @@ import PageContainer from "../components/PageContainer"
 
 const Posts = styled.div`
   width: 100%;
-  gap: 1.8em;
+  gap: 1em;
   display: flex;
   flex-direction: column;
-  @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
-    gap: 1em;
+  @media (min-width: ${ThemeParams.MobileBreakpoint}px) {
+    gap: 0.8em;
   }
 `
 
