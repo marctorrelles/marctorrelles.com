@@ -19,7 +19,7 @@ import SubTitle from "../../components/SubTitle"
 const SyntaxHighlighterComponent =
   SyntaxHighlighter as React.ComponentType<SyntaxHighlighterProps>
 
-function reformatDate(fullDate) {
+function reformatDate(fullDate: string) {
   const date = new Date(fullDate)
   return date.toLocaleDateString()
 }
@@ -39,6 +39,11 @@ const ImageCropper = styled.div`
 
 const TitleWrapper = styled.div`
   padding-bottom: 1.4rem;
+`
+
+const ImageWrapper = styled.div`
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 `
 
 const ArticleFooter = styled.div`
@@ -63,7 +68,7 @@ export default function BlogTemplate({ frontmatter, markdownBody }) {
       </ImageCropper>
       <PageContainer>
         <TitleWrapper>
-          <Title big>{frontmatter.title}</Title>
+          <Title size="big">{frontmatter.title}</Title>
         </TitleWrapper>
         <ReactMarkdown
           components={{
@@ -98,6 +103,20 @@ export default function BlogTemplate({ frontmatter, markdownBody }) {
             },
             h2({ children }) {
               return <SubTitle>{children}</SubTitle>
+            },
+            img({ src, alt }) {
+              return (
+                <ImageWrapper>
+                  <Image
+                    width="800"
+                    height="600"
+                    priority
+                    quality={100}
+                    src={src}
+                    alt={alt}
+                  />
+                </ImageWrapper>
+              )
             },
           }}
         >

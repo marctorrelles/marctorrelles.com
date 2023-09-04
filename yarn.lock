@@ -1383,10 +1383,10 @@
   dependencies:
     tslib "^2.4.0"
 
-"@swc/plugin-styled-components@^1.5.71":
-  version "1.5.71"
-  resolved "https://registry.yarnpkg.com/@swc/plugin-styled-components/-/plugin-styled-components-1.5.71.tgz#8a94bc02f1b6307a22dd3a0e71275c2a6c19876a"
-  integrity sha512-W+aXqvl3f5FInSfZ5XyrUX7c/hvKp5+LKG1oj9S2uNgUK73VU/j3sw08hcivBS/1NaxTX72hmD0lSV5Qafp24Q==
+"@swc/plugin-styled-components@^1.5.75":
+  version "1.5.75"
+  resolved "https://registry.yarnpkg.com/@swc/plugin-styled-components/-/plugin-styled-components-1.5.75.tgz#e941ccedd0eac34091d0a46d036d9cb126d61e7d"
+  integrity sha512-4DE1LGvPGe3Fndywl4CvNvJyZ8XtRbzJJqWPHEGvUL1eRI7L9vGrs+z3ui0YlXyKrc7v1lNmu0cMW8/y3SBDUw==
 
 "@trysound/sax@0.2.0":
   version "0.2.0"
