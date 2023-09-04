@@ -24,8 +24,13 @@ const ContentContainer = motion(styled.div`
 `)
 
 export default class MyApp extends App {
-  componentDidMount() {
-    loadFonts()
+  state = {
+    fontsLoaded: false,
+  }
+
+  async componentDidMount() {
+    await loadFonts()
+    this.setState({ fontsLoaded: true })
   }
 
   render() {
@@ -37,7 +42,18 @@ export default class MyApp extends App {
           <title>marctorrelles</title>
         </Head>
         <ThemeProvider>
-          <Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <Container
+            animate={this.state.fontsLoaded ? "loaded" : "loading"}
+            variants={{
+              loaded: {
+                opacity: 1,
+              },
+              loading: {
+                opacity: 0,
+              },
+            }}
+            initial="loading"
+          >
             <ContentContainer>
               <Nav />
               <AnimatePresence mode="wait" initial={false}>
