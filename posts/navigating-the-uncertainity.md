@@ -29,9 +29,9 @@ growth, mentorship, and the bonds forged through collaboration.
 
 As I reflect on my path, I've come to realize that the true magic of this world lies not only in the
 lines of code but also in the camaraderie and collective problem-solving with my colleagues. It's in
-the ever-lasting brainstorming sessions and the shared victories and setbacks that I've grown to
-cherish. In the context of my comfort zone, it's not just about the familiarity of coding; it's
-about the profound connections and collaborative spirit that have defined my journey.
+the infinite pairing sessions and the shared victories and setbacks that I've grown to cherish. In
+the context of my comfort zone, it's not just about the familiarity of coding; it's about the
+profound connections and collaborative spirit that have defined my journey.
 
 Leaving a job that you've poured time and energy into is never a decision to be taken lightly. It's
 like stepping into the unknown, uncertain about where your next opportunity will lead you. But
@@ -59,12 +59,7 @@ can align my career choices with those passions.
 
 ![Designing your life book](/navigating-the-uncertainity/designing-your-life.jpg)
 
-As I continue to explore this journey of self-discovery and pursue my next challenge, I invite you
-to join me in examining the art of embracing change, finding your passion, and charting a course
-towards a more fulfilling career. Together, we'll navigate the uncertain waters of career transitions
-and unlock the doors to a brighter professional future.
-
-# The Vertigo of Uncertainty
+<!-- # The Vertigo of Uncertainty
 
 As I stand on the edge of this career precipice, I can't help but feel the vertigo creeping in.
 It's that dizzying sensation of not knowing what's around the corner. Will the next opportunity be
@@ -83,4 +78,4 @@ dedication. The unknown isn't something to be feared; it's an opportunity waitin
 
 So, if you find yourself on the edge of your own career precipice, don't be afraid to step off and
 embrace the vertigo. It's in those moments of uncertainty that you discover your true potential,
-your passions, and the path that leads to your greatest achievements.
+your passions, and the path that leads to your greatest achievements. -->
