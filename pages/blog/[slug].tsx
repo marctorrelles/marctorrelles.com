@@ -1,6 +1,6 @@
 import glob from "glob"
 import matter from "gray-matter"
-import Image from "next/image"
+import Image from "next/future/image"
 import ReactMarkdown from "react-markdown"
 import Text from "../../components/Text"
 import PageContainer from "../../components/PageContainer"
@@ -24,7 +24,7 @@ function reformatDate(fullDate: string) {
   return date.toLocaleDateString()
 }
 
-const ImageCropper = styled.div`
+const HeroImage = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,7 +41,9 @@ const TitleWrapper = styled.div`
   padding-bottom: 1.4rem;
 `
 
-const ImageWrapper = styled.div`
+const ImageWrapper = styled.figure`
+  position: relative;
+  margin: 0;
   padding-top: 1rem;
   padding-bottom: 1rem;
 `
@@ -55,7 +57,7 @@ const ArticleFooter = styled.div`
 export default function BlogTemplate({ frontmatter, markdownBody }) {
   return (
     <>
-      <ImageCropper>
+      <HeroImage>
         <Image
           width="1920"
           height="1080"
@@ -65,7 +67,7 @@ export default function BlogTemplate({ frontmatter, markdownBody }) {
           src={frontmatter.hero_image}
           alt={`Cover: ${frontmatter.title}`}
         />
-      </ImageCropper>
+      </HeroImage>
       <PageContainer>
         <TitleWrapper>
           <Title size="big">{frontmatter.title}</Title>
@@ -108,12 +110,11 @@ export default function BlogTemplate({ frontmatter, markdownBody }) {
               return (
                 <ImageWrapper>
                   <Image
-                    width="800"
-                    height="600"
-                    priority
-                    quality={100}
                     src={src}
                     alt={alt}
+                    width={976}
+                    height={732}
+                    loading="lazy"
                   />
                 </ImageWrapper>
               )
