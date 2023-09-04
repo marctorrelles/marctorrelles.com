@@ -2,19 +2,21 @@ import glob from "glob"
 import matter from "gray-matter"
 import Image from "next/future/image"
 import ReactMarkdown from "react-markdown"
-import Text from "../../components/Text"
-import PageContainer from "../../components/PageContainer"
 import {
   Prism as SyntaxHighlighter,
   SyntaxHighlighterProps,
 } from "react-syntax-highlighter"
 import { atomOneDark } from "react-syntax-highlighter/dist/cjs/styles/hljs"
+import rehypeRaw from "rehype-raw"
 import { styled } from "styled-components"
 import Link from "../../components/Link"
+import PageContainer from "../../components/PageContainer"
 import Separator from "../../components/Separator"
-import { ThemeParams } from "../../styles/theme"
-import Title from "../../components/Title"
 import SubTitle from "../../components/SubTitle"
+import Text from "../../components/Text"
+import Title from "../../components/Title"
+import { ThemeParams } from "../../styles/theme"
+import { PluggableList } from "react-markdown/lib/react-markdown"
 
 const SyntaxHighlighterComponent =
   SyntaxHighlighter as React.ComponentType<SyntaxHighlighterProps>
@@ -73,6 +75,7 @@ export default function BlogTemplate({ frontmatter, markdownBody }) {
           <Title size="big">{frontmatter.title}</Title>
         </TitleWrapper>
         <ReactMarkdown
+          rehypePlugins={[rehypeRaw] as PluggableList}
           components={{
             code({ node, inline, className, children, ...props }) {
               const match = /language-(\w+)/.exec(className || "")

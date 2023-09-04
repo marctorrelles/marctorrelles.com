@@ -59,7 +59,8 @@ can align my career choices with those passions.
 
 ![Designing your life book](/navigating-the-uncertainity/designing-your-life.jpg)
 
-<!-- # The Vertigo of Uncertainty
+<!---
+# The Vertigo of Uncertainty
 
 As I stand on the edge of this career precipice, I can't help but feel the vertigo creeping in.
 It's that dizzying sensation of not knowing what's around the corner. Will the next opportunity be
@@ -78,4 +79,5 @@ dedication. The unknown isn't something to be feared; it's an opportunity waitin
 
 So, if you find yourself on the edge of your own career precipice, don't be afraid to step off and
 embrace the vertigo. It's in those moments of uncertainty that you discover your true potential,
-your passions, and the path that leads to your greatest achievements. -->
+your passions, and the path that leads to your greatest achievements.
+---->
