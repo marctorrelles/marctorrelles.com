@@ -1,5 +1,5 @@
 ---
-title: Navigating the Uncertainty of Career Transitions
+title: Through the uncertainty of career transitions
 short: >
   In this blog post, we'll explore the intricate dance of leaving one's comfort zone in pursuit of
   new career horizons. I'll share my experiences, the challenges faced, and the insights gained as I
@@ -8,18 +8,18 @@ short: >
   professional life.
 author: Marc Torrelles
 date: "2023-09-01T00:00:00.000Z"
-hero_image: /navigating-the-uncertainity/hero.jpg
+hero_image: /through-the-uncertainity/hero.jpg
 hidden: true
 ---
 
-Have you ever felt the itch for change, the yearning for something new and daring, even when you're
+Have you ever felt the itch for change, the desire of something new and shining, even when you're
 comfortably settled in a familiar routine? For the past decade, I've been immersed in the world of
 coding, a journey that began in my university days with humble C code and led me to my current role
 as a Staff Engineer at [Factorial](https://factorialhr.com). While this path has provided financial
 security and professional growth, a sense of restlessness has crept in recently, compelling me to
 embark on a new, more exhilarating adventuree.
 
-# The Comfort Zone
+# The comfort zone
 
 Coding has been my bread and butter for the past years. I started as a junior developer in a small
 company, and over time, I've steadily climbed the ranks, acquiring not only technical skills but
@@ -37,7 +37,23 @@ Leaving a job that you've poured time and energy into is never a decision to be 
 like stepping into the unknown, uncertain about where your next opportunity will lead you. But
 sometimes, that leap of faith is precisely what's needed to reignite the dormant passion within.
 
-# The Pursuit of Passion
+# Vertigo
+
+Vertigo – that's precisely what I experienced the moment I made the decision to leave my job and
+embark on a new adventure. What lies ahead? Will I stumble upon a passion that ignites my soul, or
+will I find myself back in the familiar embrace of comfort? Asking these questions sends me into a
+whirlwind of emotions, a state I'm not accustomed to. I usually prefer to play it safe, satisfying
+my controlling, rational mind almost all the time.
+
+![Vertigo](/through-the-uncertainity/vertigo.jpg)
+
+Yet, I also recognize that this inner conflict is a sign of pushing my boundaries, a signal that I'm
+seeking growth and refusing to settle for mediocrity. Now, don't get me wrong; I'm not here to call
+anyone mediocre. I genuinely believe that great innovations and revolutionary products emerge from
+restless minds. It's time for me to push myself to search for that elusive "click", to elevate my
+game and become the most creative and passionate version of myself I've been in these past years.
+
+# Pursuing my passion
 
 I've always been the kind of person who thrives on challenges. Whether it's diving into a complex
 coding problem or conquering a new video game, I find myself naturally drawn to the thrill of
@@ -57,28 +73,8 @@ have been guided through a process of setting expectations and iterating on my l
 fascinating approach that has helped me gain clarity on what I'm truly passionate about and how I
 can align my career choices with those passions.
 
-![Designing your life book](/navigating-the-uncertainity/designing-your-life.jpg)
+![Designing your life book](/through-the-uncertainity/designing-your-life.jpg)
 
-# The Vertigo of Uncertainty
+# The beauty of the unknown
 
-Vertigo – that's precisely what I experienced the moment I made the decision to leave my job and
-embark on a new adventure. What lies ahead? Will I stumble upon a passion that ignites my soul, or
-will I find myself back in the familiar embrace of comfort? Asking these questions sends me into a
-whirlwind of emotions, a state I'm not accustomed to. I usually prefer to play it safe, satisfying
-my controlling, rational mind almost all the time.
-
-Yet, I also recognize that this inner conflict is a sign of pushing my boundaries, a signal that I'm
-seeking growth and refusing to settle for mediocrity. Now, don't get me wrong; I'm not here to call
-anyone mediocre. I genuinely believe that great innovations and revolutionary products emerge from
-restless minds. It's time for me to push myself to search for that elusive "click", to elevate my
-game and become the most creative and passionate version of myself I've been in these past years.
-
-# The Beauty of the Unknown
-
-In the end, the vertigo is a reminder that life is an ever-evolving journey. Just like when I'm
-coding and meticulously fine-tuning every detail, I need to approach my career with the same
-dedication. The unknown isn't something to be feared; it's an opportunity waiting to be seized.
-
-So, if you are like me on the edge of your own career precipice, don't be afraid to step off and
-embrace that moment. It's in those moments of uncertainty that you discover your true potential,
-your passions, and the path that leads to your greatest achievements.
+[TODO]
