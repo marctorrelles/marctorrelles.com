@@ -49,10 +49,16 @@ const ImageWrapper = styled.figure`
   padding-bottom: 1rem;
 `
 
-const ArticleFooter = styled.div`
+const ArticleMeta = styled.div`
   text-align: center;
   display: flex;
   flex-direction: column;
+  margin-top: -1.5rem;
+  padding-bottom: 1.4rem;
+  @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
+    text-align: left;
+    margin-top: -1rem;
+  }
 `
 
 export default function BlogTemplate({ frontmatter, markdownBody }) {
@@ -73,6 +79,20 @@ export default function BlogTemplate({ frontmatter, markdownBody }) {
         <TitleWrapper>
           <Title size="big">{frontmatter.title}</Title>
         </TitleWrapper>
+        <ArticleMeta>
+          {frontmatter.original_article && (
+            <Text>
+              This article was orinally posted on{" "}
+              <Link href={frontmatter.original_article.link} target="_blank">
+                {frontmatter.original_article.name}
+              </Link>
+            </Text>
+          )}
+          <Text>
+            {reformatDate(frontmatter.date)} - {frontmatter.author}
+          </Text>
+        </ArticleMeta>
+        <Separator />
         <ReactMarkdown
           rehypePlugins={[rehypeRaw] as PluggableList}
           components={{
@@ -126,19 +146,6 @@ export default function BlogTemplate({ frontmatter, markdownBody }) {
           {markdownBody}
         </ReactMarkdown>
         <Separator />
-        <ArticleFooter>
-          {frontmatter.original_article && (
-            <Text>
-              This article was orinally posted on{" "}
-              <Link href={frontmatter.original_article.link} target="_blank">
-                {frontmatter.original_article.name}
-              </Link>
-            </Text>
-          )}
-          <Text>
-            {reformatDate(frontmatter.date)} - {frontmatter.author}
-          </Text>
-        </ArticleFooter>
       </PageContainer>
     </>
   )
