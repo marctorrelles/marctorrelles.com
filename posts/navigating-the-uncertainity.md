@@ -52,24 +52,26 @@ One valuable resource I've been exploring is the book
 [Designing Your Life](https://designingyour.life/the-book/). In this book, the authors, who also
 happen to be experts on the subject at Stanford University, apply design thinking principles to the
 realm of life and career. While the book primarily focuses on designing a fulfilling job, its
-principles can be applied to various aspects of our lives. In the pages of "Designing Your Life," I
+principles can be applied to various aspects of our lives. In the pages of "Designing Your Life", I
 have been guided through a process of setting expectations and iterating on my life's path. It's a
 fascinating approach that has helped me gain clarity on what I'm truly passionate about and how I
 can align my career choices with those passions.
 
 ![Designing your life book](/navigating-the-uncertainity/designing-your-life.jpg)
 
-<!---
 # The Vertigo of Uncertainty
 
-As I stand on the edge of this career precipice, I can't help but feel the vertigo creeping in.
-It's that dizzying sensation of not knowing what's around the corner. Will the next opportunity be
-as fulfilling as the last? Will I find a project that truly resonates with my values and
-aspirations?
+Vertigo – that's precisely what I experienced the moment I made the decision to leave my job and
+embark on a new adventure. What lies ahead? Will I stumble upon a passion that ignites my soul, or
+will I find myself back in the familiar embrace of comfort? Asking these questions sends me into a
+whirlwind of emotions, a state I'm not accustomed to. I usually prefer to play it safe, satisfying
+my controlling, rational mind almost all the time.
 
-It's a whirlwind of emotions, a rollercoaster of self-doubt and excitement. But one thing I've
-learned in my career is that sometimes, you need to embrace the vertigo. It's a sign that you're
-pushing your boundaries, seeking growth, and refusing to settle for mediocrity.
+Yet, I also recognize that this inner conflict is a sign of pushing my boundaries, a signal that I'm
+seeking growth and refusing to settle for mediocrity. Now, don't get me wrong; I'm not here to call
+anyone mediocre. I genuinely believe that great innovations and revolutionary products emerge from
+restless minds. It's time for me to push myself to search for that elusive "click", to elevate my
+game and become the most creative and passionate version of myself I've been in these past years.
 
 # The Beauty of the Unknown
 
@@ -77,7 +79,6 @@ In the end, the vertigo is a reminder that life is an ever-evolving journey. Jus
 coding and meticulously fine-tuning every detail, I need to approach my career with the same
 dedication. The unknown isn't something to be feared; it's an opportunity waiting to be seized.
 
-So, if you find yourself on the edge of your own career precipice, don't be afraid to step off and
-embrace the vertigo. It's in those moments of uncertainty that you discover your true potential,
+So, if you are like me on the edge of your own career precipice, don't be afraid to step off and
+embrace that moment. It's in those moments of uncertainty that you discover your true potential,
 your passions, and the path that leads to your greatest achievements.
----->

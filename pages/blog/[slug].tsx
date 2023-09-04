@@ -25,7 +25,6 @@ function reformatDate(fullDate: string) {
   const date = new Date(fullDate)
   return date.toLocaleDateString()
 }
-
 const HeroImage = styled.div`
   display: flex;
   align-items: center;
