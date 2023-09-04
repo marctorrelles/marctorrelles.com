@@ -8,15 +8,17 @@ import Image from "next/image"
 const Home = () => (
   <PageContainer>
     <Title>404 - Not found</Title>
-    <Image
-      width="1920"
-      height="1080"
-      priority
-      quality={100}
-      src="/not-found-travolta.gif"
-      alt="Not found"
-    />
-    <Link href={Links.Home}>Go back home</Link>
+    <Text>
+      <Image
+        width="1920"
+        height="1080"
+        priority
+        quality={100}
+        src="/not-found-travolta.gif"
+        alt="Not found"
+      />
+      <Link href={Links.Home}>Go back home</Link>
+    </Text>
   </PageContainer>
 )
 
