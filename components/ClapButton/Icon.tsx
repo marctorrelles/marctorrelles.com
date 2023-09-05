@@ -58,6 +58,7 @@ export default function ClapIcon({ lastClap }: Props) {
       initial="unclapped"
       animate={clapped ? "clapped" : "unclapped"}
       key={lastClap}
+      layout
     >
       <g>
         <AnimatePresence mode="sync">
