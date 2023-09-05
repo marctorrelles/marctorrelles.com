@@ -29,10 +29,16 @@ type Post = {
   body: string
   title: string
   short: string
+  date: string
 }
 
 type Props = {
   posts: Post[]
+}
+
+function reformatDate(fullDate: string) {
+  const date = new Date(fullDate)
+  return date.toLocaleDateString("en")
 }
 
 export default function Blog({ posts }: Props) {
@@ -55,9 +61,7 @@ export default function Blog({ posts }: Props) {
                 {post.title}
               </Link>
               <Text>{post.short}</Text>
-              <Text>
-                <Link href={`/blog/${post.slug}`}>Read more &gt;</Link>
-              </Text>
+              <Text kind="secondary">{reformatDate(post.date)}</Text>
               {index !== posts.length - 1 && <Separator />}
             </Post>
           )
@@ -87,6 +91,7 @@ export async function getStaticProps() {
           body: data.content,
           title: data.data.title,
           short: data.data.short,
+          date: data.data.date,
         }
       })
     )

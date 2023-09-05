@@ -11,7 +11,7 @@ import {
 import { atomOneDark } from "react-syntax-highlighter/dist/cjs/styles/hljs"
 import rehypeRaw from "rehype-raw"
 import { styled } from "styled-components"
-import ClapCounter from "../../components/ClapCounter"
+import ClapButton from "../../components/ClapButton"
 import Link from "../../components/Link"
 import PageContainer from "../../components/PageContainer"
 import Separator from "../../components/Separator"
@@ -25,8 +25,9 @@ const SyntaxHighlighterComponent =
 
 function reformatDate(fullDate: string) {
   const date = new Date(fullDate)
-  return date.toLocaleDateString()
+  return date.toLocaleDateString("en")
 }
+
 const HeroImage = styled.div`
   display: flex;
   align-items: center;
@@ -55,23 +56,28 @@ const ImageWrapper = styled.figure`
 
 const ArticleFooter = styled.div`
   width: 100%;
-  gap: 1rem;
+  gap: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
+    gap: 0rem;
+  }
+`
+
+const InnerFooter = styled.div`
+  width: 100%;
+  gap: 0.8rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-`
-
-const LeftFooter = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-`
-
-const RightFooter = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  text-align: right;
+  text-align: center;
+  @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
+    gap: 0rem;
+    width: auto;
+    flex-direction: column;
+  }
 `
 
 type Props = {
@@ -168,22 +174,19 @@ export default function BlogTemplate({
         </ReactMarkdown>
         <Separator kind="full" />
         <ArticleFooter>
-          <LeftFooter>
-            <ClapCounter slug={slug} />
-          </LeftFooter>
-          <RightFooter>
+          <InnerFooter>
+            <ClapButton slug={slug} />
+            <Text>{reformatDate(date)}</Text>
+            <Text>{author}</Text>
+          </InnerFooter>
+          {originalArticle && (
             <Text>
-              {reformatDate(date)} - {author}
+              This article was orinally posted on{" "}
+              <Link href={originalArticle.link} target="_blank">
+                {originalArticle.name}
+              </Link>
             </Text>
-            {originalArticle && (
-              <Text>
-                This article was orinally posted on{" "}
-                <Link href={originalArticle.link} target="_blank">
-                  {originalArticle.name}
-                </Link>
-              </Text>
-            )}
-          </RightFooter>
+          )}
         </ArticleFooter>
       </PageContainer>
     </>
