@@ -50,9 +50,9 @@ const NextLink = () => (
     Next.js
   </Link>
 )
-const NetlifyLink = () => (
-  <Link href="https://www.netlify.com/" target="_blank">
-    Netlify
+const VercelLink = () => (
+  <Link href="https://www.vercel.com/" target="_blank">
+    Vercel
   </Link>
 )
 
@@ -68,7 +68,7 @@ const Footer = () => (
       )}
     </LinksContainer>
     <Note>
-      Made with ♥️ using <NextLink /> and <NetlifyLink />
+      Made with ♥️ using <NextLink /> and <VercelLink />
     </Note>
   </Container>
 )
