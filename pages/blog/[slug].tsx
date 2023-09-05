@@ -40,6 +40,8 @@ const HeroImage = styled.div`
 
 const TitleWrapper = styled.div`
   padding-bottom: 1.4rem;
+  display: flex;
+  justify-content: center;
 `
 
 const ImageWrapper = styled.figure`
