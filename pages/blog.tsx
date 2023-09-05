@@ -43,10 +43,10 @@ function reformatDate(fullDate: string) {
 
 export default function Blog({ posts }: Props) {
   const emptySlate = (
-    <>
+    <PageContainer>
       <Title>Coming soon 🔨</Title>
       <Text>I mean... yeah, very soon 🙄</Text>
-    </>
+    </PageContainer>
   )
 
   if (posts.length === 0) return emptySlate
@@ -95,7 +95,12 @@ export async function getStaticProps() {
         }
       })
     )
-  ).filter(Boolean)
+  )
+    .sort((a, b) => {
+      if (!a || !b) return 0
+      return new Date(b.date).getTime() - new Date(a.date).getTime()
+    })
+    .filter(Boolean)
 
   return {
     props: {
