@@ -54,15 +54,14 @@ const Button = motion(styled.button<{ disabled: boolean }>`
   position: relative;
   display: flex;
   flex-direction: row;
-  border-radius: 50%;
   border: none;
   cursor: ${({ disabled }) => (disabled ? "cursor" : "pointer")};
   background-color: transparent;
   padding: 0.2rem;
-  gap: 0.5rem;
+  gap: 0.4rem;
   justify-content: center;
-  color: ${lightTheme.primary};
   font-size: 1rem;
+  color: ${lightTheme.primary};
   path {
     fill: ${lightTheme.primary};
   }
@@ -73,7 +72,7 @@ const Button = motion(styled.button<{ disabled: boolean }>`
   &:hover {
     color: ${lightTheme.secondary};
     path {
-      fill: green;
+      fill: ${lightTheme.secondary};
     }
   }
   `}
@@ -98,7 +97,6 @@ const Button = motion(styled.button<{ disabled: boolean }>`
 const ClappingIndicator = motion(styled.div`
   position: absolute;
   top: -80px;
-  left: 0;
   width: 70px;
   height: 70px;
   background-color: ${darkTheme.primary};
@@ -108,9 +106,10 @@ const ClappingIndicator = motion(styled.div`
   gap: 0;
   align-items: center;
   justify-content: center;
+  font-size: 1.6rem;
 `)
 
-const ClapIndicator = motion(styled(Text)<{ kind: "number" | "claps" }>`
+const ClapIndicator = motion(styled.p<{ kind: "number" | "claps" }>`
   position: absolute;
   color: ${darkTheme.background};
   margin: 0;
@@ -120,7 +119,9 @@ const ClapIndicator = motion(styled(Text)<{ kind: "number" | "claps" }>`
   top: ${({ kind }) => (kind === "number" ? "10px" : "40px")};
 `)
 
-const MotionText = motion(Text)
+const CounterText = motion(styled(Text)`
+  font-weight: 400 !important;
+`)
 
 type Props = {
   slug: string
@@ -188,9 +189,9 @@ export default function ClapCounter({ slug }: Props) {
       <Icon lastClap={lastClap} />
       {!fetching && (
         <AnimatePresence mode="wait" initial={false}>
-          <MotionText key={claps?.toString()} {...clapIndicatorProps}>
+          <CounterText key={claps?.toString()} {...clapIndicatorProps}>
             {claps ?? 0}
-          </MotionText>
+          </CounterText>
         </AnimatePresence>
       )}
       <AnimatePresence mode="wait">
