@@ -1,11 +1,5 @@
 import styled from "styled-components"
-import { darkTheme, lightTheme } from "../styles/theme"
-
-type Kind = "regular" | "full"
-
-type Props = {
-  kind?: Kind
-}
+import { ThemeParams, darkTheme, lightTheme } from "../styles/theme"
 
 const Container = styled.div`
   padding-top: 1.5em;
@@ -14,19 +8,19 @@ const Container = styled.div`
   justify-content: center;
 `
 
-const StyledSeparator = styled.div<Props>`
+const StyledSeparator = styled.div`
   height: 2px;
   width: 100%;
-  max-width: ${({ kind }) => (kind === "full" ? "100%" : "300px")};
-  background-color: ${lightTheme.secondary};
+  width: 100%;
+  background-color: ${lightTheme.dark};
   @media (prefers-color-scheme: dark) {
-    background-color: ${darkTheme.secondary};
+    background-color: ${darkTheme.dark};
   }
 `
 
-const Separator = ({ kind = "regular" }: Props) => (
+const Separator = () => (
   <Container>
-    <StyledSeparator kind={kind} />
+    <StyledSeparator />
   </Container>
 )
 

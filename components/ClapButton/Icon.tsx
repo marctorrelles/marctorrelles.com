@@ -10,9 +10,9 @@ type Props = {
 const Svg = motion(styled.svg`
   width: 2rem;
   height: 2rem;
-  fill: ${lightTheme.primary};
+  fill: ${lightTheme.secondary};
   @media (prefers-color-scheme: dark) {
-    fill: ${darkTheme.primary};
+    fill: ${darkTheme.secondary};
   }
 `)
 

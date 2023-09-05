@@ -65,17 +65,6 @@ const Button = motion(styled.button<{ disabled: boolean }>`
   path {
     fill: ${lightTheme.primary};
   }
-  ${({ disabled }) =>
-    disabled
-      ? ""
-      : `
-  &:hover {
-    color: ${lightTheme.secondary};
-    path {
-      fill: ${lightTheme.secondary};
-    }
-  }
-  `}
   @media (prefers-color-scheme: dark) {
     color: ${darkTheme.primary};
     path {
@@ -106,7 +95,7 @@ const ClappingIndicator = motion(styled.div`
   gap: 0;
   align-items: center;
   justify-content: center;
-  font-size: 1.6rem;
+  font-size: 1rem;
 `)
 
 const ClapIndicator = motion(styled.p<{ kind: "number" | "claps" }>`
@@ -121,6 +110,7 @@ const ClapIndicator = motion(styled.p<{ kind: "number" | "claps" }>`
 
 const CounterText = motion(styled(Text)<{ styleWidth?: number }>`
   font-weight: 400 !important;
+  font-size: 1rem !important;
   ${({ styleWidth }) => (styleWidth ? `width: ${styleWidth}px;` : "")}
 `)
 
@@ -218,7 +208,7 @@ export default function ClapCounter({ slug }: Props) {
                 kind="number"
                 {...clapIndicatorProps}
               >
-                {temporaryClaps}
+                +{temporaryClaps}
               </ClapIndicator>
               <ClapIndicator
                 key={temporaryClaps === 1 ? "singular" : "plural"}

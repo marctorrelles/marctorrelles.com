@@ -68,7 +68,7 @@ const Footer = () => (
       )}
     </LinksContainer>
     <Note>
-      Made with ♥️ using <NextLink /> and <VercelLink />
+      Made with ♥︎ using <NextLink /> and <VercelLink />
     </Note>
   </Container>
 )

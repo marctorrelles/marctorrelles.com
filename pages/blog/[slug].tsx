@@ -43,9 +43,8 @@ const HeroImage = styled.div`
 `
 
 const TitleWrapper = styled.div`
-  padding-bottom: 1.4rem;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
 `
 
 const ImageWrapper = styled.figure`
@@ -61,24 +60,18 @@ const ArticleFooter = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
     gap: 0rem;
   }
 `
 
-const InnerFooter = styled.div`
+const InfoContainer = styled.div`
   width: 100%;
-  gap: 0.8rem;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  text-align: center;
-  @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
-    gap: 0rem;
-    width: auto;
-    flex-direction: column;
-  }
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0rem;
+  width: auto;
 `
 
 type Props = {
@@ -122,6 +115,10 @@ export default function BlogTemplate({
       <PageContainer>
         <TitleWrapper>
           <Title size="big">{title}</Title>
+          <InfoContainer>
+            <Text>{reformatDate(date)}</Text>
+            <Text>{author}</Text>
+          </InfoContainer>
         </TitleWrapper>
         <Separator />
         <ReactMarkdown
@@ -176,13 +173,11 @@ export default function BlogTemplate({
         >
           {markdownBody}
         </ReactMarkdown>
-        <Separator kind="full" />
+        <Separator />
         <ArticleFooter>
-          <InnerFooter>
+          <InfoContainer>
             <ClapButton slug={slug} />
-            <Text>{reformatDate(date)}</Text>
-            <Text>{author}</Text>
-          </InnerFooter>
+          </InfoContainer>
           {originalArticle && (
             <Text>
               This article was orinally posted on{" "}
