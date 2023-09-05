@@ -1,10 +1,11 @@
 import styled from "styled-components"
-import EmailIcon from "../public/email.svg"
-import GithubIcon from "../public/github.svg"
-import RssIcon from "../public/rss.svg"
-import TwitterIcon from "../public/twitter.svg"
+import EmailIcon from "../public/icons/email.svg"
+import GithubIcon from "../public/icons/github.svg"
+import RssIcon from "../public/icons/rss.svg"
+import LinkedInIcon from "../public/icons/linkedin.svg"
 import Link from "./Link"
 import Note from "./Note"
+import { lightTheme } from "../styles/theme"
 
 const Container = styled.div`
   flex-direction: column;
@@ -15,6 +16,7 @@ const Container = styled.div`
   > *:not(:last-child) {
     padding-bottom: 1em;
   }
+  fill: ${lightTheme.dark};
 `
 
 const LinksContainer = styled.div`
@@ -26,24 +28,24 @@ const LinksContainer = styled.div`
 `
 
 enum Social {
-  github = "https://github.com/marctorrelles",
-  twitter = "https://twitter.com/marctorrelles",
-  email = "mailto:marctorrelles@gmail.com",
   rss = "/rss.xml",
+  github = "https://github.com/marctorrelles",
+  linkedin = "https://www.linkedin.com/in/marctorrelles/",
+  email = "mailto:marctorrelles@gmail.com",
 }
 
 type SocialKey = keyof typeof Social
 
 const getIcon = (icon: keyof typeof Social) => {
   switch (icon) {
-    case "github":
-      return <GithubIcon />
-    case "twitter":
-      return <TwitterIcon />
-    case "email":
-      return <EmailIcon />
     case "rss":
       return <RssIcon />
+    case "github":
+      return <GithubIcon />
+    case "linkedin":
+      return <LinkedInIcon />
+    case "email":
+      return <EmailIcon />
   }
 }
 
