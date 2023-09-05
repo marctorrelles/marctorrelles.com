@@ -1,7 +1,7 @@
 import { kv } from "@vercel/kv"
 import type { NextApiRequest, NextApiResponse } from "next"
 import { z } from "zod"
-import { getRedisKey } from "./_helpers"
+import { getRedisKey } from "../../../lib/claps"
 
 type ResponseData = {
   message: string
