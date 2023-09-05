@@ -1,7 +1,6 @@
 import App from "next/app"
 import Head from "next/head"
 import styled from "styled-components"
-import { useRouter } from "next/router"
 
 import Nav from "../components/Nav"
 import Footer from "../components/Footer"

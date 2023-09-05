@@ -19,6 +19,7 @@ import SubTitle from "../../components/SubTitle"
 import Text from "../../components/Text"
 import Title from "../../components/Title"
 import { ThemeParams } from "../../styles/theme"
+import Head from "next/head"
 
 const SyntaxHighlighterComponent =
   SyntaxHighlighter as React.ComponentType<SyntaxHighlighterProps>
@@ -104,6 +105,9 @@ export default function BlogTemplate({
 }: Props) {
   return (
     <>
+      <Head>
+        <title>{title}</title>
+      </Head>
       <HeroImage>
         <Image
           width="1920"
