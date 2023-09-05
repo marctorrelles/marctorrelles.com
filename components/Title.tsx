@@ -7,7 +7,7 @@ const StyledTitle = styled.h1<{ size: Size }>`
   font-family: monospace;
   font-size: ${({ size }) => (size === "big" ? 2.6 : 2)}rem;
   font-weight: 600;
-  text-align: ${({ size }) => (size === "big" ? "center" : "left")};
+  // text-align: ${({ size }) => (size === "big" ? "center" : "left")};
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
     font-size: ${({ size }) => (size === "big" ? 2 : 1.6)}rem;
     text-align: left;
