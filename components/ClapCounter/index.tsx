@@ -187,7 +187,7 @@ export default function ClapCounter({ slug }: Props) {
     >
       <Icon lastClap={lastClap} />
       {!fetching && (
-        <AnimatePresence mode="wait" initial>
+        <AnimatePresence mode="wait" initial={false}>
           <MotionText key={claps?.toString()} {...clapIndicatorProps}>
             {claps ?? 0}
           </MotionText>
