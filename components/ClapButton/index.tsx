@@ -2,7 +2,7 @@ import { styled } from "styled-components"
 import { darkTheme, lightTheme } from "../../styles/theme"
 import Text from "../Text"
 import Icon from "./Icon"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 
 const buttonVariants = {
@@ -119,8 +119,9 @@ const ClapIndicator = motion(styled.p<{ kind: "number" | "claps" }>`
   top: ${({ kind }) => (kind === "number" ? "10px" : "40px")};
 `)
 
-const CounterText = motion(styled(Text)`
+const CounterText = motion(styled(Text)<{ styleWidth?: number }>`
   font-weight: 400 !important;
+  ${({ styleWidth }) => (styleWidth ? `width: ${styleWidth}px;` : "")}
 `)
 
 type Props = {
@@ -134,6 +135,15 @@ export default function ClapCounter({ slug }: Props) {
   const [claps, setClaps] = useState<number>()
   const [lastClap, setLastClap] = useState<number>()
   const [temporaryClaps, setTemporaryClaps] = useState<number>(0)
+  const [counterWidth, setCounterWidth] = useState<number>()
+
+  // Hack to prevent the counter from jumping around
+  const counterRef = useRef<HTMLParagraphElement>(null)
+  useEffect(() => {
+    if (counterRef.current && !counterWidth && claps) {
+      setCounterWidth(counterRef.current.offsetWidth)
+    }
+  }, [counterRef.current, counterWidth, claps])
 
   useEffect(() => {
     async function fetchClaps() {
@@ -189,7 +199,12 @@ export default function ClapCounter({ slug }: Props) {
       <Icon lastClap={lastClap} />
       {!fetching && (
         <AnimatePresence mode="wait" initial={false}>
-          <CounterText key={claps?.toString()} {...clapIndicatorProps}>
+          <CounterText
+            styleWidth={counterWidth}
+            ref={counterRef}
+            key={claps?.toString()}
+            {...clapIndicatorProps}
+          >
             {claps ?? 0}
           </CounterText>
         </AnimatePresence>
