@@ -17,7 +17,7 @@ const Home = () => (
         src="/not-found-travolta.gif"
         alt="Not found"
       />
-      <Link href={Links.Home}>Go back home</Link>
+      <Link href={Links.About}>Go back home</Link>
     </Text>
   </PageContainer>
 )

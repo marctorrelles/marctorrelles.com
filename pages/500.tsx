@@ -17,7 +17,7 @@ const Home = () => (
         src="/server-error.gif"
         alt="Server error"
       />
-      <Link href={Links.Home}>Go back home</Link>
+      <Link href={Links.About}>Go back home</Link>
     </Text>
   </PageContainer>
 )
