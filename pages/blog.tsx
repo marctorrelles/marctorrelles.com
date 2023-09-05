@@ -1,13 +1,12 @@
-import glob from "glob"
-import matter from "gray-matter"
-import React from "react"
+import { styled } from "styled-components"
 import Link from "../components/Link"
+import PageContainer from "../components/PageContainer"
+import Separator from "../components/Separator"
 import Text from "../components/Text"
 import Title from "../components/Title"
-import Separator from "../components/Separator"
+import getSortedPosts, { type Post } from "../lib/getSortedPosts"
 import { ThemeParams } from "../styles/theme"
-import { styled } from "styled-components"
-import PageContainer from "../components/PageContainer"
+import generateRssFeed from "../lib/generateRSSFeed"
 
 const Posts = styled.div`
   width: 100%;
@@ -23,14 +22,6 @@ const Post = styled.div`
   display: flex;
   flex-direction: column;
 `
-
-type Post = {
-  slug: string
-  body: string
-  title: string
-  short: string
-  date: string
-}
 
 type Props = {
   posts: Post[]
@@ -72,35 +63,8 @@ export default function Blog({ posts }: Props) {
 }
 
 export async function getStaticProps() {
-  const mdFiles = glob.sync(`posts/**/*.md`)
-  const slugs = mdFiles.map((file) =>
-    file.split("/")[1].replace(/ /g, "-").slice(0, -3).trim()
-  )
-  const posts = (
-    await Promise.all(
-      slugs.map(async (slug) => {
-        const content = await import(`posts/${slug}.md`)
-        const data = matter(content.default)
-
-        if (data.data.hidden && process.env.NODE_ENV !== "development") {
-          return null
-        }
-
-        return {
-          slug,
-          body: data.content,
-          title: data.data.title,
-          short: data.data.short,
-          date: data.data.date,
-        }
-      })
-    )
-  )
-    .sort((a, b) => {
-      if (!a || !b) return 0
-      return new Date(b.date).getTime() - new Date(a.date).getTime()
-    })
-    .filter(Boolean)
+  await generateRssFeed()
+  const posts = await getSortedPosts()
 
   return {
     props: {

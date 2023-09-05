@@ -1,11 +1,10 @@
 import styled from "styled-components"
-
+import EmailIcon from "../public/email.svg"
+import GithubIcon from "../public/github.svg"
+import RssIcon from "../public/rss.svg"
+import TwitterIcon from "../public/twitter.svg"
 import Link from "./Link"
 import Note from "./Note"
-
-import GithubIcon from "../public/github.svg"
-import TwitterIcon from "../public/twitter.svg"
-import EmailIcon from "../public/email.svg"
 
 const Container = styled.div`
   flex-direction: column;
@@ -30,6 +29,7 @@ enum Social {
   github = "https://github.com/marctorrelles",
   twitter = "https://twitter.com/marctorrelles",
   email = "mailto:marctorrelles@gmail.com",
+  rss = "/rss.xml",
 }
 
 type SocialKey = keyof typeof Social
@@ -42,6 +42,8 @@ const getIcon = (icon: keyof typeof Social) => {
       return <TwitterIcon />
     case "email":
       return <EmailIcon />
+    case "rss":
+      return <RssIcon />
   }
 }
 

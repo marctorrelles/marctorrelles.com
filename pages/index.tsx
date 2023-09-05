@@ -4,7 +4,7 @@ import Text from "../components/Text"
 import Link from "../components/Link"
 import { Links } from "../components/Nav"
 
-const Home = () => (
+const About = () => (
   <PageContainer>
     <Title>Hey there! 👋</Title>
     <Text>
@@ -16,7 +16,7 @@ const Home = () => (
     </Text>
     <Text>
       If I'm not pressing keys, you will find me reading, playing videogames,
-      running or just hanging out with my friends–probably, with a beer at my
+      running or just hanging out with my friends—probably, with a beer at my
       hand. I love to be challenged and face new problems, and also learn while
       solving those. I also like to get things perfectly done, so most of the
       times I spend some extra time in the little details.
@@ -33,4 +33,4 @@ const Home = () => (
   </PageContainer>
 )
 
-export default Home
+export default About

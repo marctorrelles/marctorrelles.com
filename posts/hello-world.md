@@ -29,5 +29,6 @@ Instead, I'll be sharing my thoughts when inspiration strikes, when a topic real
 when I feel a burning desire to share something meaningful with you. The goal here is quality over
 quantity.
 
-And with that, I salute you—for now. Thank you for joining me on this exciting journey of
-exploration and self-expression. Goodbye!
+And with that, I salute you—for now. If you want, you can subscribe to the blog using
+[RSS](/rss.xml). Thank you for joining me on this exciting journey of exploration and
+self-expression. Goodbye!
