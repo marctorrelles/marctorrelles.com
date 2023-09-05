@@ -5,9 +5,8 @@ import { ThemeParams } from "../styles/theme"
 import Link from "./Link"
 
 export enum Links {
-  Home = "/",
+  About = "/",
   Blog = "/blog",
-  About = "/about",
 }
 
 const Container = styled.div`
@@ -39,7 +38,7 @@ const LinksContainer = styled.div`
 `
 
 const Nav = () => {
-  const pathname = useRouter().pathname || Links.Home
+  const pathname = useRouter().pathname || Links.About
 
   return (
     <Container>
