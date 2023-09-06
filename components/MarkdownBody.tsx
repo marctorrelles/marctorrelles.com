@@ -5,7 +5,6 @@ import {
   Prism as SyntaxHighlighter,
   SyntaxHighlighterProps,
 } from "react-syntax-highlighter"
-import { atomOneDark } from "react-syntax-highlighter/dist/cjs/styles/hljs"
 import rehypeRaw from "rehype-raw"
 import { styled } from "styled-components"
 import { ThemeParams } from "../styles/theme"
@@ -13,6 +12,10 @@ import Link from "./Link"
 import SubTitle from "./SubTitle"
 import Text from "./Text"
 import Title from "./Title"
+import { useEffect, useState } from "react"
+
+import darkStyle from "react-syntax-highlighter/dist/cjs/styles/prism/a11y-dark"
+import lightStyle from "react-syntax-highlighter/dist/cjs/styles/prism/index"
 
 const SyntaxHighlighterComponent =
   SyntaxHighlighter as React.ComponentType<SyntaxHighlighterProps>
@@ -40,7 +43,29 @@ type Props = {
   children: string
 }
 
+function getColorScheme() {
+  if (typeof window === "undefined") return
+
+  return window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light"
+}
+
 export default function MarkdownBody({ children }: Props) {
+  const [colorScheme, setColorScheme] = useState<"dark" | "light">(
+    getColorScheme()
+  )
+
+  useEffect(() => {
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (event) => {
+        const newColorScheme = event.matches ? "dark" : "light"
+        setColorScheme(newColorScheme)
+      })
+  }, [])
+
   return (
     <ReactMarkdown
       rehypePlugins={[rehypeRaw] as PluggableList}
@@ -51,7 +76,11 @@ export default function MarkdownBody({ children }: Props) {
             <SyntaxHighlighterComponent
               {...props}
               children={String(children).replace(/\n$/, "")}
-              style={atomOneDark}
+              customStyle={{
+                borderWidth: "0",
+                fontSize: "0.9rem",
+              }}
+              style={colorScheme === "dark" ? darkStyle : lightStyle}
               language={match[1]}
               PreTag="div"
             />

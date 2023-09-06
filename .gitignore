@@ -7,5 +7,5 @@
 .env*
 npm-debug.log
 .vercel
-rss.xml
+*rss.xml
 .env*.local

@@ -23,7 +23,7 @@
     "zod": "^3.22.2"
   },
   "scripts": {
-    "dev": "next",
+    "dev": "next-remote-watch ./posts",
     "start": "next start",
     "build": "next build",
     "export": "next export"

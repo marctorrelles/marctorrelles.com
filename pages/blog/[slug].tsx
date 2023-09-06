@@ -40,17 +40,6 @@ const TitleWrapper = styled.div`
 
 const ArticleFooter = styled.div`
   width: 100%;
-  gap: 0.8rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
-    gap: 0rem;
-  }
-`
-
-const InfoContainer = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -126,30 +115,26 @@ export default function BlogTemplate({
       <PageContainer>
         <TitleWrapper>
           <Title size="big">{title}</Title>
-          <InfoContainer>
-            <Text>{author}</Text>
-            <Text>{formatDate(date)}</Text>
-          </InfoContainer>
+          <Text>{author}</Text>
+          <Text>{formatDate(date)}</Text>
+          {originalArticle && (
+            <Text>
+              This article was originally posted on{" "}
+              <Link href={originalArticle.link} target="_blank">
+                {originalArticle.name}
+              </Link>
+            </Text>
+          )}
         </TitleWrapper>
         <Separator />
         <MarkdownBody>{markdownBody}</MarkdownBody>
         <Separator />
         <ArticleFooter>
-          <InfoContainer>
-            <ClapButton slug={slug} />
-            {canShare && (
-              <Button onClick={onShare}>
-                <ShareIcon />
-              </Button>
-            )}
-          </InfoContainer>
-          {originalArticle && (
-            <Text>
-              This article was orinally posted on{" "}
-              <Link href={originalArticle.link} target="_blank">
-                {originalArticle.name}
-              </Link>
-            </Text>
+          <ClapButton slug={slug} />
+          {canShare && (
+            <Button onClick={onShare}>
+              <ShareIcon />
+            </Button>
           )}
         </ArticleFooter>
       </PageContainer>
