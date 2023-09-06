@@ -52,8 +52,20 @@ const TitleWrapper = styled.div`
 const ImageWrapper = styled.figure`
   position: relative;
   margin: 0;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+`
+
+const Em = styled(Text)`
+  font-size: 1rem;
+  font-style: italic;
+  text-align: center;
 `
 
 const ArticleFooter = styled.div`
@@ -178,6 +190,9 @@ export default function BlogTemplate({
                   {children}
                 </Link>
               )
+            },
+            em({ children }) {
+              return <Em>{children}</Em>
             },
             h1({ children }) {
               return <Title>{children}</Title>

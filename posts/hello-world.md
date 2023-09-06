@@ -5,7 +5,7 @@ short: >
   thoughts and experiences, extending beyond the technical realm. Join me on this journey as I
   explore various topics that captivate my interest.
 author: Marc Torrelles
-date: "2023-09-05T00:00:00.000Z"
+date: "2023-09-03T00:00:00.000Z"
 hero_image: /hello-world/hero.jpg
 ---
 

@@ -7,9 +7,8 @@ short: >
   we'll uncover the art of embracing change and charting a course towards a more fulfilling
   professional life.
 author: Marc Torrelles
-date: "2023-09-10T00:00:00.000Z"
+date: "2023-09-06T00:00:00.000Z"
 hero_image: /through-the-uncertainity/hero.jpg
-hidden: true
 ---
 
 Have you ever felt the itch for change, the desire of something new and shining, even when you're
@@ -45,7 +44,10 @@ will I find myself back in the familiar embrace of comfort? Asking these questio
 whirlwind of emotions, a state I'm not accustomed to. I usually prefer to play it safe, satisfying
 my controlling, rational mind almost all the time.
 
-![Vertigo](/through-the-uncertainity/vertigo.jpg)
+<!-- ![Vertigo](/through-the-uncertainity/vertigo.jpg) -->
+
+![Uncertainity, Uncertainity everywhere](/through-the-uncertainity/uncertainity.jpg)
+_As Buzz would say to Woody: "Uncertainity, Uncertainity everywhere"_
 
 Yet, I also recognize that this inner conflict is a sign of pushing my boundaries, a signal that I'm
 seeking growth and refusing to settle for mediocrity. Now, don't get me wrong; I'm not here to call
@@ -77,4 +79,16 @@ can align my career choices with those passions.
 
 # The beauty of the unknown
 
-[TODO]
+Even though it's scary, what's unknown to us is undeniably attractive. You've probably had one of
+those nights when it's impossible to sleep because the next day holds an exciting trip or an
+important meeting.
+
+That's the state that currently summarizes my existence. I'm half scared, half passionate about the
+next big thing for me. My head is constantly abuzz with thoughts about what to learn next, who to
+meet, or what the next groundbreaking product idea might be.
+
+Why? Because, my friends, what's not known is captivating. It pushes your boundaries and makes you
+feel alive, more alive than ever. So, if you find yourself in a similar situation to mine, I
+encourage you to let go and seek what truly motivates you.
+
+As always, thanks for reading! I hope to see you next time. Chao! 👋
