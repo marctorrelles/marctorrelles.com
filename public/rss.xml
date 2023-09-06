@@ -2,39 +2,39 @@
     <channel>
         <title><![CDATA[marctorrelles blog]]></title>
         <description><![CDATA[marctorrelles blog]]></description>
-        <link>http://github.com/dylang/node-rss</link>
+        <link>http://localhost:3000</link>
         <image>
-            <url>/favicon.png</url>
+            <url>http://localhost:3000/favicon.png</url>
             <title>marctorrelles blog</title>
-            <link></link>
+            <link>http://localhost:3000</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Tue, 05 Sep 2023 22:55:45 GMT</lastBuildDate>
-        <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 05 Sep 2023 22:55:45 GMT</pubDate>
+        <lastBuildDate>Wed, 06 Sep 2023 10:58:55 GMT</lastBuildDate>
+        <atom:link href="http://localhost:3000/rss.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Wed, 06 Sep 2023 10:58:55 GMT</pubDate>
         <copyright><![CDATA[All rights reserved 2023, Marc Torrelles]]></copyright>
         <item>
             <title><![CDATA[Through the uncertainty of career transitions]]></title>
             <description><![CDATA[In this blog post, we'll explore the intricate dance of leaving one's comfort zone in pursuit of new career horizons. I'll share my experiences, the challenges faced, and the insights gained as I navigate the uncertain waters of a career transition. Join me on this journey, and together, we'll uncover the art of embracing change and charting a course towards a more fulfilling professional life.
 ]]></description>
-            <link>/posts/through-the-uncertainity</link>
-            <guid isPermaLink="true">/posts/through-the-uncertainity</guid>
+            <link>http://localhost:3000/posts/through-the-uncertainity</link>
+            <guid isPermaLink="true">http://localhost:3000/posts/through-the-uncertainity</guid>
             <pubDate>Sun, 10 Sep 2023 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[hello world]]></title>
             <description><![CDATA[In my inaugural post, I welcome you to my personal blog, where I'll share a diverse range of thoughts and experiences, extending beyond the technical realm. Join me on this journey as I explore various topics that captivate my interest.
 ]]></description>
-            <link>/posts/hello-world</link>
-            <guid isPermaLink="true">/posts/hello-world</guid>
+            <link>http://localhost:3000/posts/hello-world</link>
+            <guid isPermaLink="true">http://localhost:3000/posts/hello-world</guid>
             <pubDate>Tue, 05 Sep 2023 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[From webpack to Vite]]></title>
             <description><![CDATA[On this article I explore Factorial’s use of webpack, the challenges I faced, the investigation for a replacement, the solution proffered and the team’s adoption of this solution.
 ]]></description>
-            <link>/posts/webpack-to-vite</link>
-            <guid isPermaLink="true">/posts/webpack-to-vite</guid>
+            <link>http://localhost:3000/posts/webpack-to-vite</link>
+            <guid isPermaLink="true">http://localhost:3000/posts/webpack-to-vite</guid>
             <pubDate>Mon, 16 Jan 2023 00:00:00 GMT</pubDate>
         </item>
     </channel>
