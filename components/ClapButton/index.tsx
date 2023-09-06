@@ -159,12 +159,15 @@ export default function ClapCounter({ slug }: Props) {
 
   const resetTimer = (newClaps: number) => {
     timer = setTimeout(async () => {
+      setFetching(true)
       try {
         await fetch(`/api/claps/clap?slug=${slug}&by=${newClaps}`)
         setTemporaryClaps(0)
-        setClaps(claps + newClaps)
+        setClaps(claps ?? 0 + newClaps)
       } catch (err) {
         console.error(err)
+      } finally {
+        setFetching(false)
       }
     }, 1400)
   }
