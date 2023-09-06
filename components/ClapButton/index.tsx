@@ -4,6 +4,7 @@ import { styled } from "styled-components"
 import { darkTheme, lightTheme } from "../../styles/theme"
 import Text from "../Text"
 import Icon from "./Icon"
+import Button from "../Button"
 
 const buttonVariants = {
   fetching: {
@@ -50,39 +51,6 @@ const clapIndicatorProps = {
   },
 }
 
-const Button = motion(styled.button<{ disabled: boolean }>`
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  border: none;
-  cursor: ${({ disabled }) => (disabled ? "cursor" : "pointer")};
-  background-color: transparent;
-  padding: 0.2rem;
-  gap: 0.4rem;
-  justify-content: center;
-  font-size: 1rem;
-  color: ${lightTheme.primary};
-  path {
-    fill: ${lightTheme.primary};
-  }
-  @media (prefers-color-scheme: dark) {
-    color: ${darkTheme.primary};
-    path {
-      fill: ${darkTheme.primary};
-    }
-    ${({ disabled }) =>
-      disabled
-        ? ""
-        : `&:hover {
-      color: ${darkTheme.secondary};
-      path {
-        fill: ${darkTheme.secondary};
-      }
-    }
-    `}
-  }
-`)
-
 const ClappingIndicator = motion(styled.div`
   position: absolute;
   top: -80px;
@@ -111,6 +79,7 @@ const ClapIndicator = motion(styled.p<{ kind: "number" | "claps" }>`
 const CounterText = motion(styled(Text)<{ styleWidth?: number }>`
   font-weight: 400 !important;
   font-size: 1rem !important;
+  margin-top: 0.4rem;
   ${({ styleWidth }) => (styleWidth ? `width: ${styleWidth}px;` : "")}
 `)
 
@@ -179,8 +148,6 @@ export default function ClapCounter({ slug }: Props) {
     })
   }
 
-  console.log({ claps })
-
   return (
     <Button
       disabled={fetching}
@@ -190,7 +157,7 @@ export default function ClapCounter({ slug }: Props) {
     >
       <Icon lastClap={lastClap} />
       {!fetching && (
-        <AnimatePresence mode="popLayout" initial={false}>
+        <AnimatePresence mode="wait" initial={false}>
           <CounterText
             styleWidth={counterWidth}
             ref={counterRef}

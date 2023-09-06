@@ -2,6 +2,7 @@ import glob from "glob"
 import matter from "gray-matter"
 import { GetStaticPropsContext } from "next"
 import Image from "next/future/image"
+import Head from "next/head"
 import ReactMarkdown from "react-markdown"
 import { PluggableList } from "react-markdown/lib/react-markdown"
 import {
@@ -18,8 +19,9 @@ import Separator from "../../components/Separator"
 import SubTitle from "../../components/SubTitle"
 import Text from "../../components/Text"
 import Title from "../../components/Title"
+import ShareIcon from "../../public/share.svg"
 import { ThemeParams } from "../../styles/theme"
-import Head from "next/head"
+import Button from "../../components/Button"
 
 const SyntaxHighlighterComponent =
   SyntaxHighlighter as React.ComponentType<SyntaxHighlighterProps>
@@ -68,9 +70,10 @@ const ArticleFooter = styled.div`
 const InfoContainer = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
   width: auto;
 `
 
@@ -98,6 +101,20 @@ export default function BlogTemplate({
   originalArticle,
   author,
 }: Props) {
+  const canShare = !!global.navigator?.share
+
+  const onShare = async () => {
+    try {
+      await global.navigator?.share({
+        title,
+        text: description,
+        url: `${process.env.DOMAIN}/blog/${slug}`,
+      })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   return (
     <>
       <Head>
@@ -128,8 +145,8 @@ export default function BlogTemplate({
         <TitleWrapper>
           <Title size="big">{title}</Title>
           <InfoContainer>
-            <Text>{reformatDate(date)}</Text>
             <Text>{author}</Text>
+            <Text>{reformatDate(date)}</Text>
           </InfoContainer>
         </TitleWrapper>
         <Separator />
@@ -189,6 +206,11 @@ export default function BlogTemplate({
         <ArticleFooter>
           <InfoContainer>
             <ClapButton slug={slug} />
+            {canShare && (
+              <Button onClick={onShare}>
+                <ShareIcon />
+              </Button>
+            )}
           </InfoContainer>
           {originalArticle && (
             <Text>
