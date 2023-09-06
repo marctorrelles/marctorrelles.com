@@ -9,9 +9,9 @@
             <link>http://localhost:3000</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Wed, 06 Sep 2023 11:33:44 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 06 Sep 2023 11:47:49 GMT</lastBuildDate>
         <atom:link href="http://localhost:3000/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 06 Sep 2023 11:33:44 GMT</pubDate>
+        <pubDate>Wed, 06 Sep 2023 11:47:49 GMT</pubDate>
         <copyright><![CDATA[All rights reserved 2023, Marc Torrelles]]></copyright>
         <item>
             <title><![CDATA[Through the uncertainty of career transitions]]></title>

@@ -110,8 +110,12 @@ export default function ClapCounter({ slug }: Props) {
 
       try {
         setFetching(true)
-        const res = await fetch(`/api/claps/read?slug=${slug}`)
+
+        const res = await fetch(`/api/clap?slug=${slug}`, {
+          method: "GET",
+        })
         const { claps } = await res.json()
+
         setClaps(claps)
       } catch (err) {
         console.error(err)
@@ -129,7 +133,14 @@ export default function ClapCounter({ slug }: Props) {
   const resetTimer = (newClaps: number) => {
     timer = setTimeout(async () => {
       try {
-        await fetch(`/api/claps/clap?slug=${slug}&by=${newClaps}`)
+        await fetch(`/api/clap`, {
+          method: "POST",
+          body: JSON.stringify({
+            slug,
+            by: newClaps,
+          }),
+        })
+
         setTemporaryClaps(0)
         setClaps((claps ?? 0) + newClaps)
       } catch (err) {
