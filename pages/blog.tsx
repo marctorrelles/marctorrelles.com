@@ -7,6 +7,7 @@ import Title from "../components/Title"
 import getSortedPosts, { type Post } from "../lib/getSortedPosts"
 import { ThemeParams } from "../styles/theme"
 import generateRssFeed from "../lib/generateRSSFeed"
+import { formatDate } from "../lib/date"
 
 const Posts = styled.div`
   width: 100%;
@@ -25,11 +26,6 @@ const Post = styled.div`
 
 type Props = {
   posts: Post[]
-}
-
-function reformatDate(fullDate: string) {
-  const date = new Date(fullDate)
-  return date.toLocaleDateString("en")
 }
 
 export default function Blog({ posts }: Props) {
@@ -52,7 +48,7 @@ export default function Blog({ posts }: Props) {
                 {post.title}
               </Link>
               <Text>{post.short}</Text>
-              <Text kind="secondary">{reformatDate(post.date)}</Text>
+              <Text kind="secondary">{formatDate(post.date)}</Text>
               {index !== posts.length - 1 && <Separator />}
             </Post>
           )

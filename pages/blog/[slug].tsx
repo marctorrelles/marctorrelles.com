@@ -22,14 +22,10 @@ import Title from "../../components/Title"
 import ShareIcon from "../../public/share.svg"
 import { ThemeParams } from "../../styles/theme"
 import Button from "../../components/Button"
+import { formatDate } from "../../lib/date"
 
 const SyntaxHighlighterComponent =
   SyntaxHighlighter as React.ComponentType<SyntaxHighlighterProps>
-
-function reformatDate(fullDate: string) {
-  const date = new Date(fullDate)
-  return date.toLocaleDateString("en")
-}
 
 const HeroImage = styled.div`
   display: flex;
@@ -158,7 +154,7 @@ export default function BlogTemplate({
           <Title size="big">{title}</Title>
           <InfoContainer>
             <Text>{author}</Text>
-            <Text>{reformatDate(date)}</Text>
+            <Text>{formatDate(date)}</Text>
           </InfoContainer>
         </TitleWrapper>
         <Separator />
