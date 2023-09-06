@@ -3,7 +3,7 @@ import RSS from "rss"
 import getSortedPosts from "./getSortedPosts"
 
 export default async function generateRssFeed() {
-  const siteUrl = process.env.VERCEL_URL
+  const siteUrl = process.env.DOMAIN
   const posts = await getSortedPosts()
 
   const feedOptions = {

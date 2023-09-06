@@ -77,6 +77,7 @@ const InfoContainer = styled.div`
 type Props = {
   slug: string
   title: string
+  description: string
   date: string
   markdownBody: string
   heroImage: string
@@ -90,6 +91,7 @@ type Props = {
 export default function BlogTemplate({
   slug,
   title,
+  description,
   date,
   heroImage,
   markdownBody,
@@ -100,6 +102,16 @@ export default function BlogTemplate({
     <>
       <Head>
         <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta property="og:title" content={title} key="ogtitle" />
+        <meta property="og:description" content={description} key="ogdesc" />
+        <meta property="og:type" content="article" />
+        <meta property="og:image" content={heroImage} key="ogimage" />
+        <meta
+          property="og:url"
+          content={`${process.env.DOMAIN}/blog/${slug}`}
+          key="ogurl"
+        />
       </Head>
       <HeroImage>
         <Image
@@ -201,6 +213,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   const props: Props = {
     slug: typeof slug === "string" ? slug : slug.at(0),
     title: data.data.title,
+    description: data.data.short,
     date: data.data.date,
     heroImage: data.data.hero_image,
     author: data.data.author,
