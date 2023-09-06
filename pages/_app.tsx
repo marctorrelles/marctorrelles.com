@@ -39,6 +39,19 @@ export default class MyApp extends App {
       <>
         <Head>
           <title>marctorrelles</title>
+          <meta name="description" content="Marc Torrelles personal website" />
+          <meta property="og:title" content="marctorrelles" key="ogtitle" />
+          <meta
+            property="og:description"
+            content="Marc Torrelles personal website"
+            key="ogdesc"
+          />
+          <meta property="og:type" content="website" />
+          <meta
+            property="og:image"
+            content="/marctorrelles.png"
+            key="ogimage"
+          />
         </Head>
         <ThemeProvider>
           <Container
