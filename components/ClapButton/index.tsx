@@ -1,9 +1,9 @@
+import { AnimatePresence, motion } from "framer-motion"
+import { useEffect, useRef, useState } from "react"
 import { styled } from "styled-components"
 import { darkTheme, lightTheme } from "../../styles/theme"
 import Text from "../Text"
 import Icon from "./Icon"
-import { useEffect, useRef, useState } from "react"
-import { AnimatePresence, motion } from "framer-motion"
 
 const buttonVariants = {
   fetching: {
@@ -130,10 +130,10 @@ export default function ClapCounter({ slug }: Props) {
   // Hack to prevent the counter from jumping around
   const counterRef = useRef<HTMLParagraphElement>(null)
   useEffect(() => {
-    if (counterRef.current && !counterWidth && claps) {
+    if (counterRef.current && counterWidth === undefined && claps) {
       setCounterWidth(counterRef.current.offsetWidth)
     }
-  }, [counterRef.current, counterWidth, claps])
+  }, [counterRef.current, claps])
 
   useEffect(() => {
     async function fetchClaps() {
@@ -159,15 +159,12 @@ export default function ClapCounter({ slug }: Props) {
 
   const resetTimer = (newClaps: number) => {
     timer = setTimeout(async () => {
-      setFetching(true)
       try {
         await fetch(`/api/claps/clap?slug=${slug}&by=${newClaps}`)
         setTemporaryClaps(0)
-        setClaps(claps ?? 0 + newClaps)
+        setClaps((claps ?? 0) + newClaps)
       } catch (err) {
         console.error(err)
-      } finally {
-        setFetching(false)
       }
     }, 1400)
   }
@@ -182,6 +179,8 @@ export default function ClapCounter({ slug }: Props) {
     })
   }
 
+  console.log({ claps })
+
   return (
     <Button
       disabled={fetching}
@@ -191,11 +190,11 @@ export default function ClapCounter({ slug }: Props) {
     >
       <Icon lastClap={lastClap} />
       {!fetching && (
-        <AnimatePresence mode="wait" initial={false}>
+        <AnimatePresence mode="popLayout" initial={false}>
           <CounterText
             styleWidth={counterWidth}
             ref={counterRef}
-            key={claps?.toString()}
+            key={(claps ?? 0)?.toString()}
             {...clapIndicatorProps}
           >
             {claps ?? 0}
