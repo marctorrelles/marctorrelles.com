@@ -6,6 +6,7 @@ const LinkWrap = styled.span<{
   $active?: boolean
   $size?: Number
 }>`
+  cursor: pointer;
   > a {
     transition: color ease 0.25s;
     text-decoration: none;
