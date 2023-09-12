@@ -22,13 +22,12 @@ const About = () => (
       times I spend some extra time in the little details.
     </Text>
     <Text>
-      I've recently started to write stuff at my{" "}
-      <Link href={Links.Blog}>blog</Link>, not only technical but whatever that
-      comes my way. Check it out!
+      I've recently started to write stuff, not only technical but whatever that
+      comes my way. <Link href={Links.Posts}>Check it out!</Link>
     </Text>
     <Text>
-      I'm excited about new projects and collaborations! So don't hesitate to
-      contact me if you think we can make a good team.
+      I'm always excited about new projects and collaborations! So don't
+      hesitate to contact me if you think we can make a good team.
     </Text>
   </PageContainer>
 )

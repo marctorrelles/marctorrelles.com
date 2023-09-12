@@ -47,7 +47,7 @@ async function handlePost(
   let query: z.infer<typeof PostQuery>
 
   try {
-    query = PostQuery.parse(req.query)
+    query = PostQuery.parse(JSON.parse(req.body))
   } catch (error) {
     return res.status(400).json({ message: error.message })
   }

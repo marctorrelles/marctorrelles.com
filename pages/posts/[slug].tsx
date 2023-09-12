@@ -62,7 +62,7 @@ type Props = {
   author: string
 }
 
-export default function BlogTemplate({
+export default function Post({
   slug,
   title,
   description,
@@ -79,7 +79,7 @@ export default function BlogTemplate({
       await global.navigator?.share({
         title,
         text: description,
-        url: `${process.env.DOMAIN}/blog/${slug}`,
+        url: `${process.env.DOMAIN}/posts/${slug}`,
       })
     } catch (error) {
       console.error(error)
@@ -97,7 +97,7 @@ export default function BlogTemplate({
         <meta property="og:image" content={heroImage} key="ogimage" />
         <meta
           property="og:url"
-          content={`${process.env.DOMAIN}/blog/${slug}`}
+          content={`${process.env.DOMAIN}/posts/${slug}`}
           key="ogurl"
         />
       </Head>
@@ -169,11 +169,11 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 }
 
 export async function getStaticPaths() {
-  const blogs = glob.sync(`posts/**/*.md`)
-  const blogSlugs = blogs.map((file) =>
+  const posts = glob.sync(`posts/**/*.md`)
+  const postslugs = posts.map((file) =>
     file.split("/")[1].replace(/ /g, "-").slice(0, -3).trim()
   )
-  const paths = blogSlugs.map((slug) => {
+  const paths = postslugs.map((slug) => {
     return { params: { slug } }
   })
 

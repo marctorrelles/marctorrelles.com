@@ -6,7 +6,8 @@ import Link from "./Link"
 
 export enum Links {
   About = "/",
-  Blog = "/blog",
+  Posts = "/posts",
+  RSS = "/rss.xml",
 }
 
 const Container = styled.div`

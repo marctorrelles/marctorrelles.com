@@ -7,7 +7,7 @@ export default async function generateRssFeed() {
   const posts = await getSortedPosts()
 
   const feedOptions = {
-    title: "marctorrelles blog",
+    title: "marctorrelles posts",
     site_url: siteUrl,
     feed_url: `${siteUrl}/rss.xml`,
     image_url: `${siteUrl}/favicon.png`,

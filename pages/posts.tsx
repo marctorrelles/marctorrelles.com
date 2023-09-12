@@ -9,7 +9,7 @@ import { ThemeParams } from "../styles/theme"
 import generateRssFeed from "../lib/generateRSSFeed"
 import { formatDate } from "../lib/date"
 
-const Posts = styled.div`
+const StyledPosts = styled.div`
   width: 100%;
   gap: 1em;
   display: flex;
@@ -28,7 +28,7 @@ type Props = {
   posts: Post[]
 }
 
-export default function Blog({ posts }: Props) {
+export default function Posts({ posts }: Props) {
   const emptySlate = (
     <PageContainer>
       <Title>Coming soon 🔨</Title>
@@ -40,11 +40,11 @@ export default function Blog({ posts }: Props) {
 
   return (
     <PageContainer>
-      <Posts>
+      <StyledPosts>
         {posts.map((post, index) => {
           return (
             <Post key={post.slug}>
-              <Link href={`/blog/${post.slug}`} component={Title}>
+              <Link href={`/posts/${post.slug}`} component={Title}>
                 {post.title}
               </Link>
               <Text>{post.short}</Text>
@@ -53,7 +53,7 @@ export default function Blog({ posts }: Props) {
             </Post>
           )
         })}
-      </Posts>
+      </StyledPosts>
     </PageContainer>
   )
 }
