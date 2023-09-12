@@ -4,10 +4,18 @@ import styled from "styled-components"
 import { ThemeParams } from "../styles/theme"
 import Link from "./Link"
 
-export enum Links {
+enum LeftLinks {
   About = "/",
+}
+
+enum RightLinks {
   Posts = "/posts",
   RSS = "/rss.xml",
+}
+
+export const Links = {
+  ...LeftLinks,
+  ...RightLinks,
 }
 
 const Container = styled.div`
@@ -15,11 +23,10 @@ const Container = styled.div`
   padding: 3em;
   padding-top: 2em;
   padding-bottom: 2em;
+  max-width: 800px;
   align-items: center;
-  justify-content: center;
-  > *:not(:last-child) {
-    padding-bottom: 1em;
-  }
+  justify-content: space-between;
+  gap: 2em;
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
     padding: 1.5em;
     padding-bottom: 1em;
@@ -28,9 +35,7 @@ const Container = styled.div`
 `
 
 const LinksContainer = styled.div`
-  > *:not(:last-child) {
-    padding-right: 2em;
-  }
+  gap: 1.4em;
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
     > *:not(:last-child) {
       padding-bottom: 0.25em;
@@ -39,14 +44,23 @@ const LinksContainer = styled.div`
 `
 
 const Nav = () => {
-  const pathname = useRouter().pathname || Links.About
+  const pathname = useRouter().pathname || LeftLinks.About
 
   return (
     <Container>
       <LinksContainer>
-        {Object.entries(Links).map(([key, value]) => {
-          const active =
-            value === "/" ? value === pathname : pathname.includes(value)
+        {Object.entries(LeftLinks).map(([key, value]) => {
+          const active = value === pathname
+          return (
+            <Link key={value} href={value} active={active} size={1.2}>
+              {key}
+            </Link>
+          )
+        })}
+      </LinksContainer>
+      <LinksContainer>
+        {Object.entries(RightLinks).map(([key, value]) => {
+          const active = value === pathname
           return (
             <Link key={value} href={value} active={active} size={1.2}>
               {key}

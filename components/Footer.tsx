@@ -15,7 +15,7 @@ const LinksContainer = styled.div`
   align-items: center;
   display: flex;
   flex-direction: row;
-  gap: 1em;
+  gap: 1.4em;
 `
 
 enum Social {
