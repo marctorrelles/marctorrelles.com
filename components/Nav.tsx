@@ -10,6 +10,7 @@ enum LeftLinks {
 
 enum RightLinks {
   Posts = "/posts",
+  Photos = "/photos",
   RSS = "/rss.xml",
 }
 

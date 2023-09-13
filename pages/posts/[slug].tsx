@@ -3,11 +3,8 @@ import matter from "gray-matter"
 import { GetStaticPropsContext } from "next"
 import Image from "next/future/image"
 import Head from "next/head"
-import {
-  Prism as SyntaxHighlighter,
-  SyntaxHighlighterProps,
-} from "react-syntax-highlighter"
 import { styled } from "styled-components"
+import ArticleFooter from "../../components/ArticleFooter"
 import Button from "../../components/Button"
 import ClapButton from "../../components/ClapButton"
 import Link from "../../components/Link"
@@ -36,16 +33,6 @@ const HeroImage = styled.div`
 const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
-`
-
-const ArticleFooter = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  width: auto;
 `
 
 type Props = {
@@ -116,7 +103,7 @@ export default function Post({
         <TitleWrapper>
           <Title size="big">{title}</Title>
           <Text>{author}</Text>
-          <Text>{formatDate(date)}</Text>
+          <Text kind="secondary">{formatDate(date)}</Text>
           {originalArticle && (
             <Text>
               This article was originally posted on{" "}
@@ -130,7 +117,7 @@ export default function Post({
         <MarkdownBody>{markdownBody}</MarkdownBody>
         <Separator />
         <ArticleFooter>
-          <ClapButton slug={slug} />
+          <ClapButton slug={`post-${slug}`} />
           {canShare && (
             <Button onClick={onShare}>
               <ShareIcon />
