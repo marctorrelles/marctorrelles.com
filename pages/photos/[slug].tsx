@@ -15,6 +15,7 @@ import getSortedPhotos, {
 } from "../../lib/getSortedPhotos"
 import ShareIcon from "../../public/share.svg"
 import FadeInImage from "../../components/FadeInImage"
+import { ThemeParams } from "../../styles/theme"
 
 type Props = {
   photoSet: PhotoSet
@@ -23,7 +24,10 @@ type Props = {
 const PhotoSet = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2em;
+  gap: 3em;
+  @media (min-width: ${ThemeParams.MobileBreakpoint}px) {
+    1.5em;
+  }
 `
 
 export default function Post({ photoSet }: Props) {
