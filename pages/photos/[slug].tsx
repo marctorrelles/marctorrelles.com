@@ -46,7 +46,6 @@ export default function Post({ photoSet }: Props) {
   return (
     <PageContainer>
       <Title size="big">{title}</Title>
-      <Text>{author}</Text>
       <Text kind="secondary">{formatDate(date)}</Text>
       <Separator />
       <PhotoSet>

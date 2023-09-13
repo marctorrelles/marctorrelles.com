@@ -103,7 +103,6 @@ export default function Post({
       <PageContainer>
         <TitleWrapper>
           <Title size="big">{title}</Title>
-          <Text>{author}</Text>
           <Text kind="secondary">{formatDate(date)}</Text>
           {originalArticle && (
             <Text>
