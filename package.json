@@ -38,6 +38,7 @@
     "@types/react-syntax-highlighter": "^15.5.7",
     "@types/rss": "^0.0.30",
     "@types/styled-components": "^5.1.26",
+    "next-remote-watch": "^2.0.0",
     "typescript": "^5.1.6"
   },
   "prettier": {
