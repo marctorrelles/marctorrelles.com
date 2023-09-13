@@ -1,14 +1,13 @@
 import { styled } from "styled-components"
+import FadeInImage from "../components/FadeInImage"
 import Link from "../components/Link"
 import PageContainer from "../components/PageContainer"
 import Separator from "../components/Separator"
 import Text from "../components/Text"
 import Title from "../components/Title"
-import { ThemeParams } from "../styles/theme"
-import generateRssFeed from "../lib/generateRSSFeed"
 import { formatDate } from "../lib/date"
 import getSortedPhotos, { PhotoSet } from "../lib/getSortedPhotos"
-import Image from "next/future/image"
+import { ThemeParams } from "../styles/theme"
 
 const StyledPhotos = styled.div`
   width: 100%;
@@ -41,11 +40,12 @@ export default function Photos({ photoSet }: Props) {
                 {photo.title}
               </Link>
               <Link href={`/photos/${photo.slug}`}>
-                <Image
+                <FadeInImage
                   src={photo.cover}
                   alt={photo.title}
                   width={800}
                   height={600}
+                  priority={index < 3}
                 />
               </Link>
               <Text kind="secondary">{formatDate(photo.date)}</Text>

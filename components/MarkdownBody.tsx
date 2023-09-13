@@ -1,4 +1,4 @@
-import Image from "next/future/image"
+import { useEffect, useState } from "react"
 import ReactMarkdown from "react-markdown"
 import { PluggableList } from "react-markdown/lib/react-markdown"
 import {
@@ -8,14 +8,14 @@ import {
 import rehypeRaw from "rehype-raw"
 import { styled } from "styled-components"
 import { ThemeParams } from "../styles/theme"
+import FadeInImage from "./FadeInImage"
 import Link from "./Link"
 import SubTitle from "./SubTitle"
 import Text from "./Text"
 import Title from "./Title"
-import { useEffect, useState } from "react"
 
 import darkStyle from "react-syntax-highlighter/dist/cjs/styles/prism/a11y-dark"
-import lightStyle from "react-syntax-highlighter/dist/cjs/styles/prism/index"
+import lightStyle from "react-syntax-highlighter/dist/cjs/styles/prism"
 
 const SyntaxHighlighterComponent =
   SyntaxHighlighter as React.ComponentType<SyntaxHighlighterProps>
@@ -112,7 +112,7 @@ export default function MarkdownBody({ children }: Props) {
         img({ src, alt }) {
           return (
             <ImageWrapper>
-              <Image
+              <FadeInImage
                 src={src}
                 alt={alt}
                 width={976}

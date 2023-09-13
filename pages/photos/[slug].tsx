@@ -14,6 +14,7 @@ import getSortedPhotos, {
   getPhotoSet,
 } from "../../lib/getSortedPhotos"
 import ShareIcon from "../../public/share.svg"
+import FadeInImage from "../../components/FadeInImage"
 
 type Props = {
   photoSet: PhotoSet
@@ -49,12 +50,13 @@ export default function Post({ photoSet }: Props) {
       <Text kind="secondary">{formatDate(date)}</Text>
       <Separator />
       <PhotoSet>
-        {photos.map((photo) => (
-          <Image
+        {photos.map((photo, index) => (
+          <FadeInImage
             key={photo}
             src={photo}
             width={800}
             height={600}
+            priority={index < 3}
             alt={photo.split("/").pop().split(".").shift() || ""}
           />
         ))}

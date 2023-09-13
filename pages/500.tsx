@@ -4,12 +4,13 @@ import Text from "../components/Text"
 import Link from "../components/Link"
 import { Links } from "../components/Nav"
 import Image from "next/image"
+import FadeInImage from "../components/FadeInImage"
 
 const Home = () => (
   <PageContainer>
     <Title>500 - Server error</Title>
     <Text>
-      <Image
+      <FadeInImage
         width="1920"
         height="1080"
         priority

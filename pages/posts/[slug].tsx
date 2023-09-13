@@ -16,6 +16,7 @@ import Title from "../../components/Title"
 import { formatDate } from "../../lib/date"
 import ShareIcon from "../../public/share.svg"
 import { ThemeParams } from "../../styles/theme"
+import FadeInImage from "../../components/FadeInImage"
 
 const HeroImage = styled.div`
   display: flex;
@@ -89,7 +90,7 @@ export default function Post({
         />
       </Head>
       <HeroImage>
-        <Image
+        <FadeInImage
           width="1920"
           height="1080"
           priority
