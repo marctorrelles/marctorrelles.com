@@ -2,18 +2,23 @@ import App from "next/app"
 import Head from "next/head"
 import styled from "styled-components"
 
-import Nav from "../components/Nav"
+import Nav, { NAV_HEIGHT } from "../components/Nav"
 import Footer from "../components/Footer"
 
 import { ThemeProvider } from "../styles/ThemeProvider"
 import loadFonts from "../styles/loadFonts"
 import { AnimatePresence, motion } from "framer-motion"
+import { ThemeParams } from "../styles/theme"
 
 const Container = motion(styled.div`
   height: 100%;
   max-width: 100%;
   flex-direction: column;
   justify-content: space-between;
+  padding-top: ${NAV_HEIGHT.regular};
+  @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
+    padding-top: ${NAV_HEIGHT.mobile};
+  }
 `)
 
 const ContentContainer = motion(styled.div`

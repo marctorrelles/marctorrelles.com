@@ -66,7 +66,10 @@ const Link = ({
           {children}
         </a>
       ) : (
-        <NextLink href={href}>{children}</NextLink>
+        // TODO: Fix scroll, use an animation or something
+        <NextLink href={href} scroll={false}>
+          {children}
+        </NextLink>
       )}
     </LinkWrap>
   )
