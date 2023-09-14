@@ -10,16 +10,19 @@ hidden: true
 ---
 
 Hey there! When programming we tend to go automatic a lot of times: we learn once, we apply forever.
-This is cool, but some patterns in Reactthat I see very often can be easily avoided just paying some
-more attention.
+This is cool, but some very bad patterns in React that I see very often can be easily avoided just
+paying some more attention.
 
-Let's see which are these, and make sure to pay attention next time you are reviewing these PRs!
+Let's see which are these. And make sure to pay attention next time you are reviewing these Pull
+Requests!
 
 # Nested renders in components
 
+Let's see the following example. Do you see something wrong?
+
 ```tsx
-function MyComponent ({ children, count }: React.ChildrenWithProps<Props>) {
-  function renderElement () {
+function ParentComponent ({ children, count }: React.ChildrenWithProps<Props>) {
+  function InnerComponent () {
     return (
       <SomeComponent>
         {count === 0 ? <ZeroCount /> : <OtherCount />}
@@ -27,24 +30,27 @@ function MyComponent ({ children, count }: React.ChildrenWithProps<Props>) {
     )
   }
 
-  function renderOtherElement () {
-    return (
-      <MyThing>
-        <MyOtherThing>
-          <MyThirdThing />
-        </MyOtherThing>
-      </MyThing>
-    )
-  }
-
   return {
-    <Page>
-      {renderElement()}
-      {renderOtherElement()}
-    </Page>
+    <Component>
+      <InnerComponent />
+    </Component>
   }
 }
 ```
+
+Here, we are instantiating `InnerComponent` each time that `ParentComponent` renders. This has a
+couple of serious implications.
+
+Firs, we are forcing `ParentComponent` to instantiate `InnerComponent` each time that it renders,
+which hits in performance as we need to free and allocate resources for that new component.
+
+But moreover, it has a serious implications in terms of the lifecycle that a React component should
+follow. Each time that `ParentComponent` renders, `InnerComponent` is mounted and unmounted, so it
+would reset all the hooks that react when it mounts or unmounts, breaking the expected behviour we
+would expect.
+
+You can check a more detailed example in
+[this CodeSandbox](https://codesandbox.io/s/child-component-inside-a-parent-component-4fyvjm).
 
 # Mixing logic with views
 

@@ -1,8 +1,11 @@
 import { motion } from "framer-motion"
 import { ComponentProps, useState } from "react"
 import NextImage from "next/future/image"
+import styled from "styled-components"
 
-const ImageContainer = motion.div
+const ImageContainer = motion(styled.div`
+  width: 100%;
+`)
 
 const FadeInImage = (props: ComponentProps<typeof NextImage>) => {
   const [isLoaded, setIsLoaded] = useState(false)

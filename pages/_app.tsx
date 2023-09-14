@@ -1,4 +1,4 @@
-import App from "next/app"
+import App, { AppInitialProps } from "next/app"
 import Head from "next/head"
 import styled from "styled-components"
 
@@ -9,6 +9,8 @@ import { ThemeProvider } from "../styles/ThemeProvider"
 import loadFonts from "../styles/loadFonts"
 import { AnimatePresence, motion } from "framer-motion"
 import { ThemeParams } from "../styles/theme"
+import { NextComponentType, NextPageContext } from "next"
+import { Router } from "next/router"
 
 const Container = motion(styled.div`
   height: 100%;
@@ -35,6 +37,16 @@ export default class MyApp extends App {
   async componentDidMount() {
     await loadFonts()
     this.setState({ fontsLoaded: true })
+  }
+
+  // Missing some props, ignoring for simplicity
+  componentDidUpdate(prevProps: Readonly<{ router: Router }>) {
+    prevProps.router.events.on("routeChangeComplete", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      })
+    })
   }
 
   render() {
