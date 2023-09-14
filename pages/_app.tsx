@@ -73,11 +73,11 @@ export default class MyApp extends App {
           >
             <ContentContainer>
               <Nav />
-              <AnimatePresence mode="wait" initial={false}>
+              <AnimatePresence mode="sync" initial={false}>
                 <ContentContainer
-                  initial={{ opacity: 0 }}
+                  initial={{ opacity: 0, position: "relative" }}
                   animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
+                  exit={{ opacity: 0, position: "absolute" }}
                   key={router.pathname}
                 >
                   <Component {...pageProps} />
