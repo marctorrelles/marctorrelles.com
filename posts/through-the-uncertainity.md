@@ -7,9 +7,8 @@ short: >
   we'll uncover the art of embracing change and charting a course towards a more fulfilling
   professional life.
 author: Marc Torrelles
-date: "2023-09-06T00:00:00.000Z"
+date: "2023-10-16T00:00:00.000Z"
 hero_image: /through-the-uncertainity/hero.jpg
-hidden: true
 ---
 
 Have you ever felt the itch for change, the desire of something new and shining, even when you're
