@@ -19,8 +19,9 @@ const LinksContainer = styled.div`
 `
 
 enum Social {
+  LinkedIn = "https://linkedin.com/in/marctorrelles",
   GitHub = "https://github.com/marctorrelles",
-  Twitter = "https://twitter.com/marctorrelles",
+  X = "https://x.com/marctorrelles",
   Email = "mailto:marctorrelles@gmail.com",
 }
 
