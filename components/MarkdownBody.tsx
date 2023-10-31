@@ -13,6 +13,7 @@ import Link from "./Link"
 import SubTitle from "./SubTitle"
 import Text from "./Text"
 import Title from "./Title"
+import NextImage from "next/future/image"
 
 import darkStyle from "react-syntax-highlighter/dist/cjs/styles/prism/a11y-dark"
 import lightStyle from "react-syntax-highlighter/dist/cjs/styles/prism"
@@ -20,11 +21,11 @@ import lightStyle from "react-syntax-highlighter/dist/cjs/styles/prism"
 const SyntaxHighlighterComponent =
   SyntaxHighlighter as React.ComponentType<SyntaxHighlighterProps>
 
-const ImageWrapper = styled.figure`
+const ImageWrapper = styled.figure<{ imgNoPadding: boolean }>`
   position: relative;
   margin: 0;
-  padding-left: 3rem;
-  padding-right: 3rem;
+  padding-left: ${({ imgNoPadding }) => (imgNoPadding ? 0 : 3)}rem;
+  padding-right: ${({ imgNoPadding }) => (imgNoPadding ? 0 : 3)}rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
@@ -41,6 +42,7 @@ const Em = styled(Text)`
 
 type Props = {
   children: string
+  imgNoPadding?: boolean
 }
 
 function getColorScheme() {
@@ -52,7 +54,10 @@ function getColorScheme() {
     : "light"
 }
 
-export default function MarkdownBody({ children }: Props) {
+export default function MarkdownBody({
+  children,
+  imgNoPadding = false,
+}: Props) {
   const [colorScheme, setColorScheme] = useState<"dark" | "light">(
     getColorScheme()
   )
@@ -111,7 +116,7 @@ export default function MarkdownBody({ children }: Props) {
         },
         img({ src, alt }) {
           return (
-            <ImageWrapper>
+            <ImageWrapper imgNoPadding={imgNoPadding}>
               <FadeInImage
                 src={src}
                 alt={alt}

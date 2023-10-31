@@ -17,6 +17,7 @@ enum LeftLinks {
 
 enum RightLinks {
   Posts = "/posts",
+  Projects = "/projects",
   Photos = "/photos",
   RSS = "/rss.xml",
 }
@@ -61,6 +62,8 @@ const ContainerContent = styled.div`
 const LinksContainer = styled.div`
   gap: 1.4em;
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
+    font-size: 0.9em;
+    gap: 1.2em;
     > *:not(:last-child) {
       padding-bottom: 0.25em;
     }
