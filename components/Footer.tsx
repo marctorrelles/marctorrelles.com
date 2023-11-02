@@ -27,6 +27,11 @@ enum Social {
 
 type SocialKey = keyof typeof Social
 
+function keyText(key: string) {
+  if (key === "X") return <span style={{ fontSize: "1.2em" }}>𝕏</span>
+  return key
+}
+
 const Footer = () => (
   <Container>
     <LinksContainer>
@@ -34,7 +39,7 @@ const Footer = () => (
         ([key, value]: [SocialKey, (typeof Social)[SocialKey]]) => (
           <Text key={key}>
             <Link href={value} active={false} target="_blank">
-              {key}
+              {keyText(key)}
             </Link>
           </Text>
         )
