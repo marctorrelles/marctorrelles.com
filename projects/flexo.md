@@ -19,3 +19,5 @@ Store](https://apps.apple.com/app/flexo-focus-pomodoro-timer/id6469589285) now.
 ![Flexo screenshots](/flexo/web1.png)
 
 ![Flexo screenshots](/flexo/web2.png)
+
+![Flexo screenshots](/flexo/web3.png)
