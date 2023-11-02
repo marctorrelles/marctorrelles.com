@@ -1,5 +1,5 @@
 export enum ThemeParams {
-  MobileBreakpoint = 700
+  MobileBreakpoint = 700,
 }
 
 export type Theme = {
@@ -10,15 +10,18 @@ export type Theme = {
 }
 
 export const darkTheme: Theme = {
-  background: '#222222',
-  dark: 'rgba(255, 255, 255, 0.1)',
-  primary: '#eeeeee',
-  secondary: '#FAF888'
+  background: "#111111",
+  dark: "rgba(255, 255, 255, 0.1)",
+  primary: "#eeeeee",
+  secondary: "#999999",
 }
 
 export const lightTheme: Theme = {
-  background: '#f7f8f6',
-  dark: 'rgba(0, 0, 0, 0.1)',
-  primary: '#040404',
-  secondary: '#38948e'
+  background: "#EEEEEE",
+  dark: "rgba(0, 0, 0, 0.1)",
+  primary: "#040404",
+  secondary: "#666666",
 }
+
+export const MAIN_SEPARATION = 32
+export const INNER_SEPARATION = 42

@@ -1,37 +1,40 @@
-import App, { AppInitialProps } from "next/app"
+import { AnimatePresence, motion } from "framer-motion"
+import App from "next/app"
 import Head from "next/head"
+import { Router } from "next/router"
 import styled from "styled-components"
-
-import Nav, { NAV_HEIGHT } from "../components/Nav"
 import Footer from "../components/Footer"
-
+import Nav from "../components/Nav"
 import { ThemeProvider } from "../styles/ThemeProvider"
 import loadFonts from "../styles/loadFonts"
-import { AnimatePresence, motion } from "framer-motion"
-import { ThemeParams } from "../styles/theme"
-import { NextComponentType, NextPageContext } from "next"
-import { Router } from "next/router"
+import { MAIN_SEPARATION, darkTheme, lightTheme } from "../styles/theme"
+import Name from "../components/Name"
 
 const Container = motion(styled.div`
-  height: 100%;
-  max-width: 100%;
+  position: absolute;
+  height: calc(100% - ${MAIN_SEPARATION * 2}px);
+  width: calc(100% - ${MAIN_SEPARATION * 2}px);
+  min-height: 500px;
+  margin: ${MAIN_SEPARATION}px;
+  border: 1px solid #717171;
   flex-direction: column;
-  justify-content: space-between;
-  padding-top: ${NAV_HEIGHT.regular};
-  @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
-    padding-top: ${NAV_HEIGHT.mobile};
+  background: ${lightTheme.background};
+  @media (prefers-color-scheme: dark) {
+    background: ${darkTheme.background};
   }
 `)
 
 const ContentContainer = motion(styled.div`
   width: 100%;
+  min-height: 100%;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  overflow: auto;
 `)
 
 export default class MyApp extends App {
   state = {
-    fontsLoaded: false,
+    fontsLoaded: true,
   }
 
   async componentDidMount() {
@@ -84,6 +87,7 @@ export default class MyApp extends App {
             initial="loading"
           >
             <ContentContainer>
+              <Name />
               <Nav />
               <AnimatePresence mode="sync" initial={false}>
                 <ContentContainer
