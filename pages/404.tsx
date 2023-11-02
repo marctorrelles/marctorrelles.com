@@ -3,7 +3,6 @@ import Title from "../components/Title"
 import Text from "../components/Text"
 import Link from "../components/Link"
 import { Links } from "../components/Nav"
-import Image from "next/image"
 import FadeInImage from "../components/FadeInImage"
 
 const Home = () => (

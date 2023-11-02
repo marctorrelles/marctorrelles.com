@@ -1,13 +1,15 @@
 import styled from "styled-components"
 import Link from "./Link"
 import Text from "./Text"
+import { MAIN_SEPARATION } from "../styles/theme"
 
 const Container = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 1em;
-  width: 100%;
+  position: absolute;
+  right: 0;
+  bottom: -${MAIN_SEPARATION}px;
 `
 
 const LinksContainer = styled.div`
@@ -34,10 +36,10 @@ function keyText(key: string) {
 
 const Footer = () => (
   <Container>
-    <LinksContainer>
+    <LinksContainer style={{}}>
       {Object.entries(Social).map(
         ([key, value]: [SocialKey, (typeof Social)[SocialKey]]) => (
-          <Text key={key}>
+          <Text variant="sidebar" key={key}>
             <Link href={value} active={false} target="_blank">
               {keyText(key)}
             </Link>

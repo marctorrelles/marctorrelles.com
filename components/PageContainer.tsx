@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 
-import { ThemeParams } from "../styles/theme"
+import { INNER_SEPARATION } from "../styles/theme"
 
 type Props = {
   children: React.ReactNode
@@ -9,21 +9,14 @@ type Props = {
 
 const Container = styled.div<{ noGap?: boolean }>`
   width: 100%;
-  max-width: 800px;
-  padding: 3em;
-  padding-top: 2.5em;
-  padding-bottom: 2.5em;
+  height: 100%;
+  max-width: 1000px;
+  padding: ${INNER_SEPARATION}px;
+  padding-top: 200px;
+  padding-right: 300px;
   flex-direction: column;
-  justify-content: center;
-  @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
-    padding: 1.5em;
-    padding-top: 1em;
-    padding-bottom: 1em;
-  }
 `
 
-const PageContainer = ({ children }: Props) => (
-  <Container>{children}</Container>
-)
+const PageContainer = ({ children }: Props) => <Container>{children}</Container>
 
 export default PageContainer

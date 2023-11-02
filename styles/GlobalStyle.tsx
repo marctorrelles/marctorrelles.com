@@ -9,16 +9,16 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     margin: 0;
     transition: background ease 0.25s, color ease 0.25s;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: "Source Serif Pro", "sans-serif";
     font-weight: 400;
     font-display: swap;
     line-height: 1.6;
-    background: ${lightTheme.background};
+    background: white;
     color: ${lightTheme.primary};
   }
   @media (prefers-color-scheme: dark) {
     body {
-      background: ${darkTheme.background};
+      background: black;
       color: ${darkTheme.primary};
     }
   }
