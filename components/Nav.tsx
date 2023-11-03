@@ -27,13 +27,11 @@ const Container = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  z-index: 1;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   flex-direction: column;
   width: 100%;
-  max-width: 800px;
   padding: ${INNER_SEPARATION.Desktop}px;
   z-index: 2;
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
@@ -46,11 +44,12 @@ const Container = styled.div`
 const MobileContainer = styled(motion.div)`
   position: absolute;
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: flex-end;
   width: 100%;
   height: 100%;
+  z-index: 2;
   top: 0;
   left: 0;
   padding: ${INNER_SEPARATION.Mobile}px;
@@ -71,9 +70,9 @@ const BarWrapper = styled.div`
   height: 1.2em;
   width: 1.4em;
   cursor: pointer;
-  z-index: 2;
+  z-index: 3;
   position: absolute;
-  top: ${INNER_SEPARATION.Mobile}px;
+  top: ${INNER_SEPARATION.Mobile + 8}px;
   right: ${INNER_SEPARATION.Mobile}px;
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
     display: flex;
