@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   left: 0;
   display: flex;
   flex-direction: column;
+  z-index: 4;
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
     padding: ${INNER_SEPARATION.Mobile}px;
   }

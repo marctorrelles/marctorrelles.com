@@ -7,22 +7,32 @@ import Footer from "../components/Footer"
 import Nav from "../components/Nav"
 import { ThemeProvider } from "../styles/ThemeProvider"
 import loadFonts from "../styles/loadFonts"
-import { MAIN_SEPARATION, darkTheme, lightTheme } from "../styles/theme"
+import {
+  MAIN_SEPARATION,
+  ThemeParams,
+  darkTheme,
+  lightTheme,
+} from "../styles/theme"
 import Name from "../components/Name"
 
 const Container = motion(styled.div`
   position: absolute;
   height: calc(100% - ${MAIN_SEPARATION * 2}px);
   width: calc(100% - ${MAIN_SEPARATION * 2}px);
-  min-height: 500px;
-  min-width: 400px;
+  min-height: 280px;
+  min-width: 320px;
   margin: ${MAIN_SEPARATION}px;
   border: 1px solid #717171;
   flex-direction: column;
-  overflow: hidden;
   background: ${lightTheme.background};
   @media (prefers-color-scheme: dark) {
     background: ${darkTheme.background};
+  }
+  @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
+    width: calc(100% - ${MAIN_SEPARATION}px);
+    margin-left: ${MAIN_SEPARATION / 2}px;
+    margin-right: ${MAIN_SEPARATION / 2}px;
+    overflow: hidden;
   }
 `)
 
@@ -32,6 +42,8 @@ const ContentContainer = motion(styled.div`
   flex-direction: column;
   align-items: flex-start;
   overflow: auto;
+  top: 0;
+  bottom: 0;
 `)
 
 export default class MyApp extends App {
@@ -91,9 +103,9 @@ export default class MyApp extends App {
             <ContentContainer>
               <AnimatePresence mode="sync" initial={false}>
                 <ContentContainer
-                  initial={{ opacity: 0 }}
+                  initial={{ opacity: 0, position: "relative" }}
                   animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
+                  exit={{ opacity: 0, position: "absolute" }}
                   key={router.pathname}
                 >
                   <Component {...pageProps} />

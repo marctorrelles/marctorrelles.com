@@ -7,7 +7,7 @@ type Variant = "regular" | "sidebar" | "nav"
 const LinkWrap = styled.span<{
   $active?: boolean
   $size?: Number
-  $variant?: Variant
+  $variant: Variant
 }>`
   cursor: pointer;
   > a {
@@ -26,7 +26,9 @@ const LinkWrap = styled.span<{
     }}
     transition: color ease 0.25s;
     ${({ $variant }) =>
-      $variant !== "nav" ? `border-bottom: 1px solid ${lightTheme.dark};` : ""}
+      $variant === "regular"
+        ? `border-bottom: 1px solid ${lightTheme.dark};`
+        : ""}
     text-decoration: none;
     ${({ $size }) => $size && `font-size: ${$size.toString()}em`};
     color: ${({ $active, $variant }) =>
@@ -53,7 +55,9 @@ const LinkWrap = styled.span<{
   @media (prefers-color-scheme: dark) {
     > a {
       ${({ $variant }) =>
-        $variant !== "nav" ? `border-bottom: 1px solid ${darkTheme.dark};` : ""}
+        $variant === "regular"
+          ? `border-bottom: 1px solid ${darkTheme.dark};`
+          : ""}
       color: ${({ $active, $variant }) =>
         $active
           ? darkTheme.secondary
@@ -91,7 +95,7 @@ const Link = ({
   size,
   href,
   component,
-  variant,
+  variant = "regular",
   children,
 }: Props) => {
   return (

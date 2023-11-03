@@ -1,5 +1,5 @@
 export enum ThemeParams {
-  MobileBreakpoint = 700,
+  MobileBreakpoint = 850,
 }
 
 export type Theme = {
