@@ -24,4 +24,7 @@ export const lightTheme: Theme = {
 }
 
 export const MAIN_SEPARATION = 32
-export const INNER_SEPARATION = 42
+export const INNER_SEPARATION = {
+  Desktop: 42,
+  Mobile: 24,
+}

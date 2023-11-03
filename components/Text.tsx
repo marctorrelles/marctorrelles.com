@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { ThemeParams } from "../styles/theme"
 
 type Kind = "primary" | "secondary"
 type Variant = "sidebar" | "regular"
@@ -21,6 +22,10 @@ const Text = styled.p<Props>`
     variant === "sidebar" ? "uppercase" : "inherit"};
   font-family: ${({ variant }) =>
     variant === "sidebar" ? "monospace" : "inherit"};
+  @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
+    font-size: ${({ variant }) =>
+      variant === "regular" || !variant ? 1 : 0.9}em;
+  }
 `
 
 export default Text

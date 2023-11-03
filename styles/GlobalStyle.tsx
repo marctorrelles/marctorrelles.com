@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     margin: 0;
     transition: background ease 0.25s, color ease 0.25s;
-    font-family: "Source Serif Pro", "sans-serif";
+    font-family: "Lora", "sans-serif";
     font-weight: 400;
     font-display: swap;
     line-height: 1.6;
@@ -56,6 +56,33 @@ const GlobalStyle = createGlobalStyle`
   img {
     width: 100%;
     height: auto;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: ${lightTheme.background} ${lightTheme.secondary};
+    @media (prefers-color-scheme: dark) {
+      scrollbar-color: ${darkTheme.background} ${darkTheme.secondary};
+    }
+  }
+
+  /* Works on Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: ${lightTheme.dark};
+    @media (prefers-color-scheme: dark) {
+      background: ${darkTheme.dark};
+    }
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: ${lightTheme.background};
+    border-radius: 0;
+    @media (prefers-color-scheme: dark) {
+      background-color: ${darkTheme.background};
+    }
   }
 `
 

@@ -1,7 +1,6 @@
 import { styled } from "styled-components"
 import Link from "../components/Link"
 import PageContainer from "../components/PageContainer"
-import Separator from "../components/Separator"
 import Text from "../components/Text"
 import Title from "../components/Title"
 import getSortedPosts, { type Post } from "../lib/getSortedPosts"
@@ -49,7 +48,6 @@ export default function Posts({ posts }: Props) {
               </Link>
               <Text>{post.short}</Text>
               <Text kind="secondary">{formatDate(post.date)}</Text>
-              {index !== posts.length - 1 && <Separator />}
             </Post>
           )
         })}

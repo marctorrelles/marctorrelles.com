@@ -8,8 +8,8 @@ const Container = styled.div`
   align-items: center;
   text-align: center;
   position: absolute;
-  right: 0;
-  bottom: -${MAIN_SEPARATION}px;
+  right: -${MAIN_SEPARATION - 10}px;
+  bottom: ${MAIN_SEPARATION - 10}px;
 `
 
 const LinksContainer = styled.div`
@@ -17,7 +17,9 @@ const LinksContainer = styled.div`
   align-items: center;
   display: flex;
   flex-direction: row;
-  gap: 1.4em;
+  gap: 0.3em;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
 `
 
 enum Social {
@@ -25,6 +27,7 @@ enum Social {
   GitHub = "https://github.com/marctorrelles",
   X = "https://x.com/marctorrelles",
   Email = "mailto:marctorrelles@gmail.com",
+  RSS = "/rss.xml",
 }
 
 type SocialKey = keyof typeof Social
@@ -40,7 +43,7 @@ const Footer = () => (
       {Object.entries(Social).map(
         ([key, value]: [SocialKey, (typeof Social)[SocialKey]]) => (
           <Text variant="sidebar" key={key}>
-            <Link href={value} active={false} target="_blank">
+            <Link variant="sidebar" href={value} active={false} target="_blank">
               {keyText(key)}
             </Link>
           </Text>
