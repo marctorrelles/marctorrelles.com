@@ -9,7 +9,7 @@ const Container = styled.div`
 `
 
 const StyledSeparator = styled.div`
-  height: 2px;
+  height: 1px;
   width: 100%;
   width: 100%;
   background-color: ${lightTheme.dark};

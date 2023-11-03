@@ -5,6 +5,7 @@ type Size = "normal" | "big"
 
 const StyledTitle = styled.h1<{ size: Size }>`
   font-size: ${({ size }) => (size === "big" ? 2.6 : 2)}rem;
+  line-height: ${({ size }) => (size === "big" ? 3 : 2.6)}rem;
   font-weight: 400;
   // text-align: ${({ size }) => (size === "big" ? "center" : "left")};
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {

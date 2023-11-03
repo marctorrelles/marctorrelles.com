@@ -15,9 +15,11 @@ const Container = motion(styled.div`
   height: calc(100% - ${MAIN_SEPARATION * 2}px);
   width: calc(100% - ${MAIN_SEPARATION * 2}px);
   min-height: 500px;
+  min-width: 400px;
   margin: ${MAIN_SEPARATION}px;
   border: 1px solid #717171;
   flex-direction: column;
+  overflow: hidden;
   background: ${lightTheme.background};
   @media (prefers-color-scheme: dark) {
     background: ${darkTheme.background};
@@ -34,7 +36,7 @@ const ContentContainer = motion(styled.div`
 
 export default class MyApp extends App {
   state = {
-    fontsLoaded: true,
+    fontsLoaded: false,
   }
 
   async componentDidMount() {
@@ -87,18 +89,18 @@ export default class MyApp extends App {
             initial="loading"
           >
             <ContentContainer>
-              <Name />
-              <Nav />
               <AnimatePresence mode="sync" initial={false}>
                 <ContentContainer
-                  initial={{ opacity: 0, position: "relative" }}
+                  initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  exit={{ opacity: 0, position: "absolute" }}
+                  exit={{ opacity: 0 }}
                   key={router.pathname}
                 >
                   <Component {...pageProps} />
                 </ContentContainer>
               </AnimatePresence>
+              <Name />
+              <Nav />
             </ContentContainer>
             <Footer />
           </Container>

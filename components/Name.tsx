@@ -1,28 +1,46 @@
 import styled from "styled-components"
-import { INNER_SEPARATION, darkTheme, lightTheme } from "../styles/theme"
+import {
+  INNER_SEPARATION,
+  ThemeParams,
+  darkTheme,
+  lightTheme,
+} from "../styles/theme"
 
 const Wrapper = styled.div`
-  padding: ${INNER_SEPARATION}px;
+  padding: ${INNER_SEPARATION.Desktop}px;
   position: absolute;
   top: 0;
   left: 0;
   display: flex;
   flex-direction: column;
+  @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
+    padding: ${INNER_SEPARATION.Mobile}px;
+  }
 `
 
 const NameWrapper = styled.div`
-  font-size: 2.8em;
+  font-size: 2.6em;
   line-height: 1em;
+  @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
+    font-size: 2em;
+  }
 `
 const NameSpan = styled.span``
 const SurnameSpan = styled.span`
-  color: ${lightTheme.secondary};
+  color: ${lightTheme.primary}50;
   @media (prefers-color-scheme: dark) {
-    color: ${darkTheme.secondary};
+    color: ${darkTheme.primary}50;
   }
 `
 const OtherWrapper = styled.div`
-  font-size: 1.6em;
+  font-size: 1.3em;
+  color: ${lightTheme.primary}75;
+  @media (prefers-color-scheme: dark) {
+    color: ${darkTheme.primary}75;
+  }
+  @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
+    font-size: 1.1em;
+  }
 `
 
 function Name() {
