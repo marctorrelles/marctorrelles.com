@@ -1,9 +1,10 @@
 import { GetStaticPropsContext } from "next"
-import Image from "next/future/image"
+import Head from "next/head"
 import { styled } from "styled-components"
 import ArticleFooter from "../../components/ArticleFooter"
 import Button from "../../components/Button"
 import ClapButton from "../../components/ClapButton"
+import FadeInImage from "../../components/FadeInImage"
 import PageContainer from "../../components/PageContainer"
 import Separator from "../../components/Separator"
 import Text from "../../components/Text"
@@ -14,7 +15,6 @@ import getSortedPhotos, {
   getPhotoSet,
 } from "../../lib/getSortedPhotos"
 import ShareIcon from "../../public/share.svg"
-import FadeInImage from "../../components/FadeInImage"
 import { ThemeParams } from "../../styles/theme"
 
 type Props = {
@@ -48,32 +48,46 @@ export default function Post({ photoSet }: Props) {
   }
 
   return (
-    <PageContainer>
-      <Title size="big">{title}</Title>
-      <Text kind="secondary">{formatDate(date)}</Text>
-      <Separator />
-      <PhotoSet>
-        {photos.map((photo, index) => (
-          <FadeInImage
-            key={photo}
-            src={photo}
-            width={800}
-            height={600}
-            priority={index < 3}
-            alt={photo.split("/").pop().split(".").shift() || ""}
-          />
-        ))}
-      </PhotoSet>
-      <Separator />
-      <ArticleFooter>
-        <ClapButton slug={`post-${slug}`} />
-        {canShare && (
-          <Button onClick={onShare}>
-            <ShareIcon />
-          </Button>
-        )}
-      </ArticleFooter>
-    </PageContainer>
+    <>
+      <Head>
+        <title>{title} - marctorrelles</title>
+        <meta name="description" content={title} />
+        <meta property="og:title" content={title} key="ogtitle" />
+        <meta property="og:type" content="article" />
+        <meta property="og:image" content={photos.at(0)} key="ogimage" />
+        <meta
+          property="og:url"
+          content={`${process.env.DOMAIN}/photos/${slug}`}
+          key="ogurl"
+        />
+      </Head>
+      <PageContainer>
+        <Title size="big">{title}</Title>
+        <Text kind="secondary">{formatDate(date)}</Text>
+        <Separator />
+        <PhotoSet>
+          {photos.map((photo, index) => (
+            <FadeInImage
+              key={photo}
+              src={photo}
+              width={800}
+              height={600}
+              priority={index < 3}
+              alt={photo.split("/").pop().split(".").shift() || ""}
+            />
+          ))}
+        </PhotoSet>
+        <Separator />
+        <ArticleFooter>
+          <ClapButton slug={`post-${slug}`} />
+          {canShare && (
+            <Button onClick={onShare}>
+              <ShareIcon />
+            </Button>
+          )}
+        </ArticleFooter>
+      </PageContainer>
+    </>
   )
 }
 

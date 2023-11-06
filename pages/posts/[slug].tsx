@@ -77,7 +77,7 @@ export default function Post({
   return (
     <>
       <Head>
-        <title>{title}</title>
+        <title>{title} - marctorrelles</title>
         <meta name="description" content={description} />
         <meta property="og:title" content={title} key="ogtitle" />
         <meta property="og:description" content={description} key="ogdesc" />

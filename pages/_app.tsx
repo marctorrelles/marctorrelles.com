@@ -15,6 +15,9 @@ import {
 } from "../styles/theme"
 import Name from "../components/Name"
 import { NavProvider } from "../styles/NavProvider"
+import TheRing from "../components/TheRing"
+import { LoadingProvider } from "../styles/LoadingProvider"
+import AppContainer from "../components/AppContainer"
 
 const Container = motion(styled.div`
   position: absolute;
@@ -51,11 +54,6 @@ export default class MyApp extends App {
     fontsLoaded: false,
   }
 
-  async componentDidMount() {
-    await loadFonts()
-    this.setState({ fontsLoaded: true })
-  }
-
   // Missing some props, ignoring for simplicity
   componentDidUpdate(prevProps: Readonly<{ router: Router }>) {
     prevProps.router.events.on("routeChangeComplete", () => {
@@ -89,30 +87,26 @@ export default class MyApp extends App {
         </Head>
         <ThemeProvider>
           <NavProvider>
-            <Container
-              animate={this.state.fontsLoaded ? "loaded" : "loading"}
-              variants={{
-                loaded: { opacity: 1 },
-                loading: { opacity: 0 },
-              }}
-              initial="loading"
-            >
-              <ContentContainer>
-                <AnimatePresence mode="sync" initial={false}>
-                  <ContentContainer
-                    initial={{ opacity: 0, position: "relative" }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0, position: "absolute" }}
-                    key={router.pathname}
-                  >
-                    <Component {...pageProps} />
-                  </ContentContainer>
-                </AnimatePresence>
-                <Name />
-                <Nav />
-              </ContentContainer>
-              <Footer />
-            </Container>
+            <LoadingProvider>
+              <AppContainer>
+                <TheRing />
+                <ContentContainer>
+                  <AnimatePresence mode="sync" initial={false}>
+                    <ContentContainer
+                      initial={{ opacity: 0, position: "relative" }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0, position: "absolute" }}
+                      key={router.pathname}
+                    >
+                      <Component {...pageProps} />
+                    </ContentContainer>
+                  </AnimatePresence>
+                  <Name />
+                  <Nav />
+                </ContentContainer>
+                <Footer />
+              </AppContainer>
+            </LoadingProvider>
           </NavProvider>
         </ThemeProvider>
       </>
