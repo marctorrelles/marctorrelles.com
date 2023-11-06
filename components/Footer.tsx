@@ -11,8 +11,8 @@ const Container = styled.div`
   right: -22px;
   bottom: ${MAIN_SEPARATION}px;
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
-    position: fixed;
-    bottom: 4px;
+    position: absolute;
+    bottom: -${MAIN_SEPARATION}px;
     right: ${MAIN_SEPARATION / 2}px;
   }
 `

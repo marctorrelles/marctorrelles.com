@@ -14,6 +14,7 @@ import {
   lightTheme,
 } from "../styles/theme"
 import Name from "../components/Name"
+import { NavProvider } from "../styles/NavProvider"
 
 const Container = motion(styled.div`
   position: absolute;
@@ -32,7 +33,6 @@ const Container = motion(styled.div`
     width: calc(100% - ${MAIN_SEPARATION}px);
     margin-left: ${MAIN_SEPARATION / 2}px;
     margin-right: ${MAIN_SEPARATION / 2}px;
-    overflow: hidden;
   }
 `)
 
@@ -88,34 +88,32 @@ export default class MyApp extends App {
           />
         </Head>
         <ThemeProvider>
-          <Container
-            animate={this.state.fontsLoaded ? "loaded" : "loading"}
-            variants={{
-              loaded: {
-                opacity: 1,
-              },
-              loading: {
-                opacity: 0,
-              },
-            }}
-            initial="loading"
-          >
-            <ContentContainer>
-              <AnimatePresence mode="sync" initial={false}>
-                <ContentContainer
-                  initial={{ opacity: 0, position: "relative" }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0, position: "absolute" }}
-                  key={router.pathname}
-                >
-                  <Component {...pageProps} />
-                </ContentContainer>
-              </AnimatePresence>
-              <Name />
-              <Nav />
-            </ContentContainer>
-            <Footer />
-          </Container>
+          <NavProvider>
+            <Container
+              animate={this.state.fontsLoaded ? "loaded" : "loading"}
+              variants={{
+                loaded: { opacity: 1 },
+                loading: { opacity: 0 },
+              }}
+              initial="loading"
+            >
+              <ContentContainer>
+                <AnimatePresence mode="sync" initial={false}>
+                  <ContentContainer
+                    initial={{ opacity: 0, position: "relative" }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0, position: "absolute" }}
+                    key={router.pathname}
+                  >
+                    <Component {...pageProps} />
+                  </ContentContainer>
+                </AnimatePresence>
+                <Name />
+                <Nav />
+              </ContentContainer>
+              <Footer />
+            </Container>
+          </NavProvider>
         </ThemeProvider>
       </>
     )
