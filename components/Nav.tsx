@@ -1,7 +1,8 @@
-import { useRouter } from "next/router"
-import styled from "styled-components"
-
 import { AnimatePresence, motion } from "framer-motion"
+import { useRouter } from "next/router"
+import { useEffect } from "react"
+import styled from "styled-components"
+import { useNav } from "../styles/NavProvider"
 import {
   INNER_SEPARATION,
   ThemeParams,
@@ -9,7 +10,6 @@ import {
   lightTheme,
 } from "../styles/theme"
 import Link from "./Link"
-import { useEffect, useState } from "react"
 
 export const NAV_HEIGHT = {
   regular: "4.8em",
@@ -53,17 +53,13 @@ const MobileContainer = styled(motion.div)`
   top: 0;
   left: 0;
   padding: ${INNER_SEPARATION.Mobile}px;
-  background-color: ${lightTheme.background};
   display: none;
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
     display: inherit;
   }
-  @media (prefers-color-scheme: dark) {
-    background-color: ${darkTheme.background};
-  }
 `
 
-const BarWrapper = styled.div`
+const BarWrapper = styled.div<{ open: boolean }>`
   display: none;
   flex-direction: column;
   justify-content: space-between;
@@ -74,6 +70,8 @@ const BarWrapper = styled.div`
   position: absolute;
   top: ${INNER_SEPARATION.Mobile + 8}px;
   right: ${INNER_SEPARATION.Mobile}px;
+  transform: ${({ open }) => (open ? "rotate(90deg)" : "rotate(0deg)")};
+  transition: all 0.25s ease-in-out;
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
     display: flex;
   }
@@ -81,55 +79,44 @@ const BarWrapper = styled.div`
 
 const Bar = styled(motion.div)<{ open: boolean }>`
   width: 100%;
-  height: 0.2em;
+  height: 2px;
   background-color: ${lightTheme.primary};
   @media (prefers-color-scheme: dark) {
     background-color: ${darkTheme.primary};
   }
   transform-origin: 1.4em;
   transition: all 0.25s ease-in-out;
-  &:nth-child(1) {
-    transform: ${({ open }) => (open ? "rotate(-45deg)" : "rotate(0)")};
-  }
   &:nth-child(2) {
-    transform: ${({ open }) => (open ? "rotate(45deg)" : "rotate(0)")};
+    width: 75%;
+    ${({ open }) => open && "width: 100%;"}
   }
 `
 
-function MobileControls({
-  open,
-  setOpen,
-}: {
-  open: boolean
-  setOpen: (value: boolean) => void
-}) {
+function MobileControls() {
+  const { navOpen, setNavOpen } = useNav()
+
   return (
-    <BarWrapper onClick={() => setOpen(!open)}>
-      <Bar open={open} />
-      <Bar open={open} />
+    <BarWrapper open={navOpen} onClick={() => setNavOpen(!navOpen)}>
+      <Bar open={navOpen} />
+      <Bar open={navOpen} />
+      <Bar open={navOpen} />
     </BarWrapper>
   )
 }
 
 const Nav = () => {
-  const [mobileOpen, setMobileOpen] = useState(false)
+  const { navOpen, setNavOpen } = useNav()
   const pathname = useRouter().pathname || Links.About
 
   useEffect(() => {
-    setMobileOpen(false)
+    setNavOpen(false)
   }, [pathname])
 
   let content = Object.entries(Links).map(([key, value]) => {
     const active =
       value === "/" ? pathname === value : pathname.startsWith(value)
     return (
-      <Link
-        key={value}
-        href={value}
-        active={active}
-        size={active ? 1.9 : 1.2}
-        variant="nav"
-      >
+      <Link key={value} href={value} active={active} size={1.2} variant="nav">
         {key}
       </Link>
     )
@@ -138,19 +125,14 @@ const Nav = () => {
   return (
     <>
       <Container>{content}</Container>
-      <MobileControls open={mobileOpen} setOpen={setMobileOpen} />
+      <MobileControls />
       <AnimatePresence>
-        {mobileOpen && (
+        {navOpen && (
           <MobileContainer
             initial={{ opacity: 0, y: -100 }}
             exit={{ opacity: 0, y: -100 }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.2,
-            }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2 }}
             key={pathname}
           >
             {content}

@@ -76,11 +76,11 @@ const ClapIndicator = motion(styled.p<{ kind: "number" | "claps" }>`
   top: ${({ kind }) => (kind === "number" ? "10px" : "40px")};
 `)
 
-const CounterText = motion(styled(Text)<{ styleWidth?: number }>`
+const CounterText = motion(styled(Text)<{ $styleWidth?: number }>`
   font-weight: 400 !important;
   font-size: 1rem !important;
   margin-top: 0.4rem;
-  ${({ styleWidth }) => (styleWidth ? `width: ${styleWidth}px;` : "")}
+  ${({ $styleWidth }) => ($styleWidth ? `width: ${$styleWidth}px;` : "")}
 `)
 
 type Props = {
@@ -170,7 +170,7 @@ export default function ClapCounter({ slug }: Props) {
       {!fetching && (
         <AnimatePresence mode="wait" initial={false}>
           <CounterText
-            styleWidth={counterWidth}
+            $styleWidth={counterWidth}
             ref={counterRef}
             key={(claps ?? 0)?.toString()}
             {...clapIndicatorProps}
