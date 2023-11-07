@@ -1,24 +1,46 @@
 import { createGlobalStyle } from "styled-components"
 import { darkTheme, lightTheme } from "./theme"
+import { Font } from "./FontProvider"
 
-const GlobalStyle = createGlobalStyle`
+function getFontStyles(font: Font) {
+  switch (font) {
+    case "monospace":
+      return `
+      font-family: "DM Mono", "monospace";
+      line-height: 1.5;
+      `
+    case "serif":
+      return `
+      font-family: "Lora", "serif";
+      line-height: 1.6;
+      `
+    case "sans":
+      return `
+      font-family: "Poppins", "sans-serif";
+      line-height: 1.6;
+      `
+  }
+}
+
+const GlobalStyle = createGlobalStyle<{ $font: Font }>`
   html {
     height: 100%;
+    background: white;
   }
   body {
     height: 100%;
     margin: 0;
     transition: background ease 0.25s, color ease 0.25s;
-    font-family: "Lora", "sans-serif";
+    ${(props) => getFontStyles(props.$font)}
     font-weight: 400;
     font-display: swap;
-    line-height: 1.6;
-    background: white;
     color: ${lightTheme.primary};
   }
   @media (prefers-color-scheme: dark) {
-    body {
+    html {
       background: black;
+    }
+    body {
       color: ${darkTheme.primary};
     }
   }

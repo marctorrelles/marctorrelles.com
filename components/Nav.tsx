@@ -10,6 +10,7 @@ import {
   lightTheme,
 } from "../styles/theme"
 import Link from "./Link"
+import { Font, useFont } from "../styles/FontProvider"
 
 export const NAV_HEIGHT = {
   regular: "4.8em",
@@ -77,7 +78,11 @@ const BarWrapper = styled.div<{ open: boolean }>`
   }
 `
 
-const Bar = styled(motion.div)<{ open: boolean }>`
+const serifStyle = "&:nth-child(1) { width: 75%; }"
+const sansStyle = "&:nth-child(2) { width: 75%; }"
+const monospaceStyle = "&:nth-child(3) { width: 75%; }"
+
+const Bar = styled(motion.div)<{ open: boolean; $font: Font }>`
   width: 100%;
   height: 2px;
   background-color: ${lightTheme.primary};
@@ -86,20 +91,21 @@ const Bar = styled(motion.div)<{ open: boolean }>`
   }
   transform-origin: 1.4em;
   transition: width 0.25s ease-in-out;
-  &:nth-child(2) {
-    width: 75%;
-    ${({ open }) => open && "width: 100%;"}
-  }
+  ${({ $font }) => $font === "serif" && serifStyle}
+  ${({ $font }) => $font === "sans" && sansStyle}
+  ${({ $font }) => $font === "monospace" && monospaceStyle}
+  ${({ open }) => open && "width: 100% !important;"}
 `
 
 function MobileControls() {
   const { navOpen, setNavOpen } = useNav()
+  const { displayFont } = useFont()
 
   return (
     <BarWrapper open={navOpen} onClick={() => setNavOpen(!navOpen)}>
-      <Bar open={navOpen} />
-      <Bar open={navOpen} />
-      <Bar open={navOpen} />
+      <Bar open={navOpen} $font={displayFont} />
+      <Bar open={navOpen} $font={displayFont} />
+      <Bar open={navOpen} $font={displayFont} />
     </BarWrapper>
   )
 }
@@ -107,10 +113,11 @@ function MobileControls() {
 const Nav = () => {
   const { navOpen, setNavOpen } = useNav()
   const pathname = useRouter().pathname || Links.About
+  const { font } = useFont()
 
   useEffect(() => {
     setNavOpen(false)
-  }, [pathname])
+  }, [pathname, font])
 
   let content = Object.entries(Links).map(([key, value]) => {
     const active =
@@ -129,8 +136,8 @@ const Nav = () => {
       <AnimatePresence>
         {navOpen && (
           <MobileContainer
-            initial={{ opacity: 0, y: -100 }}
-            exit={{ opacity: 0, y: -100 }}
+            initial={{ opacity: 0, y: -20 }}
+            exit={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2 }}
             key={pathname}

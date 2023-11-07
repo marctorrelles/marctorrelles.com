@@ -47,13 +47,13 @@ function keyText(key: string) {
   return key
 }
 
-const RightFooter = () => (
+const RightSidebar = () => (
   <Container>
     <LinksContainer style={{}}>
       {Object.entries(Social).map(
         ([key, value]: [SocialKey, (typeof Social)[SocialKey]]) => (
           <Text variant="sidebar" key={key}>
-            <Link variant="sidebar" href={value} active={false} target="_blank">
+            <Link variant="sidebar" href={value} active={true} target="_blank">
               {keyText(key)}
             </Link>
           </Text>
@@ -63,4 +63,4 @@ const RightFooter = () => (
   </Container>
 )
 
-export default RightFooter
+export default RightSidebar

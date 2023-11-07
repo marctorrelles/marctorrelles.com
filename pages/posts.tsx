@@ -3,10 +3,10 @@ import Link from "../components/Link"
 import PageContainer from "../components/PageContainer"
 import Text from "../components/Text"
 import Title from "../components/Title"
+import { formatDate } from "../lib/date"
+import generateRssFeed from "../lib/generateRSSFeed"
 import getSortedPosts, { type Post } from "../lib/getSortedPosts"
 import { ThemeParams } from "../styles/theme"
-import generateRssFeed from "../lib/generateRSSFeed"
-import { formatDate } from "../lib/date"
 
 const StyledPosts = styled.div`
   width: 100%;
@@ -40,7 +40,7 @@ export default function Posts({ posts }: Props) {
   return (
     <PageContainer>
       <StyledPosts>
-        {posts.map((post, index) => {
+        {posts.map((post) => {
           return (
             <Post key={post.slug}>
               <Link href={`/posts/${post.slug}`} component={Title}>

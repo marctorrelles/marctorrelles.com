@@ -31,12 +31,8 @@ const LinkWrap = styled.span<{
         : ""}
     text-decoration: none;
     ${({ $size }) => $size && `font-size: ${$size.toString()}em`};
-    color: ${({ $active, $variant }) =>
-      $active
-        ? lightTheme.secondary
-        : $variant === "sidebar"
-        ? lightTheme.secondary
-        : lightTheme.primary};
+    color: ${({ $active }) =>
+      $active ? lightTheme.secondary : lightTheme.primary};
     > svg > path:last-child {
       transition: fill ease 0.25s;
       fill: ${({ $active }) =>
@@ -57,12 +53,8 @@ const LinkWrap = styled.span<{
         $variant === "regular"
           ? `border-bottom: 1px solid ${darkTheme.dark};`
           : ""}
-      color: ${({ $active, $variant }) =>
-        $active
-          ? darkTheme.secondary
-          : $variant === "sidebar"
-          ? darkTheme.secondary
-          : darkTheme.primary};
+      color: ${({ $active }) =>
+        $active ? darkTheme.secondary : darkTheme.primary};
       > svg > path:last-child {
         fill: ${({ $active }) =>
           $active ? darkTheme.secondary : darkTheme.primary};
@@ -79,9 +71,10 @@ const LinkWrap = styled.span<{
 `
 
 type Props = {
+  onClick?: Function
   active?: boolean
   size?: Number
-  href: string
+  href?: string
   target?: "_blank"
   children: React.ReactNode
   component?: React.ElementType
@@ -89,6 +82,7 @@ type Props = {
 }
 
 const Link = ({
+  onClick, // Not ultra fan of this, let's keep it for simplicity but this is not a real link...
   target,
   active = true,
   size,
@@ -99,7 +93,9 @@ const Link = ({
 }: Props) => {
   return (
     <LinkWrap $active={active} $size={size} $variant={variant} as={component}>
-      {target ? (
+      {onClick ? (
+        <a onClick={() => onClick()}>{children}</a>
+      ) : target ? (
         <a target={target} href={href}>
           {children}
         </a>
