@@ -5,7 +5,6 @@ short: >
   to escape the basic "Prop drilling" or "Big components", that are very well known.
 author: Marc Torrelles
 date: "2023-09-07T00:00:00.000Z"
-hero_image: /react-patterns-to-avoid/hero.jpg
 hidden: true
 ---
 

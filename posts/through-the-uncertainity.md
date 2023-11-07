@@ -8,7 +8,6 @@ short: >
   professional life.
 author: Marc Torrelles
 date: "2023-10-16T00:00:00.000Z"
-hero_image: /through-the-uncertainity/hero.jpg
 ---
 
 Have you ever felt the itch for change, the desire of something new and shining, even when you're

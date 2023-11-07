@@ -18,19 +18,6 @@ import ShareIcon from "../../public/share.svg"
 import { ThemeParams } from "../../styles/theme"
 import FadeInImage from "../../components/FadeInImage"
 
-const HeroImage = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 300px;
-  overflow: hidden;
-  position: relative;
-  @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
-    height: 200px;
-  }
-`
-
 const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -42,7 +29,6 @@ type Props = {
   description: string
   date: string
   markdownBody: string
-  heroImage: string
   originalArticle?: {
     name: string
     link: string
@@ -55,7 +41,6 @@ export default function Post({
   title,
   description,
   date,
-  heroImage,
   markdownBody,
   originalArticle,
   author,
@@ -82,24 +67,12 @@ export default function Post({
         <meta property="og:title" content={title} key="ogtitle" />
         <meta property="og:description" content={description} key="ogdesc" />
         <meta property="og:type" content="article" />
-        <meta property="og:image" content={heroImage} key="ogimage" />
         <meta
           property="og:url"
           content={`${process.env.DOMAIN}/posts/${slug}`}
           key="ogurl"
         />
       </Head>
-      <HeroImage>
-        <FadeInImage
-          width="1920"
-          height="1080"
-          priority
-          quality={100}
-          loading="eager"
-          src={heroImage}
-          alt={`Cover: ${title}`}
-        />
-      </HeroImage>
       <PageContainer>
         <TitleWrapper>
           <Title size="big">{title}</Title>
@@ -140,7 +113,6 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     title: data.data.title,
     description: data.data.short,
     date: data.data.date,
-    heroImage: data.data.hero_image,
     author: data.data.author,
     markdownBody: data.content,
   }

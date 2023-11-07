@@ -6,7 +6,6 @@ short: >
   explore various topics that captivate my interest.
 author: Marc Torrelles
 date: "2023-09-03T00:00:00.000Z"
-hero_image: /hello-world/hero.jpg
 ---
 
 Welcome to my corner of the internet!
