@@ -6,7 +6,7 @@ function getFontStyles(font: Font) {
   switch (font) {
     case "monospace":
       return `
-      font-family: "DM Mono", "monospace";
+      font-family: "Ubuntu Mono", "monospace";
       line-height: 1.5;
       `
     case "serif":

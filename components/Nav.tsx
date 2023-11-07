@@ -2,15 +2,10 @@ import { AnimatePresence, motion } from "framer-motion"
 import { useRouter } from "next/router"
 import { useEffect } from "react"
 import styled from "styled-components"
+import { useFont } from "../styles/FontProvider"
 import { useNav } from "../styles/NavProvider"
-import {
-  INNER_SEPARATION,
-  ThemeParams,
-  darkTheme,
-  lightTheme,
-} from "../styles/theme"
+import { INNER_SEPARATION, ThemeParams } from "../styles/theme"
 import Link from "./Link"
-import { Font, useFont } from "../styles/FontProvider"
 
 export const NAV_HEIGHT = {
   regular: "4.8em",
@@ -35,6 +30,9 @@ const Container = styled.div`
   width: 100%;
   padding: ${INNER_SEPARATION.Desktop}px;
   z-index: 2;
+  @media (prefers-color-scheme: dark) {
+    mix-blend-mode: difference;
+  }
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
     display: none;
     font-size: 0.9em;
@@ -60,56 +58,6 @@ const MobileContainer = styled(motion.div)`
   }
 `
 
-const BarWrapper = styled.div<{ open: boolean }>`
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 1.2em;
-  width: 1.4em;
-  cursor: pointer;
-  z-index: 3;
-  position: absolute;
-  top: ${INNER_SEPARATION.Mobile + 8}px;
-  right: ${INNER_SEPARATION.Mobile}px;
-  transform: ${({ open }) => (open ? "rotate(90deg)" : "rotate(0deg)")};
-  transition: transform 0.25s ease-in-out;
-  @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
-    display: flex;
-  }
-`
-
-const serifStyle = "&:nth-child(1) { width: 75%; }"
-const sansStyle = "&:nth-child(2) { width: 75%; }"
-const monospaceStyle = "&:nth-child(3) { width: 75%; }"
-
-const Bar = styled(motion.div)<{ open: boolean; $font: Font }>`
-  width: 100%;
-  height: 2px;
-  background-color: ${lightTheme.primary};
-  @media (prefers-color-scheme: dark) {
-    background-color: ${darkTheme.primary};
-  }
-  transform-origin: 1.4em;
-  transition: width 0.25s ease-in-out;
-  ${({ $font }) => $font === "serif" && serifStyle}
-  ${({ $font }) => $font === "sans" && sansStyle}
-  ${({ $font }) => $font === "monospace" && monospaceStyle}
-  ${({ open }) => open && "width: 100% !important;"}
-`
-
-function MobileControls() {
-  const { navOpen, setNavOpen } = useNav()
-  const { displayFont } = useFont()
-
-  return (
-    <BarWrapper open={navOpen} onClick={() => setNavOpen(!navOpen)}>
-      <Bar open={navOpen} $font={displayFont} />
-      <Bar open={navOpen} $font={displayFont} />
-      <Bar open={navOpen} $font={displayFont} />
-    </BarWrapper>
-  )
-}
-
 const Nav = () => {
   const { navOpen, setNavOpen } = useNav()
   const pathname = useRouter().pathname || Links.About
@@ -132,7 +80,6 @@ const Nav = () => {
   return (
     <>
       <Container>{content}</Container>
-      <MobileControls />
       <AnimatePresence>
         {navOpen && (
           <MobileContainer

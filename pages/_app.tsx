@@ -17,6 +17,7 @@ import {
   darkTheme,
   lightTheme,
 } from "../styles/theme"
+import NavMobile from "../components/NavMobile"
 
 const Container = motion(styled.div`
   position: absolute;
@@ -88,6 +89,10 @@ export default class MyApp extends App {
             content="/marctorrelles.png"
             key="ogimage"
           />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+          />
         </Head>
         <FontProvider>
           <ThemeProvider>
@@ -128,6 +133,7 @@ export default class MyApp extends App {
                         <Nav />
                       </ContentContainer>
                     </AnimatePresence>
+                    <NavMobile />
                     <RightSidebar />
                     <LeftSidebar />
                   </Container>

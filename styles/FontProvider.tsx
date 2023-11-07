@@ -27,7 +27,7 @@ const getStorageFont = (): Font => {
   if (typeof window === "undefined") return "serif"
 
   const font = localStorage.getItem(LOCAL_STORAGE_KEY)
-  if (["monospace", "serif"].includes(font)) return font as Font
+  if (["monospace", "serif", "sans"].includes(font)) return font as Font
 
   return "serif"
 }

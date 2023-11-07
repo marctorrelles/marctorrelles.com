@@ -6,10 +6,10 @@ const loadFonts = async () => {
     "https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700"
   loraLink.rel = "stylesheet"
 
-  const dmMonoLink = document.createElement("link")
-  dmMonoLink.href =
-    "https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;700"
-  dmMonoLink.rel = "stylesheet"
+  const ubuntuMonoLink = document.createElement("link")
+  ubuntuMonoLink.href =
+    "https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;500;700"
+  ubuntuMonoLink.rel = "stylesheet"
 
   const poppinsLink = document.createElement("link")
   poppinsLink.href =
@@ -17,16 +17,16 @@ const loadFonts = async () => {
   poppinsLink.rel = "stylesheet"
 
   document.head.appendChild(loraLink)
-  document.head.appendChild(dmMonoLink)
+  document.head.appendChild(ubuntuMonoLink)
   document.head.appendChild(poppinsLink)
 
   const lora = new FontFaceObserver("Lora")
-  const dmMono = new FontFaceObserver("DM Mono")
+  const ubuntuMono = new FontFaceObserver("Ubuntu Mono")
   const poppins = new FontFaceObserver("Poppins")
 
   try {
     await lora.load()
-    await dmMono.load()
+    await ubuntuMono.load()
     await poppins.load()
   } catch (error) {
     console.log(error)

@@ -1,3 +1,4 @@
+import NextLink from "next/link"
 import styled from "styled-components"
 import {
   INNER_SEPARATION,
@@ -14,6 +15,10 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   z-index: 4;
+  cursor: pointer;
+  @media (prefers-color-scheme: dark) {
+    mix-blend-mode: difference;
+  }
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
     padding: ${INNER_SEPARATION.Mobile}px;
   }
@@ -22,22 +27,23 @@ const Wrapper = styled.div`
 const NameWrapper = styled.div`
   font-size: 2.6em;
   line-height: 1em;
+  font-weight: 500;
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
     font-size: 2em;
   }
 `
 const NameSpan = styled.span``
 const SurnameSpan = styled.span`
-  color: ${lightTheme.primary}50;
+  color: ${lightTheme.secondary};
   @media (prefers-color-scheme: dark) {
-    color: ${darkTheme.primary}50;
+    color: ${darkTheme.secondary};
   }
 `
 const OtherWrapper = styled.div`
   font-size: 1.3em;
-  color: ${lightTheme.primary}75;
+  color: ${lightTheme.secondary};
   @media (prefers-color-scheme: dark) {
-    color: ${darkTheme.primary}75;
+    color: ${darkTheme.secondary};
   }
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
     font-size: 1.1em;
@@ -46,13 +52,15 @@ const OtherWrapper = styled.div`
 
 function Name() {
   return (
-    <Wrapper>
-      <NameWrapper>
-        <NameSpan>marc</NameSpan>
-        <SurnameSpan>torrelles</SurnameSpan>
-      </NameWrapper>
-      <OtherWrapper>software developer</OtherWrapper>
-    </Wrapper>
+    <NextLink href="/" passHref>
+      <Wrapper>
+        <NameWrapper>
+          <NameSpan>marc</NameSpan>
+          <SurnameSpan>torrelles</SurnameSpan>
+        </NameWrapper>
+        <OtherWrapper>software developer</OtherWrapper>
+      </Wrapper>
+    </NextLink>
   )
 }
 
