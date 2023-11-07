@@ -42,7 +42,6 @@ const LinkWrap = styled.span<{
       fill: ${({ $active }) =>
         $active ? lightTheme.secondary : lightTheme.primary};
     }
-    transition: font-size ease 0.25s;
     &:hover {
       color: ${darkTheme.primary};
       background: ${darkTheme.background};

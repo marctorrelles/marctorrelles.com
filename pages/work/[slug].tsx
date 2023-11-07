@@ -60,7 +60,7 @@ export default function Post({
       await global.navigator?.share({
         title,
         text: description,
-        url: `${process.env.DOMAIN}/projects/${slug}`,
+        url: `${process.env.DOMAIN}/work/${slug}`,
       })
     } catch (error) {
       console.error(error)
@@ -77,7 +77,7 @@ export default function Post({
         <meta property="og:type" content="article" />
         <meta
           property="og:url"
-          content={`${process.env.DOMAIN}/projects/${slug}`}
+          content={`${process.env.DOMAIN}/work/${slug}`}
           key="ogurl"
         />
       </Head>
@@ -109,7 +109,7 @@ export default function Post({
 export async function getStaticProps(context: GetStaticPropsContext) {
   const { slug } = context.params
 
-  const content = await import(`../../projects/${slug}.md`)
+  const content = await import(`../../work/${slug}.md`)
   const data = matter(content.default)
 
   const props: Props = {
@@ -130,11 +130,11 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 }
 
 export async function getStaticPaths() {
-  const projects = glob.sync(`projects/**/*.md`)
-  const projectslugs = projects.map((file) =>
+  const work = glob.sync(`work/**/*.md`)
+  const worklugs = work.map((file) =>
     file.split("/")[1].replace(/ /g, "-").slice(0, -3).trim()
   )
-  const paths = projectslugs.map((slug) => {
+  const paths = worklugs.map((slug) => {
     return { params: { slug } }
   })
 

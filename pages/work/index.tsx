@@ -5,7 +5,7 @@ import PageContainer from "../../components/PageContainer"
 import Text from "../../components/Text"
 import Title from "../../components/Title"
 import { formatDate } from "../../lib/date"
-import getSortedProjects, { Project } from "../../lib/getSortedProjects"
+import getSortedWork, { Work } from "../../lib/getSortedWork"
 import { ThemeParams } from "../../styles/theme"
 
 const StyledPhotos = styled.div`
@@ -19,19 +19,19 @@ const StyledPhotos = styled.div`
 `
 
 const SquareImage = styled.div`
-  min-width: 200px;
-  min-height: 200px;
-  max-width: 200px;
-  max-height: 200px;
+  min-width: 140px;
+  min-height: 140px;
+  max-width: 140px;
+  max-height: 140px;
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
-    min-width: 160px;
-    min-height: 160px;
-    max-width: 160px;
-    max-height: 160px;
+    min-width: 100px;
+    min-height: 100px;
+    max-width: 100px;
+    max-height: 100px;
   }
 `
 
-const ProjectComponent = styled.div`
+const WorkComponent = styled.div`
   display: flex;
   flex-direction: row;
   gap: 2em;
@@ -52,29 +52,29 @@ const ProjectComponent = styled.div`
   }
 `
 
-const ProjectInfo = styled.div`
+const WorkInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5em;
 `
 
 type Props = {
-  projects: Project[]
+  works: Work[]
 }
 
-export default function Projects({ projects }: Props) {
+export default function works({ works }: Props) {
   return (
     <PageContainer>
       <StyledPhotos>
-        {projects.map((project, index) => {
+        {works.map((work, index) => {
           return (
-            <ProjectComponent key={project.title}>
-              {project.squareImage && (
-                <Link href={`/projects/${project.slug}`}>
+            <WorkComponent key={work.title}>
+              {work.squareImage && (
+                <Link href={`/work/${work.slug}`}>
                   <SquareImage>
                     <FadeInImage
-                      src={project.cover}
-                      alt={project.title}
+                      src={work.cover}
+                      alt={work.title}
                       width={400}
                       height={400}
                       priority={index < 3}
@@ -82,23 +82,19 @@ export default function Projects({ projects }: Props) {
                   </SquareImage>
                 </Link>
               )}
-              <ProjectInfo>
-                <Link href={`/projects/${project.slug}`} component={Title}>
-                  {project.title}
+              <WorkInfo>
+                <Link href={`/work/${work.slug}`} component={Title}>
+                  {work.title}
                 </Link>
-                <Text>{project.short}</Text>
-                {project.cta && (
-                  <Link
-                    href={project.cta.link}
-                    component={Text}
-                    target="_blank"
-                  >
-                    {project.cta.text}
+                <Text>{work.short}</Text>
+                {work.cta && (
+                  <Link href={work.cta.link} component={Text} target="_blank">
+                    {work.cta.text}
                   </Link>
                 )}
-                <Text kind="secondary">{formatDate(project.date)}</Text>
-              </ProjectInfo>
-            </ProjectComponent>
+                <Text kind="secondary">{formatDate(work.date)}</Text>
+              </WorkInfo>
+            </WorkComponent>
           )
         })}
       </StyledPhotos>
@@ -107,11 +103,11 @@ export default function Projects({ projects }: Props) {
 }
 
 export async function getStaticProps() {
-  const projects = await getSortedProjects()
+  const works = await getSortedWork()
 
   return {
     props: {
-      projects,
+      works,
     },
   }
 }

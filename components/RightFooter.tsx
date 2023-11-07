@@ -12,7 +12,7 @@ const Container = styled.div`
   bottom: ${MAIN_SEPARATION}px;
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
     position: absolute;
-    bottom: -${MAIN_SEPARATION}px;
+    bottom: -22px;
     right: ${MAIN_SEPARATION / 2}px;
   }
 `
@@ -47,7 +47,7 @@ function keyText(key: string) {
   return key
 }
 
-const Footer = () => (
+const RightFooter = () => (
   <Container>
     <LinksContainer style={{}}>
       {Object.entries(Social).map(
@@ -63,4 +63,4 @@ const Footer = () => (
   </Container>
 )
 
-export default Footer
+export default RightFooter

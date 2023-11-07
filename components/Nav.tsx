@@ -19,7 +19,7 @@ export const NAV_HEIGHT = {
 export enum Links {
   About = "/",
   Posts = "/posts",
-  Projects = "/projects",
+  Work = "/work",
   Photos = "/photos",
 }
 
@@ -71,7 +71,7 @@ const BarWrapper = styled.div<{ open: boolean }>`
   top: ${INNER_SEPARATION.Mobile + 8}px;
   right: ${INNER_SEPARATION.Mobile}px;
   transform: ${({ open }) => (open ? "rotate(90deg)" : "rotate(0deg)")};
-  transition: all 0.25s ease-in-out;
+  transition: transform 0.25s ease-in-out;
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
     display: flex;
   }
@@ -85,7 +85,7 @@ const Bar = styled(motion.div)<{ open: boolean }>`
     background-color: ${darkTheme.primary};
   }
   transform-origin: 1.4em;
-  transition: all 0.25s ease-in-out;
+  transition: width 0.25s ease-in-out;
   &:nth-child(2) {
     width: 75%;
     ${({ open }) => open && "width: 100%;"}

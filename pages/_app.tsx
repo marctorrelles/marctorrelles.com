@@ -3,7 +3,7 @@ import App from "next/app"
 import Head from "next/head"
 import { Router } from "next/router"
 import styled from "styled-components"
-import Footer from "../components/Footer"
+import RightFooter from "../components/RightFooter"
 import Nav from "../components/Nav"
 import { ThemeProvider } from "../styles/ThemeProvider"
 import loadFonts from "../styles/loadFonts"
@@ -18,7 +18,7 @@ import { NavProvider } from "../styles/NavProvider"
 
 const Container = motion(styled.div`
   position: absolute;
-  height: calc(100% - ${MAIN_SEPARATION * 2}px);
+  height: calc(100vh - ${MAIN_SEPARATION * 2}px);
   width: calc(100% - ${MAIN_SEPARATION * 2}px);
   min-height: 280px;
   min-width: 320px;
@@ -111,7 +111,7 @@ export default class MyApp extends App {
                 <Name />
                 <Nav />
               </ContentContainer>
-              <Footer />
+              <RightFooter />
             </Container>
           </NavProvider>
         </ThemeProvider>

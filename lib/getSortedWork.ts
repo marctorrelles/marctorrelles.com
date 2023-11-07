@@ -1,7 +1,7 @@
 import glob from "glob"
 import matter from "gray-matter"
 
-export type Project = {
+export type Work = {
   slug: string
   title: string
   short: string
@@ -15,22 +15,22 @@ export type Project = {
   }
 }
 
-export default async function getSortedProjects(): Promise<Project[]> {
-  const mdFiles = glob.sync("projects/**/*.md")
+export default async function getSortedWork(): Promise<Work[]> {
+  const mdFiles = glob.sync("work/**/*.md")
   const slugs = mdFiles.map((file) =>
     file.split("/")[1].replace(/ /g, "-").slice(0, -3).trim()
   )
-  const projects = (
+  const work = (
     await Promise.all(
       slugs.map(async (slug) => {
-        const content = await import(`projects/${slug}.md`)
+        const content = await import(`work/${slug}.md`)
         const data = matter(content.default)
 
         if (data.data.hidden && process.env.NODE_ENV !== "development") {
           return null
         }
 
-        const project: Project = {
+        const work: Work = {
           slug,
           body: data.content,
           title: data.data.title,
@@ -41,13 +41,13 @@ export default async function getSortedProjects(): Promise<Project[]> {
         }
 
         if (data.data.cta_link && data.data.cta_text) {
-          project.cta = {
+          work.cta = {
             link: data.data.cta_link,
             text: data.data.cta_text,
           }
         }
 
-        return project
+        return work
       })
     )
   )
@@ -57,5 +57,5 @@ export default async function getSortedProjects(): Promise<Project[]> {
       return new Date(b.date).getTime() - new Date(a.date).getTime()
     })
 
-  return projects
+  return work
 }
