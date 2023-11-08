@@ -36,7 +36,7 @@ enum Social {
   LinkedIn = "https://linkedin.com/in/marctorrelles",
   GitHub = "https://github.com/marctorrelles",
   X = "https://x.com/marctorrelles",
-  Email = "mailto:marctorrelles@gmail.com",
+  Email = "mailto:hi@marctorrelles.com",
 }
 
 type SocialKey = keyof typeof Social

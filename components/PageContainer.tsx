@@ -12,7 +12,6 @@ const Container = styled.div<{ $navOpen?: boolean }>`
   width: 100%;
   height: 100%;
   max-width: 1000px;
-  min-width: 300px;
   margin-top: 180px;
   flex-direction: column;
   display: flex;

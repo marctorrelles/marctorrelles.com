@@ -24,7 +24,7 @@ const Container = motion(styled.div`
   height: calc(100% - ${MAIN_SEPARATION * 2}px);
   width: calc(100% - ${MAIN_SEPARATION * 2}px);
   min-height: 280px;
-  min-width: 320px;
+  min-width: 290px;
   margin: ${MAIN_SEPARATION}px;
   border: 1px solid #717171;
   flex-direction: column;
@@ -118,6 +118,7 @@ export default class MyApp extends App {
                           damping: 100,
                           duration: TIMEOUT / 1000,
                         }}
+                        style={{ overflow: "hidden" }}
                       >
                         <AnimatePresence mode="sync" initial={false}>
                           <ContentContainer
