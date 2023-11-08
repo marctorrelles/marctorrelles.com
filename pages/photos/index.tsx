@@ -1,12 +1,12 @@
 import { styled } from "styled-components"
-import FadeInImage from "../components/FadeInImage"
-import Link from "../components/Link"
-import PageContainer from "../components/PageContainer"
-import Text from "../components/Text"
-import Title from "../components/Title"
-import { formatDate } from "../lib/date"
-import getSortedPhotos, { PhotoSet } from "../lib/getSortedPhotos"
-import { ThemeParams } from "../styles/theme"
+import FadeInImage from "../../components/FadeInImage"
+import Link from "../../components/Link"
+import PageContainer from "../../components/PageContainer"
+import Text from "../../components/Text"
+import Title from "../../components/Title"
+import { formatDate } from "../../lib/date"
+import getSortedPhotos, { PhotoSet } from "../../lib/getSortedPhotos"
+import { ThemeParams } from "../../styles/theme"
 
 const StyledPhotos = styled.div`
   width: 100%;

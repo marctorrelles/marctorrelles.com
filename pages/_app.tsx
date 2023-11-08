@@ -18,6 +18,7 @@ import {
   lightTheme,
 } from "../styles/theme"
 import NavMobile from "../components/NavMobile"
+import Spheres from "../components/Spheres"
 
 const Container = motion(styled.div`
   position: absolute;
@@ -107,6 +108,7 @@ export default class MyApp extends App {
                     }}
                     initial="loading"
                   >
+                    <Spheres />
                     <AnimatePresence mode="wait" initial={false}>
                       <ContentContainer
                         initial={{ opacity: 0 }}
@@ -118,7 +120,6 @@ export default class MyApp extends App {
                           damping: 100,
                           duration: TIMEOUT / 1000,
                         }}
-                        style={{ overflow: "hidden" }}
                       >
                         <AnimatePresence mode="sync" initial={false}>
                           <ContentContainer

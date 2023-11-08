@@ -1,11 +1,11 @@
 import { styled } from "styled-components"
-import Link from "../components/Link"
-import PageContainer from "../components/PageContainer"
-import Text from "../components/Text"
-import Title from "../components/Title"
-import { formatDate } from "../lib/date"
-import getSortedPosts, { type Post } from "../lib/getSortedPosts"
-import { ThemeParams } from "../styles/theme"
+import Link from "../../components/Link"
+import PageContainer from "../../components/PageContainer"
+import Text from "../../components/Text"
+import Title from "../../components/Title"
+import { formatDate } from "../../lib/date"
+import getSortedPosts, { type Post } from "../../lib/getSortedPosts"
+import { ThemeParams } from "../../styles/theme"
 
 const StyledPosts = styled.div`
   width: 100%;

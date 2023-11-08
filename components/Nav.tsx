@@ -13,7 +13,7 @@ export const NAV_HEIGHT = {
 }
 
 export enum Links {
-  About = "/",
+  About = "/about",
   Posts = "/posts",
   Photos = "/photos",
 }
@@ -67,8 +67,7 @@ const Nav = () => {
   }, [pathname, font])
 
   let content = Object.entries(Links).map(([key, value]) => {
-    const active =
-      value === "/" ? pathname === value : pathname.startsWith(value)
+    const active = pathname.startsWith(value)
     return (
       <Link key={value} href={value} active={active} size={1.2} variant="nav">
         {key}

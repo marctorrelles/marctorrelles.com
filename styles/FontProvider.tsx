@@ -16,20 +16,20 @@ type FontContext = {
 }
 
 const FontContext = React.createContext<FontContext>({
-  font: "serif",
-  displayFont: "serif",
+  font: "sans",
+  displayFont: "sans",
   setFont: () => {},
 })
 
 let timeout: NodeJS.Timeout
 
 const getStorageFont = (): Font => {
-  if (typeof window === "undefined") return "serif"
+  if (typeof window === "undefined") return "sans"
 
   const font = localStorage.getItem(LOCAL_STORAGE_KEY)
   if (["monospace", "serif", "sans"].includes(font)) return font as Font
 
-  return "serif"
+  return "sans"
 }
 
 const setStorageFont = (font: Font) => {
