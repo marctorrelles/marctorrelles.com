@@ -4,7 +4,6 @@ import PageContainer from "../components/PageContainer"
 import Text from "../components/Text"
 import Title from "../components/Title"
 import { formatDate } from "../lib/date"
-import generateRssFeed from "../lib/generateRSSFeed"
 import getSortedPosts, { type Post } from "../lib/getSortedPosts"
 import { ThemeParams } from "../styles/theme"
 
@@ -57,7 +56,6 @@ export default function Posts({ posts }: Props) {
 }
 
 export async function getStaticProps() {
-  await generateRssFeed()
   const posts = await getSortedPosts()
 
   return {

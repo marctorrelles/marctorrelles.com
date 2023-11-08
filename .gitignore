@@ -7,6 +7,5 @@
 .env*
 npm-debug.log
 .vercel
-*rss.xml
 .env*.local
 tsconfig.tsbuildinfo

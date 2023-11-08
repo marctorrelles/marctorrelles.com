@@ -37,7 +37,6 @@ enum Social {
   GitHub = "https://github.com/marctorrelles",
   X = "https://x.com/marctorrelles",
   Email = "mailto:marctorrelles@gmail.com",
-  RSS = "/rss.xml",
 }
 
 type SocialKey = keyof typeof Social

@@ -57,8 +57,6 @@ export default function Photos({ photoSet }: Props) {
 }
 
 export async function getStaticProps() {
-  // TODO
-  // await generateRssFeed()
   const photoSet = await getSortedPhotos()
 
   return {
