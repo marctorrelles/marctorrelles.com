@@ -1,10 +1,3 @@
-import PageContainer from "../components/PageContainer"
-import Text from "../components/Text"
+const Index = () => null
 
-const About = () => (
-  <PageContainer>
-    <></>
-  </PageContainer>
-)
-
-export default About
+export default Index
