@@ -1,7 +1,6 @@
 import glob from "glob"
 import matter from "gray-matter"
 import { GetStaticPropsContext } from "next"
-import Image from "next/future/image"
 import Head from "next/head"
 import { styled } from "styled-components"
 import ArticleFooter from "../../components/ArticleFooter"
@@ -15,8 +14,6 @@ import Text from "../../components/Text"
 import Title from "../../components/Title"
 import { formatDate } from "../../lib/date"
 import ShareIcon from "../../public/share.svg"
-import { ThemeParams } from "../../styles/theme"
-import FadeInImage from "../../components/FadeInImage"
 
 const TitleWrapper = styled.div`
   display: flex;

@@ -24,8 +24,6 @@ const SyntaxHighlighterComponent =
 const ImageWrapper = styled.figure<{ imgNoPadding: boolean }>`
   position: relative;
   margin: 0;
-  padding-left: ${({ imgNoPadding }) => (imgNoPadding ? 0 : 3)}rem;
-  padding-right: ${({ imgNoPadding }) => (imgNoPadding ? 0 : 3)}rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {

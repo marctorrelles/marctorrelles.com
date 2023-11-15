@@ -79,6 +79,15 @@ const GlobalStyle = createGlobalStyle<{ $font: Font }>`
     width: 100%;
     height: auto;
   }
+
+  hr {
+    width: 100%;
+    height: 1px;
+    background: gray;
+    border: none;
+    outline: none;
+  }
+
   * {
     scrollbar-width: thin;
     scrollbar-color: ${lightTheme.background} ${lightTheme.secondary};

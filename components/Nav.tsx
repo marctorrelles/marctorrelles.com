@@ -15,7 +15,6 @@ export const NAV_HEIGHT = {
 export enum Links {
   About = "/",
   Posts = "/posts",
-  Work = "/work",
   Photos = "/photos",
 }
 
