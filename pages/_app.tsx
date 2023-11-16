@@ -3,7 +3,7 @@ import App from "next/app"
 import Head from "next/head"
 import { Router } from "next/router"
 import styled from "styled-components"
-import LeftSidebar from "../components/LeftSidebar"
+import LeftSidebarComponent from "../components/LeftSidebar"
 import Name from "../components/Name"
 import Nav from "../components/Nav"
 import RightSidebar from "../components/RightSidebar"
@@ -18,6 +18,11 @@ import {
   lightTheme,
 } from "../styles/theme"
 import NavMobile from "../components/NavMobile"
+import dynamic from "next/dynamic"
+
+const LeftSidebar = dynamic(() => import("../components/LeftSidebar"), {
+  ssr: false,
+})
 
 const Container = motion(styled.div`
   position: absolute;
