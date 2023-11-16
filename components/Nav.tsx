@@ -70,7 +70,7 @@ const Nav = () => {
     const active =
       value === "/" ? pathname === value : pathname.startsWith(value)
     return (
-      <Link key={value} href={value} active={active} size={1.2} variant="nav">
+      <Link key={value} href={value} active={active} size={1.3} variant="nav">
         {key}
       </Link>
     )

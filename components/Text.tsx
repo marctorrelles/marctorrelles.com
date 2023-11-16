@@ -14,7 +14,7 @@ const Text = styled.p<Props>`
   margin: 0;
   margin-top: 0.6em;
   font-size: ${({ variant }) =>
-    variant === "regular" || !variant ? 1 : 0.9}rem;
+    variant === "regular" || !variant ? 1.1 : 0.9}rem;
   line-height: 1.5em;
   font-weight: 300;
   opacity: ${(props) => (props.kind === "secondary" ? 0.5 : 1)};
