@@ -19,6 +19,7 @@ import {
 } from "../styles/theme"
 import NavMobile from "../components/NavMobile"
 import dynamic from "next/dynamic"
+import Bauhaus from "../components/Bauhaus"
 
 const LeftSidebar = dynamic(() => import("../components/LeftSidebar"), {
   ssr: false,
@@ -125,6 +126,7 @@ export default class MyApp extends App {
                         }}
                         style={{ overflow: "hidden" }}
                       >
+                        <Bauhaus />
                         <AnimatePresence mode="sync" initial={false}>
                           <ContentContainer
                             initial={{ opacity: 0, position: "relative" }}
