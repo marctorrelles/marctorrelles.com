@@ -18,9 +18,9 @@ export const darkTheme: Theme = {
 
 export const lightTheme: Theme = {
   background: "#EEEEEE",
-  dark: "rgba(0, 0, 0, 0.1)",
+  dark: "rgba(0, 0, 0, 0.05)",
   primary: "#040404",
-  secondary: "#666666",
+  secondary: "#333333",
 }
 
 export const MAIN_SEPARATION = 32

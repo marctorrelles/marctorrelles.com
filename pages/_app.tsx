@@ -113,7 +113,6 @@ export default class MyApp extends App {
                     }}
                     initial="loading"
                   >
-                    <Bauhaus />
                     <AnimatePresence mode="wait" initial={false}>
                       <ContentContainer
                         initial={{ opacity: 0 }}
@@ -128,6 +127,7 @@ export default class MyApp extends App {
                         style={{ overflow: "hidden" }}
                       >
                         <AnimatePresence mode="sync" initial={false}>
+                          <Bauhaus />
                           <ContentContainer
                             initial={{ opacity: 0, position: "relative" }}
                             animate={{ opacity: 1 }}
