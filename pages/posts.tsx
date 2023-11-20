@@ -46,7 +46,9 @@ export default function Posts({ posts }: Props) {
                 {post.title}
               </Link>
               <Text>{post.short}</Text>
-              <Text kind="secondary">{formatDate(post.date)}</Text>
+              <Text kind="secondary" suppressHydrationWarning>
+                {formatDate(post.date)}
+              </Text>
             </Post>
           )
         })}

@@ -73,7 +73,9 @@ export default function Post({
       <PageContainer>
         <TitleWrapper>
           <Title size="big">{title}</Title>
-          <Text kind="secondary">{formatDate(date)}</Text>
+          <Text kind="secondary" suppressHydrationWarning>
+            {formatDate(date)}
+          </Text>
           {originalArticle && (
             <Text>
               This article was originally posted on{" "}

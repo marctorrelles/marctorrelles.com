@@ -47,7 +47,9 @@ export default function Photos({ photoSet }: Props) {
                   priority={index < 3}
                 />
               </Link>
-              <Text kind="secondary">{formatDate(photo.date)}</Text>
+              <Text kind="secondary" suppressHydrationWarning>
+                {formatDate(photo.date)}
+              </Text>
             </PhotoSet>
           )
         })}

@@ -50,7 +50,9 @@ export default function Post({ photoSet }: Props) {
   return (
     <PageContainer>
       <Title size="big">{title}</Title>
-      <Text kind="secondary">{formatDate(date)}</Text>
+      <Text kind="secondary" suppressHydrationWarning>
+        {formatDate(date)}
+      </Text>
       <Separator />
       <PhotoSet>
         {photos.map((photo, index) => (
