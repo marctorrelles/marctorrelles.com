@@ -19,7 +19,7 @@
     "react-syntax-highlighter": "^15.5.0",
     "rehype-raw": "^7.0.0",
     "styled-components": "^6.0.7",
-    "zod": "^3.22.2"
+    "zod": "^3.22.3"
   },
   "scripts": {
     "dev": "next-remote-watch ./posts",
