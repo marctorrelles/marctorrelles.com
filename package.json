@@ -11,7 +11,7 @@
     "fontfaceobserver": "^2.3.0",
     "framer-motion": "^10.16.2",
     "gray-matter": "^4.0.3",
-    "next": "12",
+    "next": "13",
     "raw-loader": "^4.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
