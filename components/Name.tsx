@@ -23,7 +23,6 @@ const Wrapper = styled.div`
     padding: ${INNER_SEPARATION.Mobile}px;
   }
 `
-
 const NameWrapper = styled.div`
   font-size: 2.6em;
   line-height: 1em;
@@ -32,7 +31,12 @@ const NameWrapper = styled.div`
     font-size: 2em;
   }
 `
-const NameSpan = styled.span``
+const NameSpan = styled.span`
+  color: ${lightTheme.primary};
+  @media (prefers-color-scheme: dark) {
+    color: ${darkTheme.primary};
+  }
+`
 const SurnameSpan = styled.span`
   color: ${lightTheme.secondary};
   @media (prefers-color-scheme: dark) {

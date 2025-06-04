@@ -1,6 +1,7 @@
 import fs from "fs"
 import glob from "glob"
 import matter from "gray-matter"
+import path from "path"
 
 export type PhotoSet = {
   slug: string
@@ -16,8 +17,9 @@ function getPublicUrl(path: string) {
 }
 
 export async function getPhotoSet(slug: string) {
-  const content = await import(`photos/${slug}.md`)
-  const data = matter(content.default)
+  const filePath = path.join(process.cwd(), "photos", `${slug}.md`)
+  const content = fs.readFileSync(filePath, "utf8")
+  const data = matter(content)
 
   if (data.data.hidden && process.env.NODE_ENV !== "development") {
     return null

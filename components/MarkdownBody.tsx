@@ -13,10 +13,9 @@ import Link from "./Link"
 import SubTitle from "./SubTitle"
 import Text from "./Text"
 import Title from "./Title"
-import NextImage from "next/future/image"
 
+import { prism as lightStyle } from "react-syntax-highlighter/dist/cjs/styles/prism"
 import darkStyle from "react-syntax-highlighter/dist/cjs/styles/prism/a11y-dark"
-import lightStyle from "react-syntax-highlighter/dist/cjs/styles/prism"
 
 const SyntaxHighlighterComponent =
   SyntaxHighlighter as React.ComponentType<SyntaxHighlighterProps>

@@ -1,20 +1,17 @@
 import { GetStaticPropsContext } from "next"
-import Image from "next/future/image"
 import { styled } from "styled-components"
 import ArticleFooter from "../../components/ArticleFooter"
 import Button from "../../components/Button"
 import ClapButton from "../../components/ClapButton"
+import FadeInImage from "../../components/FadeInImage"
 import PageContainer from "../../components/PageContainer"
 import Separator from "../../components/Separator"
 import Text from "../../components/Text"
 import Title from "../../components/Title"
 import { formatDate } from "../../lib/date"
-import getSortedPhotos, {
-  PhotoSet,
-  getPhotoSet,
-} from "../../lib/getSortedPhotos"
+import type { PhotoSet } from "../../lib/getSortedPhotos"
+import getSortedPhotos, { getPhotoSet } from "../../lib/getSortedPhotos"
 import ShareIcon from "../../public/share.svg"
-import FadeInImage from "../../components/FadeInImage"
 import { ThemeParams } from "../../styles/theme"
 
 type Props = {

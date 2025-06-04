@@ -1,6 +1,6 @@
 import { motion } from "framer-motion"
+import NextImage from "next/image"
 import { ComponentProps, useState } from "react"
-import NextImage from "next/future/image"
 import styled from "styled-components"
 
 const ImageContainer = motion(styled.div`
