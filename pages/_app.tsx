@@ -1,11 +1,12 @@
 import { AnimatePresence, motion } from "framer-motion"
 import App from "next/app"
+import dynamic from "next/dynamic"
 import Head from "next/head"
 import { Router } from "next/router"
 import styled from "styled-components"
-import LeftSidebarComponent from "../components/LeftSidebar"
 import Name from "../components/Name"
 import Nav from "../components/Nav"
+import NavMobile from "../components/NavMobile"
 import RightSidebar from "../components/RightSidebar"
 import { FontConsumer, FontProvider, TIMEOUT } from "../styles/FontProvider"
 import { NavProvider } from "../styles/NavProvider"
@@ -17,8 +18,6 @@ import {
   darkTheme,
   lightTheme,
 } from "../styles/theme"
-import NavMobile from "../components/NavMobile"
-import dynamic from "next/dynamic"
 
 const LeftSidebar = dynamic(() => import("../components/LeftSidebar"), {
   ssr: false,
@@ -76,6 +75,7 @@ export default class MyApp extends App {
 
   render() {
     const { Component, pageProps, router } = this.props
+    const isExperiencePage = router.pathname === "/experience"
 
     return (
       <>
@@ -104,45 +104,61 @@ export default class MyApp extends App {
             <NavProvider>
               <FontConsumer>
                 {({ font }) => (
-                  <Container
-                    animate={this.state.fontsLoaded ? "loaded" : "loading"}
-                    variants={{
-                      loaded: { opacity: 1 },
-                      loading: { opacity: 0 },
-                    }}
-                    initial="loading"
-                  >
-                    <AnimatePresence mode="wait" initial={false}>
-                      <ContentContainer
+                  <AnimatePresence mode="sync" initial={false}>
+                    {isExperiencePage ? (
+                      <Component
+                        {...pageProps}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        key={font}
-                        transition={{
-                          stiffness: 1000,
-                          damping: 100,
-                          duration: TIMEOUT / 1000,
+                        transition={{ duration: 0.3 }}
+                        key="experience"
+                      />
+                    ) : (
+                      <Container
+                        animate={this.state.fontsLoaded ? "loaded" : "loading"}
+                        variants={{
+                          loaded: { opacity: 1 },
+                          loading: { opacity: 0 },
                         }}
-                        style={{ overflow: "hidden" }}
+                        initial="loading"
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        key="main-container"
                       >
-                        <AnimatePresence mode="sync" initial={false}>
+                        <AnimatePresence mode="wait" initial={false}>
                           <ContentContainer
-                            initial={{ opacity: 0, position: "relative" }}
+                            initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            exit={{ opacity: 0, position: "absolute" }}
-                            key={router.pathname}
+                            exit={{ opacity: 0 }}
+                            key={font}
+                            transition={{
+                              stiffness: 1000,
+                              damping: 100,
+                              duration: TIMEOUT / 1000,
+                            }}
+                            style={{ overflow: "hidden" }}
                           >
-                            <Component {...pageProps} />
+                            <AnimatePresence mode="sync" initial={false}>
+                              <ContentContainer
+                                initial={{ opacity: 0, position: "relative" }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0, position: "absolute" }}
+                                key={router.pathname}
+                              >
+                                <Component {...pageProps} />
+                              </ContentContainer>
+                            </AnimatePresence>
+                            <Name />
+                            <Nav />
                           </ContentContainer>
                         </AnimatePresence>
-                        <Name />
-                        <Nav />
-                      </ContentContainer>
-                    </AnimatePresence>
-                    <NavMobile />
-                    <RightSidebar />
-                    <LeftSidebar />
-                  </Container>
+                        <NavMobile />
+                        <RightSidebar />
+                        <LeftSidebar />
+                      </Container>
+                    )}
+                  </AnimatePresence>
                 )}
               </FontConsumer>
             </NavProvider>
