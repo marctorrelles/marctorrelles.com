@@ -33,9 +33,11 @@ const Container = motion(styled.div`
   border: 1px solid #717171;
   flex-direction: column;
   background: ${lightTheme.background};
+
   @media (prefers-color-scheme: dark) {
     background: ${darkTheme.background};
   }
+
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
     width: calc(100% - ${MAIN_SEPARATION}px);
     margin-left: ${MAIN_SEPARATION / 2}px;
@@ -52,6 +54,62 @@ const ContentContainer = motion(styled.div`
   top: 0;
   bottom: 0;
 `)
+
+const PageContent = ({
+  Component,
+  pageProps,
+  router,
+  font,
+  shouldHideName,
+}) => {
+  const pageTransition = {
+    initial: { opacity: 0, position: "relative" as const },
+    animate: { opacity: 1 },
+    exit: { opacity: 0, position: "absolute" as const },
+  }
+
+  const fontTransition = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
+    transition: {
+      stiffness: 1000,
+      damping: 100,
+      duration: TIMEOUT / 1000,
+    },
+  }
+
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <ContentContainer
+        key={font}
+        {...fontTransition}
+        style={{ overflow: "hidden" }}
+      >
+        <AnimatePresence mode="sync" initial={false}>
+          <ContentContainer key={router.pathname} {...pageTransition}>
+            <Component {...pageProps} />
+          </ContentContainer>
+        </AnimatePresence>
+        <AnimatePresence mode="sync" initial={false}>
+          {!shouldHideName && (
+            <motion.div
+              key="name"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Name />
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <Nav />
+        <NavMobile />
+      </ContentContainer>
+    </AnimatePresence>
+  )
+}
 
 export default class MyApp extends App {
   state = {
@@ -75,7 +133,7 @@ export default class MyApp extends App {
 
   render() {
     const { Component, pageProps, router } = this.props
-    const isExperiencePage = router.pathname === "/experience"
+    const shouldHideName = router.pathname === "/experience"
 
     return (
       <>
@@ -104,60 +162,28 @@ export default class MyApp extends App {
             <NavProvider>
               <FontConsumer>
                 {({ font }) => (
-                  <AnimatePresence mode="sync" initial={false}>
-                    {isExperiencePage ? (
-                      <Component
-                        {...pageProps}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        key="experience"
+                  <AnimatePresence mode="wait" initial={false}>
+                    <Container
+                      animate={this.state.fontsLoaded ? "loaded" : "loading"}
+                      variants={{
+                        loaded: { opacity: 1 },
+                        loading: { opacity: 0 },
+                      }}
+                      initial="loading"
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      key="main-container"
+                    >
+                      <PageContent
+                        Component={Component}
+                        pageProps={pageProps}
+                        router={router}
+                        font={font}
+                        shouldHideName={shouldHideName}
                       />
-                    ) : (
-                      <Container
-                        animate={this.state.fontsLoaded ? "loaded" : "loading"}
-                        variants={{
-                          loaded: { opacity: 1 },
-                          loading: { opacity: 0 },
-                        }}
-                        initial="loading"
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        key="main-container"
-                      >
-                        <AnimatePresence mode="wait" initial={false}>
-                          <ContentContainer
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            key={font}
-                            transition={{
-                              stiffness: 1000,
-                              damping: 100,
-                              duration: TIMEOUT / 1000,
-                            }}
-                            style={{ overflow: "hidden" }}
-                          >
-                            <AnimatePresence mode="sync" initial={false}>
-                              <ContentContainer
-                                initial={{ opacity: 0, position: "relative" }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0, position: "absolute" }}
-                                key={router.pathname}
-                              >
-                                <Component {...pageProps} />
-                              </ContentContainer>
-                            </AnimatePresence>
-                            <Name />
-                            <Nav />
-                          </ContentContainer>
-                        </AnimatePresence>
-                        <NavMobile />
-                        <RightSidebar />
-                        <LeftSidebar />
-                      </Container>
-                    )}
+                      <RightSidebar />
+                      <LeftSidebar />
+                    </Container>
                   </AnimatePresence>
                 )}
               </FontConsumer>

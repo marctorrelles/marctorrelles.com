@@ -1,8 +1,8 @@
 import styled from "styled-components"
+import { useFont } from "../styles/FontProvider"
+import { MAIN_SEPARATION, ThemeParams } from "../styles/theme"
 import Link from "./Link"
 import Text from "./Text"
-import { MAIN_SEPARATION, ThemeParams } from "../styles/theme"
-import { useFont } from "../styles/FontProvider"
 
 const Container = styled.div`
   flex-direction: column;
@@ -11,6 +11,7 @@ const Container = styled.div`
   position: absolute;
   left: -22px;
   top: ${MAIN_SEPARATION}px;
+  z-index: 200;
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
     position: absolute;
     top: -28px;
@@ -42,7 +43,7 @@ enum Fonts {
 }
 
 const LeftSidebar = () => {
-  const { displayFont, font, setFont } = useFont()
+  const { font, setFont } = useFont()
 
   return (
     <Container>

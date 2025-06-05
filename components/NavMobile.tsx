@@ -11,12 +11,12 @@ import {
   lightTheme,
 } from "../styles/theme"
 
-const BarWrapper = styled.div<{ open: boolean }>`
+const BarWrapper = styled.button<{ open: boolean }>`
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  height: 1.2em;
-  width: 1.4em;
+  height: 1.4em;
+  width: 1.6em;
   cursor: pointer;
   z-index: 3;
   position: absolute;
@@ -24,6 +24,17 @@ const BarWrapper = styled.div<{ open: boolean }>`
   right: ${INNER_SEPARATION.Mobile}px;
   transform: ${({ open }) => (open ? "rotate(90deg)" : "rotate(0deg)")};
   transition: transform 0.25s ease-in-out;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  &:focus-visible {
+    outline: 1px solid ${lightTheme.primary};
+    outline-offset: 4px;
+    @media (prefers-color-scheme: dark) {
+      outline: 1px solid ${darkTheme.primary};
+    }
+  }
   @media (prefers-color-scheme: dark) {
     mix-blend-mode: difference;
   }
@@ -44,9 +55,6 @@ const Bar = styled(motion.div)<{
   width: 100%;
   height: 2px;
   background-color: ${lightTheme.primary};
-  @media (prefers-color-scheme: dark) {
-    background-color: ${darkTheme.primary};
-  }
   transform-origin: 1.4em;
   transition: width 0.25s ease-in-out;
   ${({ $font }) => $font === "serif" && serifStyle}
@@ -54,6 +62,10 @@ const Bar = styled(motion.div)<{
   ${({ $font }) => $font === "monospace" && monospaceStyle}
   ${({ open, $font, $displayFont }) =>
     (open || $font !== $displayFont) && "width: 100% !important;"}
+
+  @media (prefers-color-scheme: dark) {
+    background-color: ${darkTheme.primary};
+  }
 `
 
 const NavMobile = () => {
@@ -66,7 +78,12 @@ const NavMobile = () => {
   }, [pathname, font])
 
   return (
-    <BarWrapper open={navOpen} onClick={() => setNavOpen(!navOpen)}>
+    <BarWrapper
+      open={navOpen}
+      onClick={() => setNavOpen(!navOpen)}
+      role="button"
+      tabIndex={0}
+    >
       <Bar open={navOpen} $font={font} $displayFont={displayFont} />
       <Bar open={navOpen} $font={font} $displayFont={displayFont} />
       <Bar open={navOpen} $font={font} $displayFont={displayFont} />

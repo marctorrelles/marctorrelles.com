@@ -15,6 +15,7 @@ const About = () => (
       hesitate to contact me if you think we can make a good team.
     </Text>
     <Text>
+      Just want to know what I've been up to?{" "}
       <Link href="/experience">See my experience →</Link>
     </Text>
   </PageContainer>

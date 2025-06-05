@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components"
-import { darkTheme, lightTheme } from "./theme"
 import { Font } from "./FontProvider"
+import { darkTheme, lightTheme } from "./theme"
 
 function getFontStyles(font: Font) {
   switch (font) {
@@ -83,9 +83,16 @@ const GlobalStyle = createGlobalStyle<{ $font: Font }>`
   hr {
     width: 100%;
     height: 1px;
-    background: gray;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    background: ${lightTheme.secondary};
+    opacity: 0.2;
     border: none;
     outline: none;
+
+    @media (prefers-color-scheme: dark) {
+      background: ${darkTheme.secondary};
+    }
   }
 
   * {

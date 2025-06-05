@@ -68,7 +68,10 @@ const Nav = () => {
 
   let content = Object.entries(Links).map(([key, value]) => {
     const active =
-      value === "/" ? pathname === value : pathname.startsWith(value)
+      key === "About"
+        ? pathname === value || pathname === "/experience"
+        : pathname.startsWith(value)
+
     return (
       <Link key={value} href={value} active={active} size={1.3} variant="nav">
         {key}

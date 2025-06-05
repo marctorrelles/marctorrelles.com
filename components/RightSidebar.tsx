@@ -1,7 +1,7 @@
 import styled from "styled-components"
+import { MAIN_SEPARATION, ThemeParams } from "../styles/theme"
 import Link from "./Link"
 import Text from "./Text"
-import { MAIN_SEPARATION, ThemeParams } from "../styles/theme"
 
 const Container = styled.div`
   flex-direction: column;
@@ -10,6 +10,7 @@ const Container = styled.div`
   position: absolute;
   right: -22px;
   bottom: ${MAIN_SEPARATION}px;
+  z-index: 200;
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
     position: absolute;
     bottom: -22px;

@@ -1,4 +1,3 @@
-import { motion } from "framer-motion"
 import { styled } from "styled-components"
 import Link from "../components/Link"
 import Title from "../components/Title"
@@ -9,29 +8,25 @@ import {
   lightTheme,
 } from "../styles/theme"
 
-const FullScreenContainer = styled(motion.div)`
-  position: fixed;
+const FullScreenContainer = styled.div`
+  position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  background: ${lightTheme.background};
   overflow-y: auto;
   overflow-x: hidden;
   padding: 0;
   display: flex;
   flex-direction: column;
-  z-index: 1000;
-
-  @media (prefers-color-scheme: dark) {
-    background: ${darkTheme.background};
-  }
+  z-index: 100;
 `
 
 const CloseButton = styled(Link)`
-  position: fixed;
+  position: sticky;
   top: ${INNER_SEPARATION.Mobile}px;
-  left: ${INNER_SEPARATION.Mobile}px;
+  margin-left: ${INNER_SEPARATION.Mobile}px;
+  z-index: 1000;
   font-size: 1.2rem;
 `
 
@@ -101,12 +96,7 @@ const JobSeparator = styled.div`
 export default function Experience() {
   return (
     <>
-      <FullScreenContainer
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.95 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
-      >
+      <FullScreenContainer>
         <CloseButton href="/">← Back</CloseButton>
 
         <ExperienceContainer>
@@ -114,7 +104,9 @@ export default function Experience() {
           <JobEntry>
             <JobHeader>
               <Link href="https://permut.com" target="_blank">
-                <Title size="small">Permut</Title>
+                <Title size="small" noMargin>
+                  Permut
+                </Title>
               </Link>
               <JobPeriod>Feb 2024 - Now</JobPeriod>
             </JobHeader>
@@ -122,86 +114,100 @@ export default function Experience() {
               As the first employee at Permut, I contributed to our mission of
               enhancing efficiency for manufacturing companies. We identified a
               key challenge in procurement: determining what to buy, when, and
-              from whom. I played a central figure in developing the product,
-              establishing the technology and building the team, shaping the
-              company's current success.
+              from whom. I played a key role in developing the product,
+              establishing the technology stack, and helping to build the team,
+              contributing to the company's current success.
             </JobDescription>
           </JobEntry>
           <JobSeparator />
           <JobEntry>
             <JobHeader>
               <Link href="https://factorialhr.com" target="_blank">
-                <Title size="small">Factorial HR</Title>
+                <Title size="small" noMargin>
+                  Factorial HR
+                </Title>
               </Link>
               <JobPeriod>Jan 2020 - Oct 2023</JobPeriod>
             </JobHeader>
             <JobDescription>
               Responsible for shaping the technological landscape of the
               company's digital platforms. Using React and Ruby on Rails, I
-              played a pivotal role in several teams, both product facing but
-              also platform related.
+              played a pivotal role across several teams, contributing to both
+              product-facing features and platform infrastructure.
             </JobDescription>
           </JobEntry>
           <JobSeparator />
           <JobEntry>
             <JobHeader>
               <Link href="https://quipu.com" target="_blank">
-                <Title size="small">Quipu</Title>
+                <Title size="small" noMargin>
+                  Quipu
+                </Title>
               </Link>
               <JobPeriod>Feb 2019 - Jan 2020</JobPeriod>
             </JobHeader>
             <JobDescription>
-              Responsible for building a new vertical of the product, using
-              React and React Native and with collaboration between different
-              teams.
+              Led the development of a new product vertical, building
+              cross-platform solutions using React and React Native.
+              Collaborated across multiple teams to deliver new features.
             </JobDescription>
           </JobEntry>
           <JobSeparator />
           <JobEntry>
             <JobHeader>
-              <Title size="small">Freelance</Title>
+              <Title size="small" noMargin>
+                Freelance
+              </Title>
               <JobPeriod>Sep 2018 - Feb 2019</JobPeriod>
             </JobHeader>
             <JobDescription>
-              In charge of several digital products, mainly building websites
-              but also some larger applications, both in web and mobile devices.
+              Delivered digital solutions for various clients, ranging from
+              marketing websites to complex web and mobile applications.
             </JobDescription>
           </JobEntry>
           <JobSeparator />
           <JobEntry>
             <JobHeader>
-              <Title size="small">Fuelbanner</Title>
+              <Title size="small" noMargin>
+                Fuelbanner
+              </Title>
               <JobPeriod>Sep 2017 - Sep 2018</JobPeriod>
             </JobHeader>
             <JobDescription>
-              In charge of maintaining the company product using React and
-              ActionHero.js.
+              Maintained and enhanced the company's advertising platform using
+              React and ActionHero.js. Implemented new features and performance
+              optimizations.
             </JobDescription>
           </JobEntry>
           <JobSeparator />
           <JobEntry>
             <JobHeader>
               <Link href="https://parlem.com/" target="_blank">
-                <Title size="small">Parlem</Title>
+                <Title size="small" noMargin>
+                  Parlem
+                </Title>
               </Link>
               <JobPeriod>Mar 2017 - Sep 2017</JobPeriod>
             </JobHeader>
             <JobDescription>
-              In charge of building and maintaining the company internal tools,
-              as well as the public page.
+              Developed and maintained internal tools and the public-facing
+              website, focusing on efficient workflows and user-friendly
+              interfaces.
             </JobDescription>
           </JobEntry>
           <JobSeparator />
           <JobEntry>
             <JobHeader>
               <Link href="https://4tickets.cat" target="_blank">
-                <Title size="small">4Tickets</Title>
+                <Title size="small" noMargin>
+                  4Tickets
+                </Title>
               </Link>
               <JobPeriod>Oct 2013 - Mar 2017</JobPeriod>
             </JobHeader>
             <JobDescription>
-              In charge of building several webpages, as well as maintaining the
-              current ones using PHP, jQuery along other technologies.
+              Built and maintained multiple client websites and web applications
+              using PHP, jQuery, and other web technologies.
             </JobDescription>
           </JobEntry>
         </ExperienceContainer>
