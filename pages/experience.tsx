@@ -19,7 +19,6 @@ const FullScreenContainer = styled.div`
   padding: 0;
   display: flex;
   flex-direction: column;
-  z-index: 100;
 `
 
 const CloseButton = styled(Link)`
