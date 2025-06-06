@@ -105,7 +105,6 @@ const PageContent = ({
           )}
         </AnimatePresence>
         <Nav />
-        <NavMobile />
       </ContentContainer>
     </AnimatePresence>
   )
@@ -183,6 +182,7 @@ export default class MyApp extends App {
                       />
                       <RightSidebar />
                       <LeftSidebar />
+                      <NavMobile />
                     </Container>
                   </AnimatePresence>
                 )}

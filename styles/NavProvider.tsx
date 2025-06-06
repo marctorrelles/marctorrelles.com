@@ -29,7 +29,7 @@ export const useNav = (): ContextType => {
   if (typeof window === "undefined") {
     return {
       navOpen: false,
-      setNavOpen: (navOpen: boolean) => {},
+      setNavOpen: (_: boolean) => {},
     }
   }
 

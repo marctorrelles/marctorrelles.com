@@ -1,6 +1,8 @@
 import { styled } from "styled-components"
 import Link from "../components/Link"
+import PageContainer from "../components/PageContainer"
 import Title from "../components/Title"
+import { useNav } from "../styles/NavProvider"
 import {
   INNER_SEPARATION,
   ThemeParams,
@@ -21,27 +23,22 @@ const FullScreenContainer = styled.div`
   flex-direction: column;
 `
 
-const CloseButton = styled(Link)`
+const CloseButton = styled(Link)<{ $navOpen: boolean }>`
   position: sticky;
   top: ${INNER_SEPARATION.Mobile}px;
   margin-left: ${INNER_SEPARATION.Mobile}px;
   z-index: 1000;
   font-size: 1.2rem;
+  width: fit-content;
+  opacity: ${({ $navOpen }) => ($navOpen ? 0 : 1)};
+  transform: translateX(${({ $navOpen }) => ($navOpen ? "20px" : "0")});
+  transition: opacity 0.25s ease-in-out, transform 0.2s ease-in-out;
 `
 
 const ExperienceContainer = styled.div`
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 140px ${INNER_SEPARATION.Desktop}px 40px;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-
-  @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
-    padding: 100px ${INNER_SEPARATION.Mobile * 1.5}px;
-  }
 `
 
 const JobEntry = styled.div`
@@ -79,6 +76,10 @@ const JobDescription = styled.p`
   @media (prefers-color-scheme: dark) {
     color: ${darkTheme.primary};
   }
+
+  @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
+    font-size: 1rem;
+  }
 `
 
 const JobSeparator = styled.div`
@@ -93,11 +94,14 @@ const JobSeparator = styled.div`
 `
 
 export default function Experience() {
-  return (
-    <>
-      <FullScreenContainer>
-        <CloseButton href="/">← Back</CloseButton>
+  const { navOpen } = useNav()
 
+  return (
+    <FullScreenContainer>
+      <CloseButton href="/" $navOpen={navOpen}>
+        ← Back
+      </CloseButton>
+      <PageContainer>
         <ExperienceContainer>
           <Title size="normal">Experience</Title>
           <JobEntry>
@@ -210,7 +214,7 @@ export default function Experience() {
             </JobDescription>
           </JobEntry>
         </ExperienceContainer>
-      </FullScreenContainer>
-    </>
+      </PageContainer>
+    </FullScreenContainer>
   )
 }
