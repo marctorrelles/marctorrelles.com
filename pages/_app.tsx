@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion"
-import App from "next/app"
+import App, { AppProps } from "next/app"
 import dynamic from "next/dynamic"
 import Head from "next/head"
 import { Router } from "next/router"
@@ -110,23 +110,31 @@ const PageContent = ({
   )
 }
 
-export default class MyApp extends App {
+interface MyAppProps extends AppProps {
+  router: Router
+}
+
+export default class MyApp extends App<MyAppProps> {
   state = {
     fontsLoaded: false,
   }
 
-  async componentDidMount() {
-    await loadFonts()
-    this.setState({ fontsLoaded: true })
+  // Missing some props, ignoring for simplicity
+  componentDidMount() {
+    this.props.router.events.on("routeChangeComplete", this.handleRouteChange)
+    loadFonts().then(() => {
+      this.setState({ fontsLoaded: true })
+    })
   }
 
-  // Missing some props, ignoring for simplicity
-  componentDidUpdate(prevProps: Readonly<{ router: Router }>) {
-    prevProps.router.events.on("routeChangeComplete", () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      })
+  componentWillUnmount() {
+    this.props.router.events.off("routeChangeComplete", this.handleRouteChange)
+  }
+
+  handleRouteChange = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
     })
   }
 

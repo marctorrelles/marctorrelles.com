@@ -21,8 +21,6 @@ const FontContext = React.createContext<FontContext>({
   setFont: () => {},
 })
 
-let timeout: NodeJS.Timeout
-
 const getStorageFont = (): Font => {
   if (typeof window === "undefined") return "serif"
 
@@ -41,17 +39,26 @@ const setStorageFont = (font: Font) => {
 export const FontProvider = ({ children }: FontProviderProps) => {
   const [requested, setRequested] = React.useState<Font>(getStorageFont())
   const [displayFont, setFinalFont] = React.useState<Font>(getStorageFont())
+  const timeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  React.useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+        timeoutRef.current = null
+      }
+    }
+  }, [])
 
   function setFont(font: Font) {
-    if (timeout) return
+    if (timeoutRef.current) return
 
     setRequested(font)
-    timeout = setTimeout(() => {
+    timeoutRef.current = setTimeout(() => {
       setFinalFont(font)
       setStorageFont(font)
 
-      clearTimeout(timeout)
-      timeout = null
+      timeoutRef.current = null
     }, TIMEOUT)
   }
 

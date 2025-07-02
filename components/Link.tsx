@@ -111,7 +111,23 @@ const Link = ({
       className={className}
     >
       {onClick ? (
-        <a onClick={() => onClick()}>{children}</a>
+        <a 
+          href="#" 
+          role="button" 
+          tabIndex={0}
+          onClick={(e) => {
+            e.preventDefault()
+            onClick()
+          }}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault()
+              onClick()
+            }
+          }}
+        >
+          {children}
+        </a>
       ) : target ? (
         <a target={target} href={href}>
           {children}
