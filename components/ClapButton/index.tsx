@@ -87,9 +87,8 @@ type Props = {
   slug: string
 }
 
-let timer: NodeJS.Timeout
-
 export default function ClapCounter({ slug }: Props) {
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const [fetching, setFetching] = useState(false)
   const [claps, setClaps] = useState<number>()
   const [lastClap, setLastClap] = useState<number>()
@@ -102,7 +101,7 @@ export default function ClapCounter({ slug }: Props) {
     if (counterRef.current && counterWidth === undefined && claps) {
       setCounterWidth(counterRef.current.offsetWidth)
     }
-  }, [counterRef.current, claps])
+  }, [counterWidth, claps])
 
   useEffect(() => {
     async function fetchClaps() {
@@ -126,12 +125,15 @@ export default function ClapCounter({ slug }: Props) {
     fetchClaps()
 
     return () => {
-      timer && clearTimeout(timer)
+      if (timerRef.current) {
+        clearTimeout(timerRef.current)
+        timerRef.current = null
+      }
     }
   }, [])
 
   const resetTimer = (newClaps: number) => {
-    timer = setTimeout(async () => {
+    timerRef.current = setTimeout(async () => {
       try {
         await fetch(`/api/clap`, {
           method: "POST",
@@ -151,7 +153,10 @@ export default function ClapCounter({ slug }: Props) {
 
   const handleClap = async () => {
     setLastClap(Date.now())
-    clearTimeout(timer)
+    if (timerRef.current) {
+      clearTimeout(timerRef.current)
+      timerRef.current = null
+    }
     setTemporaryClaps((prev) => {
       const newClaps = prev === 99 ? prev : prev + 1
       resetTimer(newClaps)
