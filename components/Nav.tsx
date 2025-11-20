@@ -14,7 +14,7 @@ export const NAV_HEIGHT = {
 
 export enum Links {
   About = "/",
-  Posts = "/posts",
+  Projects = "/projects",
   Photos = "/photos",
 }
 
@@ -70,7 +70,7 @@ const Nav = () => {
     const active =
       key === "About"
         ? pathname === value || pathname === "/experience"
-        : pathname.startsWith(value)
+        : pathname === value || pathname.startsWith(value)
 
     return (
       <Link key={value} href={value} active={active} size={1.3} variant="nav">

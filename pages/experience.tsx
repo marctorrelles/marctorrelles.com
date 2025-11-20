@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react"
 import { styled } from "styled-components"
 import Link from "../components/Link"
 import PageContainer from "../components/PageContainer"
@@ -95,10 +96,15 @@ const JobSeparator = styled.div`
 
 export default function Experience() {
   const { navOpen } = useNav()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   return (
     <FullScreenContainer>
-      <CloseButton href="/" $navOpen={navOpen}>
+      <CloseButton href="/" $navOpen={mounted ? navOpen : false}>
         ← Back
       </CloseButton>
       <PageContainer>
@@ -117,9 +123,12 @@ export default function Experience() {
               As the first employee at Permut, I contributed to our mission of
               enhancing efficiency for manufacturing companies. We identified a
               key challenge in procurement: determining what to buy, when, and
-              from whom. I played a key role in developing the product,
-              establishing the technology stack, and helping to build the team,
-              contributing to the company's current success.
+              from whom.
+              <br />
+              After that, we did a 180-degree turn and pivoted to build an
+              AI-native customer engagement platform. Now, we develop autonomous
+              agents that create human-like, on-brand conversations to manage
+              acquisition, support, and retention.
             </JobDescription>
           </JobEntry>
           <JobSeparator />
@@ -137,7 +146,21 @@ export default function Experience() {
               company's digital platforms. Using React and Ruby on Rails, I
               played a pivotal role across several teams, contributing to both
               product-facing features and platform infrastructure.
+              <br />
+              Some cool things I did there include migrating from{" "}
+              <Link
+                href="https://labs.factorialhr.com/posts/from-webpack-to-vite"
+                target="_blank"
+              >
+                webpack to Vite{" "}
+              </Link>
+              {" and helping building a "}
+              <Link href="https://swc.rs" target="_blank">
+                declarative resource-oriented registry for Ruby
+              </Link>
+              , amongst many other product-facing features.
             </JobDescription>
+            <JobDescription></JobDescription>
           </JobEntry>
           <JobSeparator />
           <JobEntry>
@@ -165,7 +188,9 @@ export default function Experience() {
             </JobHeader>
             <JobDescription>
               Delivered digital solutions for various clients, ranging from
-              marketing websites to complex web and mobile applications.
+              marketing websites to complex web and mobile applications. Didn't
+              work that well because, well, let's say it was a bit
+              client-intensive.
             </JobDescription>
           </JobEntry>
           <JobSeparator />
@@ -179,7 +204,8 @@ export default function Experience() {
             <JobDescription>
               Maintained and enhanced the company's advertising platform using
               React and ActionHero.js. Implemented new features and performance
-              optimizations.
+              optimizations. Worked on a really small team, which pushed me quit
+              quite a lot on discovering things on my own.
             </JobDescription>
           </JobEntry>
           <JobSeparator />
@@ -210,7 +236,8 @@ export default function Experience() {
             </JobHeader>
             <JobDescription>
               Built and maintained multiple client websites and web applications
-              using PHP, jQuery, and other web technologies.
+              using basic JavaScript and a lot of CSS, but also some good old
+              LAMP stack.
             </JobDescription>
           </JobEntry>
         </ExperienceContainer>

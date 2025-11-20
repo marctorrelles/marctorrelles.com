@@ -102,6 +102,17 @@ const Link = ({
   children,
   className,
 }: Props) => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // Blur the active element after click to remove focus state
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur()
+    }
+    // Call custom onClick if provided
+    if (onClick) {
+      onClick()
+    }
+  }
+
   return (
     <LinkWrap
       $active={active}
@@ -111,13 +122,13 @@ const Link = ({
       className={className}
     >
       {onClick ? (
-        <a onClick={() => onClick()}>{children}</a>
+        <a onClick={handleClick}>{children}</a>
       ) : target ? (
-        <a target={target} href={href}>
+        <a target={target} href={href} onClick={handleClick}>
           {children}
         </a>
       ) : (
-        <NextLink href={href} scroll={false}>
+        <NextLink href={href} scroll={false} onClick={handleClick}>
           {children}
         </NextLink>
       )}

@@ -37,7 +37,7 @@ export default function Post({ photoSet }: Props) {
       await global.navigator?.share({
         title,
         text: `${title} Photos`,
-        url: `${process.env.DOMAIN}/posts/${slug}`,
+        url: `${process.env.DOMAIN}/photos/${slug}`,
       })
     } catch (error) {
       console.error(error)
