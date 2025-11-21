@@ -11,6 +11,8 @@ const LinkWrap = styled.span<{
   $noBorder?: boolean
 }>`
   cursor: pointer;
+  display: inline;
+  white-space: normal;
   @media (prefers-color-scheme: dark) {
     mix-blend-mode: difference;
   }
@@ -18,6 +20,7 @@ const LinkWrap = styled.span<{
   > a {
     text-decoration: none;
     display: inline;
+    white-space: normal;
   }
 
   ${({ $variant, $active, $size, $noBorder }) => `
