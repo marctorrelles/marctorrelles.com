@@ -8,6 +8,7 @@ const LinkWrap = styled.span<{
   $active?: boolean
   $size?: Number
   $variant: Variant
+  $noBorder?: boolean
 }>`
   cursor: pointer;
   @media (prefers-color-scheme: dark) {
@@ -19,7 +20,7 @@ const LinkWrap = styled.span<{
     display: inline-block;
   }
 
-  ${({ $variant, $active, $size }) => `
+  ${({ $variant, $active, $size, $noBorder }) => `
       > a {
         ${
           $variant === "sidebar"
@@ -33,7 +34,7 @@ const LinkWrap = styled.span<{
           `
         }
         ${
-          $variant === "regular"
+          $variant === "regular" && !$noBorder
             ? `border-bottom: 1px solid ${lightTheme.dark};`
             : ""
         }
@@ -57,7 +58,7 @@ const LinkWrap = styled.span<{
       @media (prefers-color-scheme: dark) {
         > a {
           ${
-            $variant === "regular"
+            $variant === "regular" && !$noBorder
               ? `border-bottom: 1px solid ${darkTheme.dark};`
               : ""
           }
@@ -88,6 +89,7 @@ type Props = {
   children: React.ReactNode
   component?: React.ElementType
   variant?: Variant
+  noBorder?: boolean
   className?: string
 }
 
@@ -99,6 +101,7 @@ const Link = ({
   href,
   component,
   variant = "regular",
+  noBorder = false,
   children,
   className,
 }: Props) => {
@@ -118,6 +121,7 @@ const Link = ({
       $active={active}
       $size={size}
       $variant={variant}
+      $noBorder={noBorder}
       as={component}
       className={className}
     >

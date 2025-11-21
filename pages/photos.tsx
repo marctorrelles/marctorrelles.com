@@ -38,7 +38,7 @@ export default function Photos({ photoSet }: Props) {
               <Link href={`/photos/${photo.slug}`} component={Title}>
                 {photo.title}
               </Link>
-              <Link href={`/photos/${photo.slug}`}>
+              <Link href={`/photos/${photo.slug}`} noBorder>
                 <FadeInImage
                   src={photo.cover}
                   alt={photo.title}

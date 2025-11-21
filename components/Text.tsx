@@ -9,7 +9,7 @@ type Props = {
   variant?: Variant
 }
 
-const Text = styled.p<Props>`
+const Text = styled.div<Props>`
   padding: 0;
   margin: 0;
   margin-top: 0.6em;
