@@ -125,9 +125,7 @@ const Link = ({
       as={component}
       className={className}
     >
-      {onClick ? (
-        <a onClick={handleClick}>{children}</a>
-      ) : target ? (
+      {target ? (
         <a target={target} href={href} onClick={handleClick}>
           {children}
         </a>
