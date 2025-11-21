@@ -1,6 +1,8 @@
 import { GetStaticPropsContext } from "next"
+import { useState } from "react"
 import { styled } from "styled-components"
 import FadeInImage from "../../components/FadeInImage"
+import FullscreenImageViewer from "../../components/FullscreenImageViewer"
 import PageContainer from "../../components/PageContainer"
 import Separator from "../../components/Separator"
 import Text from "../../components/Text"
@@ -23,8 +25,50 @@ const PhotoSet = styled.div`
   }
 `
 
+const ClickableImage = styled.div`
+  cursor: pointer;
+  width: 100%;
+`
+
 export default function Post({ photoSet }: Props) {
   const { title, photos, date } = photoSet
+  const [fullscreenImage, setFullscreenImage] = useState<string | null>(null)
+  const [imageRect, setImageRect] = useState<DOMRect | null>(null)
+  const [isFullscreenOpen, setIsFullscreenOpen] = useState(false)
+
+  const handleImageClick = (photo: string, event: React.MouseEvent<HTMLDivElement>) => {
+    const imgElement = event.currentTarget.querySelector("img")
+    if (imgElement) {
+      const rect = imgElement.getBoundingClientRect()
+      setImageRect(rect)
+      setFullscreenImage(photo)
+      setIsFullscreenOpen(true)
+    }
+  }
+
+  const handleCloseFullscreen = () => {
+    setIsFullscreenOpen(false)
+    // Delay clearing the image data to allow fade-out animation
+    setTimeout(() => {
+      setFullscreenImage(null)
+      setImageRect(null)
+    }, 450) // Match animation duration
+  }
+
+  const getFullscreenImageData = () => {
+    if (!fullscreenImage) return null
+    
+    // Use large dimensions to allow image to display at natural size
+    // CSS will constrain it to viewport and natural width
+    return {
+      src: fullscreenImage,
+      alt: fullscreenImage.split("/").pop()?.split(".").shift() || "",
+      width: 4000, // Large enough to not constrain most images
+      height: 3000, // Aspect ratio hint, will be constrained by CSS
+    }
+  }
+
+  const fullscreenData = getFullscreenImageData()
 
   return (
     <PageContainer>
@@ -33,16 +77,31 @@ export default function Post({ photoSet }: Props) {
       <Separator />
       <PhotoSet>
         {photos.map((photo, index) => (
-          <FadeInImage
+          <ClickableImage
             key={photo}
-            src={photo}
-            width={800}
-            height={600}
-            priority={index < 3}
-            alt={photo.split("/").pop().split(".").shift() || ""}
-          />
+            onClick={(e) => handleImageClick(photo, e)}
+          >
+            <FadeInImage
+              src={photo}
+              width={800}
+              height={600}
+              priority={index < 3}
+              alt={photo.split("/").pop()?.split(".").shift() || ""}
+            />
+          </ClickableImage>
         ))}
       </PhotoSet>
+      {fullscreenData && (
+        <FullscreenImageViewer
+          src={fullscreenData.src}
+          alt={fullscreenData.alt}
+          width={fullscreenData.width}
+          height={fullscreenData.height}
+          isOpen={isFullscreenOpen}
+          onClose={handleCloseFullscreen}
+          initialRect={imageRect}
+        />
+      )}
     </PageContainer>
   )
 }
