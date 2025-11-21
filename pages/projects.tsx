@@ -82,7 +82,6 @@ const ProjectImage = styled.div`
   position: relative;
   min-width: 200px;
   width: 240px;
-  border-radius: 12px;
   overflow: hidden;
   flex-shrink: 0;
 

@@ -11,7 +11,7 @@
     "fontfaceobserver": "^2.3.0",
     "framer-motion": "^10.16.2",
     "gray-matter": "^4.0.3",
-    "next": "^14.2.25",
+    "next": "^16.0.3",
     "raw-loader": "^4.0.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -24,8 +24,7 @@
   "scripts": {
     "dev": "next dev",
     "start": "next start",
-    "build": "next build",
-    "export": "next export"
+    "build": "next build"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
@@ -33,7 +32,8 @@
     "@swc/plugin-styled-components": "^1.5.75",
     "@types/glob": "^8.1.0",
     "@types/node": "^20.5.0",
-    "@types/react": "^18.2.20",
+    "@types/react": "^19.2.6",
+    "@types/react-dom": "^19.2.3",
     "@types/react-syntax-highlighter": "^15.5.7",
     "@types/styled-components": "^5.1.26",
     "next-remote-watch": "^2.0.0",

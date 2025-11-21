@@ -11,6 +11,8 @@ module.exports = {
 
     return config
   },
+  // Turbopack configuration (Next.js 16+)
+  turbopack: {},
   images: {
     unoptimized: true,
   },
