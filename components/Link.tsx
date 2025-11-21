@@ -118,6 +118,29 @@ const Link = ({
     }
   }
 
+  if (!href) {
+    return <LinkWrap
+      $active={active}
+      $size={size}
+      $variant={variant}
+      $noBorder={noBorder}
+      as={component}
+      className={className}
+    >
+      {children}
+    </LinkWrap>
+  }
+
+  const linkContent = target ? (
+    <a target={target} href={href} onClick={handleClick}>
+      {children}
+    </a>
+  ) : (
+    <NextLink href={href} scroll={false} onClick={handleClick}>
+      {children}
+    </NextLink>
+  )
+
   return (
     <LinkWrap
       $active={active}
@@ -127,15 +150,7 @@ const Link = ({
       as={component}
       className={className}
     >
-      {target ? (
-        <a target={target} href={href} onClick={handleClick}>
-          {children}
-        </a>
-      ) : (
-        <NextLink href={href} scroll={false} onClick={handleClick}>
-          {children}
-        </NextLink>
-      )}
+      {linkContent}
     </LinkWrap>
   )
 }
