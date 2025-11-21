@@ -12,7 +12,6 @@ const LinkWrap = styled.span<{
 }>`
   cursor: pointer;
   display: inline;
-  white-space: normal;
   @media (prefers-color-scheme: dark) {
     mix-blend-mode: difference;
   }
@@ -20,7 +19,7 @@ const LinkWrap = styled.span<{
   > a {
     text-decoration: none;
     display: inline;
-    white-space: normal;
+    white-space: nowrap;
   }
 
   ${({ $variant, $active, $size, $noBorder }) => `
