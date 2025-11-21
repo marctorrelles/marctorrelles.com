@@ -33,17 +33,11 @@ const ClickableImage = styled.div`
 export default function Post({ photoSet }: Props) {
   const { title, photos, date } = photoSet
   const [fullscreenImage, setFullscreenImage] = useState<string | null>(null)
-  const [imageRect, setImageRect] = useState<DOMRect | null>(null)
   const [isFullscreenOpen, setIsFullscreenOpen] = useState(false)
 
-  const handleImageClick = (photo: string, event: React.MouseEvent<HTMLDivElement>) => {
-    const imgElement = event.currentTarget.querySelector("img")
-    if (imgElement) {
-      const rect = imgElement.getBoundingClientRect()
-      setImageRect(rect)
-      setFullscreenImage(photo)
-      setIsFullscreenOpen(true)
-    }
+  const handleImageClick = (photo: string) => {
+    setFullscreenImage(photo)
+    setIsFullscreenOpen(true)
   }
 
   const handleCloseFullscreen = () => {
@@ -51,7 +45,6 @@ export default function Post({ photoSet }: Props) {
     // Delay clearing the image data to allow fade-out animation
     setTimeout(() => {
       setFullscreenImage(null)
-      setImageRect(null)
     }, 450) // Match animation duration
   }
 
@@ -79,7 +72,7 @@ export default function Post({ photoSet }: Props) {
         {photos.map((photo, index) => (
           <ClickableImage
             key={photo}
-            onClick={(e) => handleImageClick(photo, e)}
+            onClick={() => handleImageClick(photo)}
           >
             <FadeInImage
               src={photo}
@@ -99,7 +92,6 @@ export default function Post({ photoSet }: Props) {
           height={fullscreenData.height}
           isOpen={isFullscreenOpen}
           onClose={handleCloseFullscreen}
-          initialRect={imageRect}
         />
       )}
     </PageContainer>
