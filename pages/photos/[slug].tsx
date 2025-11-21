@@ -1,8 +1,5 @@
 import { GetStaticPropsContext } from "next"
 import { styled } from "styled-components"
-import ArticleFooter from "../../components/ArticleFooter"
-import Button from "../../components/Button"
-import ClapButton from "../../components/ClapButton"
 import FadeInImage from "../../components/FadeInImage"
 import PageContainer from "../../components/PageContainer"
 import Separator from "../../components/Separator"
@@ -11,7 +8,6 @@ import Title from "../../components/Title"
 import { formatDate } from "../../lib/date"
 import type { PhotoSet } from "../../lib/getSortedPhotos"
 import getSortedPhotos, { getPhotoSet } from "../../lib/getSortedPhotos"
-import ShareIcon from "../../public/share.svg"
 import { ThemeParams } from "../../styles/theme"
 
 type Props = {
@@ -23,26 +19,12 @@ const PhotoSet = styled.div`
   flex-direction: column;
   gap: 3em;
   @media (min-width: ${ThemeParams.MobileBreakpoint}px) {
-    1.5em;
+    gap: 1.5em;
   }
 `
 
 export default function Post({ photoSet }: Props) {
-  const { title, author, photos, date, slug } = photoSet
-
-  const canShare = !!global.navigator?.share
-
-  const onShare = async () => {
-    try {
-      await global.navigator?.share({
-        title,
-        text: `${title} Photos`,
-        url: `${process.env.DOMAIN}/photos/${slug}`,
-      })
-    } catch (error) {
-      console.error(error)
-    }
-  }
+  const { title, photos, date } = photoSet
 
   return (
     <PageContainer>
@@ -61,15 +43,6 @@ export default function Post({ photoSet }: Props) {
           />
         ))}
       </PhotoSet>
-      <Separator />
-      <ArticleFooter>
-        <ClapButton slug={`post-${slug}`} />
-        {canShare && (
-          <Button onClick={onShare}>
-            <ShareIcon />
-          </Button>
-        )}
-      </ArticleFooter>
     </PageContainer>
   )
 }

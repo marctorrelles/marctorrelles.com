@@ -7,7 +7,6 @@
     "url": "https://github.com/"
   },
   "dependencies": {
-    "@vercel/kv": "^3.0.0",
     "fontfaceobserver": "^2.3.0",
     "framer-motion": "^10.16.2",
     "gray-matter": "^4.0.3",
