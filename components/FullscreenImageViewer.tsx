@@ -3,6 +3,8 @@ import { useEffect, useState } from "react"
 import { createPortal } from "react-dom"
 import styled from "styled-components"
 
+const TRANSITION_DURATION = 250
+
 const Overlay = styled.div<{ $isVisible: boolean }>`
   position: fixed;
   top: 0;
@@ -16,7 +18,7 @@ const Overlay = styled.div<{ $isVisible: boolean }>`
   justify-content: center;
   cursor: pointer;
   opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
-  transition: opacity 0.4s ease-out;
+  transition: opacity ${TRANSITION_DURATION}ms ease-out;
   pointer-events: ${({ $isVisible }) => ($isVisible ? "auto" : "none")};
 `
 
@@ -38,7 +40,7 @@ const ImageWrapper = styled.div<{
   cursor: pointer;
   transform: translate(-50%, -50%);
   opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
-  transition: opacity 0.4s ease-out;
+  transition: opacity ${TRANSITION_DURATION}ms ease-out;
 
   img {
     max-width: ${({ $computedMaxWidth }) =>
@@ -117,7 +119,7 @@ export default function FullscreenImageViewer({
         clearTimeout(scrollTimeout)
         scrollTimeout = setTimeout(() => {
           onClose()
-        }, 100)
+        }, TRANSITION_DURATION)
       }
 
       const handleWheel = (e: WheelEvent) => {
@@ -165,7 +167,12 @@ export default function FullscreenImageViewer({
   const finalMaxHeight = Math.min(computedMaxHeight, naturalHeight)
 
   return createPortal(
-    <Overlay $isVisible={isVisible} onClick={onClose}>
+    <Overlay
+      $isVisible={isVisible}
+      onClick={onClose}
+      onTouchStart={onClose}
+      onTouchMove={onClose}
+    >
       <ImageWrapper
         $maxWidth={width}
         $isVisible={isVisible}

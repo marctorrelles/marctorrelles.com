@@ -17,7 +17,7 @@ const LinkWrap = styled.span<{
 
   > a {
     text-decoration: none;
-    display: inline-block;
+    display: inline;
   }
 
   ${({ $variant, $active, $size, $noBorder }) => `

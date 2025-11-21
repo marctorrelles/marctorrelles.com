@@ -22,6 +22,7 @@ const Text = styled.div<Props>`
     variant === "sidebar" ? "uppercase" : "inherit"};
   font-family: ${({ variant }) =>
     variant === "sidebar" ? "monospace" : "inherit"};
+  display: inline-block;
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
     font-size: ${({ variant }) =>
       variant === "regular" || !variant ? 1 : 0.9}em;
