@@ -2,6 +2,7 @@ import { styled } from "styled-components"
 import FadeInImage from "../components/FadeInImage"
 import Link from "../components/Link"
 import PageContainer from "../components/PageContainer"
+import Separator from "../components/Separator"
 import Text from "../components/Text"
 import Title from "../components/Title"
 import { ThemeParams, darkTheme, lightTheme } from "../styles/theme"
@@ -213,6 +214,7 @@ export default function Projects() {
             </TechStack>
           </ProjectContent>
         </Project>
+        <Separator />
         <Project>
           <ProjectHeader>
             <Title size="normal" noMargin>
