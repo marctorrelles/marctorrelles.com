@@ -1,5 +1,5 @@
 import { GetStaticPropsContext } from "next"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { styled } from "styled-components"
 import FadeInImage from "../../components/FadeInImage"
 import FullscreenImageViewer from "../../components/FullscreenImageViewer"
@@ -34,17 +34,24 @@ export default function Post({ photoSet }: Props) {
   const { title, photos, date } = photoSet
   const [fullscreenImage, setFullscreenImage] = useState<string | null>(null)
   const [isFullscreenOpen, setIsFullscreenOpen] = useState(false)
+  // Prevent opening a new photo while the viewer is in the process of closing.
+  // Without this flag, clicking the overlay on top of another photo would close
+  // the current viewer AND immediately open the next one (both end up closed).
+  const isClosingRef = useRef(false)
 
   const handleImageClick = (photo: string) => {
+    if (isClosingRef.current) return
     setFullscreenImage(photo)
     setIsFullscreenOpen(true)
   }
 
   const handleCloseFullscreen = () => {
+    isClosingRef.current = true
     setIsFullscreenOpen(false)
     // Delay clearing the image data to allow fade-out animation
     setTimeout(() => {
       setFullscreenImage(null)
+      isClosingRef.current = false
     }, 450) // Match animation duration
   }
 
