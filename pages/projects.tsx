@@ -128,8 +128,8 @@ const TechStack = styled.div`
 const TechBadge = styled.span`
   padding: 0.4rem 0.8rem;
   font-size: 0.85rem;
-  background: ${lightTheme.primary}33;
-  color: ${lightTheme.background};
+  background: ${lightTheme.primary}22;
+  color: ${lightTheme.primary};
 
   @media (prefers-color-scheme: dark) {
     background: ${darkTheme.primary}22;
