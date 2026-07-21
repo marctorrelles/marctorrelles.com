@@ -13,11 +13,25 @@ const LinkWrap = styled.span<{
   cursor: pointer;
   @media (prefers-color-scheme: dark) {
     mix-blend-mode: difference;
+
+    /* Blend mode mangles the hover highlight (invisible text / no light bg);
+       render the hover state literally instead. */
+    &:hover,
+    &:focus-within {
+      mix-blend-mode: normal;
+    }
   }
 
   > a {
     text-decoration: none;
     display: inline;
+  }
+
+  /* When the link wraps a heading (e.g. <Title>), the anchor must be a block
+     box so its hover background covers the heading instead of a zero-area
+     inline box behind block content. */
+  > a:has(> h1, > h2, > h3, > h4) {
+    display: inline-block;
   }
 
   ${({ $variant, $active, $size, $noBorder }) => `
