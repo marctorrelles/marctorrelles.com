@@ -1,5 +1,4 @@
 import fs from "fs"
-import { globSync } from "glob"
 import matter from "gray-matter"
 import path from "path"
 
@@ -51,9 +50,10 @@ export async function getPhotoSet(slug: string) {
 }
 
 export default async function getSortedPhotos(): Promise<PhotoSet[]> {
-  const mdFiles = globSync(`photos/*.md`)
+  const photosDir = path.join(process.cwd(), "photos")
+  const mdFiles = fs.readdirSync(photosDir).filter((file) => file.endsWith(".md"))
   const slugs = mdFiles.map((file) =>
-    file.split("/")[1].replace(/ /g, "-").slice(0, -3).trim()
+    file.replace(/ /g, "-").slice(0, -3).trim()
   )
   const photos = (
     await Promise.all(slugs.map((slug) => getPhotoSet(slug)))
