@@ -56,6 +56,30 @@ const PlatformLink = styled(Link)`
   }
 `
 
+const DiscontinuedBadge = styled.span`
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  background: ${lightTheme.secondary}22;
+  color: ${lightTheme.secondary};
+  white-space: nowrap;
+
+  @media (prefers-color-scheme: dark) {
+    background: ${darkTheme.secondary}22;
+    color: ${darkTheme.secondary};
+  }
+`
+
+const DiscontinuedNote = styled.p`
+  margin: 0;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: ${lightTheme.secondary};
+
+  @media (prefers-color-scheme: dark) {
+    color: ${darkTheme.secondary};
+  }
+`
+
 const ProjectImageGrid = styled.div`
   display: flex;
   flex-direction: row;
@@ -144,22 +168,7 @@ export default function Projects() {
         <Project>
           <ProjectHeader>
             <Title size="normal">Gustosa</Title>
-            <DownloadLinks>
-              Download it on the{" "}
-              <PlatformLink
-                href="https://apps.apple.com/cr/app/gustosa-recetas-con-ia/id6738069529"
-                target="_blank"
-              >
-                App Store
-              </PlatformLink>
-              {" or "}
-              <PlatformLink
-                href="https://play.google.com/store/apps/details?id=com.marctorrelles.gustosa"
-                target="_blank"
-              >
-                Play Store
-              </PlatformLink>
-            </DownloadLinks>
+            <DiscontinuedBadge>No longer available</DiscontinuedBadge>
           </ProjectHeader>
           <ProjectImageGrid>
             <ProjectImage>
@@ -188,6 +197,9 @@ export default function Projects() {
             </ProjectImage>
           </ProjectImageGrid>
           <ProjectContent>
+            <DiscontinuedNote>
+              Gustosa is no longer available on the App Store or Play Store.
+            </DiscontinuedNote>
             <DescriptionText>
               My idea was clear: I wanted to build an app that uses AI and that
               my mother would use. After that, things came naturally.
