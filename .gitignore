@@ -9,3 +9,5 @@ npm-debug.log
 .vercel
 .env*.local
 tsconfig.tsbuildinfo
+.open-next
+.wrangler

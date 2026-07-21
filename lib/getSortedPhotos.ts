@@ -1,5 +1,5 @@
 import fs from "fs"
-import glob from "glob"
+import { globSync } from "glob"
 import matter from "gray-matter"
 import path from "path"
 
@@ -51,7 +51,7 @@ export async function getPhotoSet(slug: string) {
 }
 
 export default async function getSortedPhotos(): Promise<PhotoSet[]> {
-  const mdFiles = glob.sync(`photos/*.md`)
+  const mdFiles = globSync(`photos/*.md`)
   const slugs = mdFiles.map((file) =>
     file.split("/")[1].replace(/ /g, "-").slice(0, -3).trim()
   )
