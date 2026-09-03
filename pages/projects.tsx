@@ -167,6 +167,84 @@ export default function Projects() {
       <ProjectsContainer>
         <Project>
           <ProjectHeader>
+            <Title size="normal" noMargin>
+              Caliu
+            </Title>
+            <DownloadLinks>
+              Download on the{" "}
+              <PlatformLink
+                href="https://apps.apple.com/app/caliu-a-notes-app/id6761850487"
+                target="_blank"
+              >
+                App Store
+              </PlatformLink>{" "}
+              or{" "}
+              <PlatformLink href="https://caliuapp.com" target="_blank">
+                open it on the web
+              </PlatformLink>
+            </DownloadLinks>
+          </ProjectHeader>
+          <ProjectImageGrid>
+            <ProjectImage>
+              <FadeInImage
+                src="/projects/caliu/1.png"
+                alt="Caliu screenshot 1"
+                width={400}
+                height={870}
+              />
+            </ProjectImage>
+            <ProjectImage>
+              <FadeInImage
+                src="/projects/caliu/2.png"
+                alt="Caliu screenshot 2"
+                width={400}
+                height={870}
+              />
+            </ProjectImage>
+            <ProjectImage>
+              <FadeInImage
+                src="/projects/caliu/3.png"
+                alt="Caliu screenshot 3"
+                width={400}
+                height={870}
+              />
+            </ProjectImage>
+          </ProjectImageGrid>
+          <ProjectContent>
+            <DescriptionText>
+              I take a lot of notes. Ideas, lists, half-written things I come
+              back to months later. For years I bounced between apps: Bear
+              looked right but was Apple only, Obsidian did everything and felt
+              like work, and the rest wanted me online all the time. At some
+              point I stopped looking and started building.
+              <br />
+              Caliu is a Markdown notes app that feels like a quiet page. Your
+              notes live on your device first, work fully offline, and sync in
+              the background when there is a connection. Organisation is
+              hashtags, not folders: write #work/project inside a note and it
+              belongs there. Pin a reminder to a note and it finds you on
+              whatever device you pick up. Talk to it and it writes clean
+              Markdown. And because I wanted my own tools to reach my notes, it
+              ships with a REST API and an MCP server, so Claude or Cursor can
+              read and write them too.
+              <br />
+              It runs natively on iPhone, iPad, Mac and Apple Watch, and on the
+              web. It's the app I open every morning, which is the only real
+              reason it exists.
+            </DescriptionText>
+            <TechStack>
+              <TechBadge>Swift</TechBadge>
+              <TechBadge>SwiftUI</TechBadge>
+              <TechBadge>React</TechBadge>
+              <TechBadge>TypeScript</TechBadge>
+              <TechBadge>Cloudflare Workers</TechBadge>
+              <TechBadge>MCP</TechBadge>
+            </TechStack>
+          </ProjectContent>
+        </Project>
+        <Separator />
+        <Project>
+          <ProjectHeader>
             <Title size="normal">Gustosa</Title>
             <DiscontinuedBadge>No longer available</DiscontinuedBadge>
           </ProjectHeader>
