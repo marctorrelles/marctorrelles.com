@@ -10,7 +10,7 @@ import { ThemeParams, darkTheme, lightTheme } from "../styles/theme"
 const ProjectsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8rem;
+  gap: 4rem;
   padding-top: 2rem;
 
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
@@ -57,6 +57,23 @@ const PlatformLink = styled(Link)`
     opacity: 1;
   }
 `
+
+const ProjectLinks = ({
+  links,
+}: {
+  links: { label: string; href: string }[]
+}) => (
+  <DownloadLinks>
+    {links.map((l, i) => (
+      <span key={l.href}>
+        {i > 0 && " - "}
+        <PlatformLink href={l.href} target="_blank">
+          {l.label}
+        </PlatformLink>
+      </span>
+    ))}
+  </DownloadLinks>
+)
 
 const DiscontinuedBadge = styled.span`
   padding: 0.4rem 0.8rem;
@@ -105,10 +122,10 @@ const ProjectImageGrid = styled.div`
   }
 `
 
-const ProjectImage = styled.div`
+const ProjectImage = styled.div<{ $wide?: boolean }>`
   position: relative;
   min-width: 200px;
-  width: 240px;
+  width: ${(p) => (p.$wide ? "480px" : "240px")};
   overflow: hidden;
   flex-shrink: 0;
 
@@ -120,7 +137,7 @@ const ProjectImage = styled.div`
 
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
     min-width: 240px;
-    width: 240px;
+    width: ${(p) => (p.$wide ? "320px" : "240px")};
   }
 `
 
@@ -170,21 +187,80 @@ export default function Projects() {
         <Project>
           <ProjectHeader>
             <Title size="normal" noMargin>
+              Sideload
+            </Title>
+            <ProjectLinks
+              links={[
+                { label: "Web", href: "https://sideload.marctorrelles.com" },
+                {
+                  label: "GitHub",
+                  href: "https://github.com/marctorrelles/sideload",
+                },
+              ]}
+            />
+          </ProjectHeader>
+          <ProjectImageGrid>
+            <ProjectImage $wide>
+              <FadeInImage
+                src="/projects/sideload/1.webp"
+                alt="Sideload landing page"
+                width={800}
+                height={563}
+              />
+            </ProjectImage>
+            <ProjectImage $wide>
+              <FadeInImage
+                src="/projects/sideload/2.webp"
+                alt="Sideload: choose what to move"
+                width={800}
+                height={563}
+              />
+            </ProjectImage>
+            <ProjectImage $wide>
+              <FadeInImage
+                src="/projects/sideload/3.webp"
+                alt="Sideload: a transfer running"
+                width={800}
+                height={563}
+              />
+            </ProjectImage>
+          </ProjectImageGrid>
+          <ProjectContent>
+            <DescriptionText>
+              Sideload moves your Spotify library to YouTube Music. Playlists,
+              liked songs, saved albums, followed artists. Start it, close the
+              tab, come back to a finished library.
+              <br />
+              What makes it different is what it refuses to lose: every add is
+              read back and verified, and anything it cannot match with
+              confidence comes back to you as a list, never guessed.
+              <br />
+              Free, open source, no accounts, nothing kept.
+            </DescriptionText>
+            <TechStack>
+              <TechBadge>TypeScript</TechBadge>
+              <TechBadge>Astro</TechBadge>
+              <TechBadge>Cloudflare Workers</TechBadge>
+              <TechBadge>Durable Objects</TechBadge>
+              <TechBadge>Open Source</TechBadge>
+            </TechStack>
+          </ProjectContent>
+        </Project>
+        <Separator />
+        <Project>
+          <ProjectHeader>
+            <Title size="normal" noMargin>
               Caliu
             </Title>
-            <DownloadLinks>
-              Download on the{" "}
-              <PlatformLink
-                href="https://apps.apple.com/app/caliu-a-notes-app/id6761850487"
-                target="_blank"
-              >
-                App Store
-              </PlatformLink>{" "}
-              or{" "}
-              <PlatformLink href="https://caliuapp.com" target="_blank">
-                open it on the web
-              </PlatformLink>
-            </DownloadLinks>
+            <ProjectLinks
+              links={[
+                { label: "Web", href: "https://caliuapp.com" },
+                {
+                  label: "App Store",
+                  href: "https://apps.apple.com/app/caliu-a-notes-app/id6761850487",
+                },
+              ]}
+            />
           </ProjectHeader>
           <ProjectImageGrid>
             <ProjectImage>
@@ -312,15 +388,14 @@ export default function Projects() {
             <Title size="normal" noMargin>
               Flexo
             </Title>
-            <DownloadLinks>
-              Download on the{" "}
-              <PlatformLink
-                href="https://apps.apple.com/cr/app/flexo-focus-y-pomodoro/id6469589285"
-                target="_blank"
-              >
-                App Store
-              </PlatformLink>
-            </DownloadLinks>
+            <ProjectLinks
+              links={[
+                {
+                  label: "App Store",
+                  href: "https://apps.apple.com/cr/app/flexo-focus-y-pomodoro/id6469589285",
+                },
+              ]}
+            />
           </ProjectHeader>
           <ProjectImageGrid>
             <ProjectImage>
