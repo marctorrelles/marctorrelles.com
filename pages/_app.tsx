@@ -4,6 +4,8 @@ import dynamic from "next/dynamic"
 import Head from "next/head"
 import { Router } from "next/router"
 import styled from "styled-components"
+
+import Background from "../components/Background"
 import Name from "../components/Name"
 import Nav from "../components/Nav"
 import NavMobile from "../components/NavMobile"
@@ -32,6 +34,7 @@ const Container = motion(styled.div`
   margin: ${MAIN_SEPARATION}px;
   border: 1px solid #717171;
   flex-direction: column;
+  isolation: isolate;
   background: ${lightTheme.background};
 
   @media (prefers-color-scheme: dark) {
@@ -173,6 +176,7 @@ export default class MyApp extends App {
                       transition={{ duration: 0.3 }}
                       key="main-container"
                     >
+                      <Background />
                       <PageContent
                         Component={Component}
                         pageProps={pageProps}

@@ -48,6 +48,12 @@ const GlobalStyle = createGlobalStyle<{ $font: Font }>`
     box-sizing: border-box;
     display: flex;
   }
+  .grainient-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
   p {
     margin-block-start: 0;
     margin-block-end: 0.6em;

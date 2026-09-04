@@ -11,6 +11,7 @@
     "framer-motion": "^10.16.2",
     "gray-matter": "^4.0.3",
     "next": "^16.1.6",
+    "ogl": "^1.0.11",
     "raw-loader": "^4.0.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
