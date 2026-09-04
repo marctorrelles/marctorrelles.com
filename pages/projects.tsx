@@ -5,7 +5,12 @@ import PageContainer from "../components/PageContainer"
 import Separator from "../components/Separator"
 import Text from "../components/Text"
 import Title from "../components/Title"
-import { ThemeParams, darkTheme, lightTheme } from "../styles/theme"
+import {
+  INNER_SEPARATION,
+  ThemeParams,
+  darkTheme,
+  lightTheme,
+} from "../styles/theme"
 
 const ProjectsContainer = styled.div`
   display: flex;
@@ -15,7 +20,7 @@ const ProjectsContainer = styled.div`
 
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
     padding-top: 0.5rem;
-    gap: 3rem;
+    gap: 1.5rem;
   }
 `
 
@@ -99,11 +104,15 @@ const DiscontinuedNote = styled.p`
   }
 `
 
+// Bleeds out of the text column to the edges of the scroll container, like a Notion gallery
 const ProjectImageGrid = styled.div`
   display: flex;
   flex-direction: row;
   gap: 1rem;
-  width: 100%;
+  width: 100cqw;
+  margin-left: -${INNER_SEPARATION.Desktop}px;
+  padding-left: ${INNER_SEPARATION.Desktop}px;
+  padding-right: ${INNER_SEPARATION.Desktop}px;
   overflow-x: auto;
   overflow-y: hidden;
   padding-bottom: 0.5rem;
@@ -119,6 +128,9 @@ const ProjectImageGrid = styled.div`
 
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
     gap: 0.75rem;
+    margin-left: -${INNER_SEPARATION.Mobile}px;
+    padding-left: ${INNER_SEPARATION.Mobile}px;
+    padding-right: ${INNER_SEPARATION.Mobile}px;
   }
 `
 
@@ -137,7 +149,7 @@ const ProjectImage = styled.div<{ $wide?: boolean }>`
 
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
     min-width: 240px;
-    width: ${(p) => (p.$wide ? "320px" : "240px")};
+    width: ${(p) => (p.$wide ? "360px" : "240px")};
   }
 `
 

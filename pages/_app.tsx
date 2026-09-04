@@ -51,6 +51,7 @@ const Container = motion(styled.div`
 const ContentContainer = motion(styled.div`
   width: 100%;
   min-height: 100%;
+  container-type: inline-size;
   flex-direction: column;
   align-items: flex-start;
   overflow: auto;

@@ -16,8 +16,8 @@ const About = () => (
     </Text>
     <Text>
       Just want to know what I've been up to?{" "}
-      <Link href="/experience">See my experience →</Link> or{" "}
-      <Link href="/projects">check out my projects →</Link>
+      <Link href="/experience">See my experience</Link> or{" "}
+      <Link href="/projects">check out my projects</Link>.
     </Text>
   </PageContainer>
 )
