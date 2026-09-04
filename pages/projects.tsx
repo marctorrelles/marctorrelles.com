@@ -11,8 +11,10 @@ const ProjectsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8rem;
+  padding-top: 2rem;
 
   @media (max-width: ${ThemeParams.MobileBreakpoint}px) {
+    padding-top: 0.5rem;
     gap: 3rem;
   }
 `
