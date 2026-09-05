@@ -24,14 +24,14 @@ export default function Background() {
   return (
     <Wrapper aria-hidden="true">
       <Grainient
-        timeSpeed={0.075}
+        timeSpeed={0.15}
         warpSpeed={1}
-        grainAmount={0.1}
-        contrast={light ? 2 : 1.5}
-        saturation={light ? 0.4 : 0.7}
-        color1="#0a0e16"
-        color2="#161f2e"
-        color3="#33445e"
+        grainAmount={0.15}
+        contrast={light ? 2.2 : 1.5}
+        saturation={0.5}
+        color1={light ? "#526d9d" : "#101724"}
+        color2={light ? "#cad7ec" : "#1b3056"}
+        color3={light ? "#cad4e4" : "#2d405f"}
         lightMode={light}
       />
     </Wrapper>
